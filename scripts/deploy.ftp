@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+HOST='101.100.209.219'
+USER='scfp'
+PASSWD='6B+Dhn#0PT.*'
+
+ftp -n $HOST <<END_SCRIPT
+quote USER $USER
+quote PASS $PASSWD
+delete public_html/index.html
+delete public_html/bundle.js
+delete public_html/.htaccess
+delete public_html/404.html
+put public/index.html public_html/index.html
+put public/bundle.js public_html/bundle.js
+put public/.htaccess public_html/.htaccess
+put public/404.html public_html/404.html
+bye
+END_SCRIPT
