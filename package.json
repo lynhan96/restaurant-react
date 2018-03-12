@@ -1,8 +1,8 @@
 {
-  "name": "sca",
+  "name": "cms-restaurant",
   "version": "0.0.1",
-  "description": "This application used for SCA Fellowship Program",
-  "author": "Iker <tdtrinh.web@gmail.com>",
+  "description": "",
+  "author": "Jack <lynhan15041997@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server",
@@ -55,7 +55,14 @@
     "redux-form": "^6.6.1",
     "redux-persist": "^4.5.0",
     "redux-thunk": "^2.2.0",
-    "validator": "^7.0.0"
+    "validator": "^7.0.0",
+    "font-awesome": "^4.7.0",
+    "ion-rangeslider": "^2.2.0",
+    "ionicons": "^3.0.0",
+    "md5": "^2.2.1",
+    "moment": "^2.19.3",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   },
   "jest": {
     "moduleDirectories": [
