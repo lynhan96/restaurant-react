@@ -7,14 +7,16 @@ import { submitLogin } from 'lib/submits/login'
 
 const Login = (props) => {
   return (
-    <div className='row'>
-      <div className='col-md-12'>
-        <h1>Login</h1>
+    <div style={{ 'float': 'left', 'width': '100%', 'height': '100vh', 'background': '#222d32' }}>
+      <div className='login-box'>
+        <div className='login-logo'>
+          <a href=''><b style={{ 'color': 'white' }}>Restaurant CMS</b></a>
+        </div>
+        <div className='login-box-body'>
+          <p className='login-box-msg'>Đăng nhập</p>
+          <DecoratedLoginForm />
+        </div>
       </div>
-      <div className='col-md-6'>
-        <DecoratedLoginForm />
-      </div>
-      <div className='col-md-6'/>
     </div>
   )
 }
@@ -26,7 +28,7 @@ const DecoratedLoginForm = reduxForm({
   // since the function is decoupled from Login
   onSubmit: submitLogin,
   // redirect after submit is successful
-  onSubmitSuccess: () => Navigator.push('admin/users')
+  onSubmitSuccess: () => Navigator.push('dashboard')
 })(LoginForm)
 
 export default Login

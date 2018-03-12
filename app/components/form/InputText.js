@@ -4,25 +4,16 @@ import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap
 // We receive props from ReduxForm's Field
 // and turn them into props for Bootstrap forms
 const InputText = (props) => {
-  const { input, meta, label, type = 'text' } = props
+  const { input, type = 'text' } = props
   // pass onBlur to enable touched flag
   // pass onChange so the ReduxForm can work
-  const { value, onChange, onBlur } = input
-  const { touched, error } = meta
-  const validationState = !touched ? null : error ? 'error' : 'success'
+  const { value, onChange } = input
 
   return (
-    <FormGroup validationState={validationState}>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl
-        type={type}
-        onBlur={onBlur}
-        onChange={onChange}
-        value={value}
-      />
-      {touched && error && <HelpBlock>{error}</HelpBlock>}
-      <FormControl.Feedback />
-    </FormGroup>
+    <div className='form-group has-feedback'>
+      <input type={type} className='form-control' name='email' placeholder='Email' required='true' value={value} onChange={onChange}/>
+      <span className='glyphicon glyphicon-envelope form-control-feedback'></span>
+    </div>
   )
 }
 

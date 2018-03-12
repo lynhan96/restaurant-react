@@ -11,6 +11,12 @@ const config = {
     port: 8000
   },
 
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
+
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/public')
@@ -43,10 +49,7 @@ const config = {
 
   plugins: [
     new webpack.DefinePlugin({
-      '__DEV__': true,
-      'COMMUNITY_LINK': `'http://supplychainasia.org/subscription-form'`,
-      'GOOGLE_CAPTCHAR_KEY': `'6LdJdBwUAAAAACAxHqDTNu2Vny5l492NVuQ7-KZ8'`,
-      'API_SCFP_SEND_ADMIN_EMAIL': `'https://us-central1-sca-fellowship-5d601.cloudfunctions.net/services-scfp-sendMailToAdmin'`
+      '__DEV__': true
     }),
     new HtmlWebpackPlugin({
       template: 'assets/index.ejs',

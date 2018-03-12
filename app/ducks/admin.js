@@ -1,8 +1,4 @@
 import { firebaseAuth } from 'database/database'
-import { fetchUsers } from 'ducks/users'
-import { fetchSets } from 'ducks/sets'
-import { fetchQuestions } from 'ducks/questions'
-import { fetchAllResults } from 'ducks/results'
 
 // Actions
 const ADMIN_SIGNED_IN = 'admin/ADMIN_SIGNED_IN'
@@ -15,10 +11,10 @@ export const adminHasSignedIn = (admin) => (dispatch) => {
   dispatch({ type: ADMIN_SIGNED_IN, data: admin })
 
   // initialise state for admin
-  dispatch(fetchUsers())
-  dispatch(fetchSets())
-  dispatch(fetchQuestions())
-  dispatch(fetchAllResults())
+  // dispatch(fetchUsers())
+  // dispatch(fetchSets())
+  // dispatch(fetchQuestions())
+  // dispatch(fetchAllResults())
 }
 
 export const requestLogout = () => (dispatch) => firebaseAuth.signOut()

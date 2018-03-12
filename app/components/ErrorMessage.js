@@ -1,13 +1,14 @@
 import React from 'react'
-import { Alert } from 'react-bootstrap/lib'
 
 const ErrorMessage = (props) => {
   const { text } = props
 
   return (
-    <Alert bsStyle="danger">
-      <p>{text}</p>
-    </Alert>
+    <div className="alert alert-danger alert-dismissible">
+      <button type="button" className="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i className="icon fa fa-ban"></i>
+      {text}
+    </div>
   )
 }
 

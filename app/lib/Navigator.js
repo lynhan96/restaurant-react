@@ -2,7 +2,7 @@ import { useRouterHistory } from 'react-router'
 import { createHistory } from 'history'
 
 const Navigator = useRouterHistory(createHistory)({
-  basename: '/scfp'
+  basename: '/'
 })
 
 export default Navigator

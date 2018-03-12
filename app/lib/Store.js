@@ -8,15 +8,13 @@ import Reactotron from 'reactotron-react-js'
 import { reactotronRedux } from 'reactotron-redux'
 
 import { database, firebaseAuth } from 'database/database'
-import { fetchPages } from 'ducks/pages'
 import { adminHasSignedIn, adminHasSignedOut } from 'ducks/admin'
-import { userHasSignedIn, userHasSignedOut } from 'ducks/user'
 
 const middleware = [ thunk ]
 var applyMiddlewareConfig
 
 if (__DEV__) {
-  Reactotron.configure({ name: 'SCA' })
+  Reactotron.configure({ name: 'Restaurant' })
     .use(reactotronRedux())
     .connect()
 
@@ -43,28 +41,7 @@ const Store = create(rootReducers, initialState, applyMiddlewareConfig)
 const { dispatch } = Store
 
 // initialise public state
-dispatch(fetchPages())
-
-// Sync with Firebase Sign-in
-// which can be by user, by changes in Firebase console or by local caching
-// adminHasSignedIn will initialise state for admin
-firebaseAuth.onAuthStateChanged((user) => {
-  if (user) {
-    const { uid } = user
-    database.ref(`admins/${uid}`).once('value')
-      .then((snapshot) => {
-        const isAdmin = snapshot.val()
-        if (isAdmin) dispatch(adminHasSignedIn(user))
-      }).catch(() => {
-        // This is a user
-        dispatch(userHasSignedIn(user))
-      })
-  } else {
-    // indiscriminately log out everyone
-    dispatch(adminHasSignedOut())
-    dispatch(userHasSignedOut())
-  }
-})
+// dispatch(fetchPages())
 
 // Persist redux store in local storage
 persistStore(
