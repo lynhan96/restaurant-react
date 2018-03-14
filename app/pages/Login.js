@@ -4,8 +4,13 @@ import Navigator from 'lib/Navigator'
 
 import LoginForm from 'components/form/Login'
 import { submitLogin } from 'lib/submits/login'
+import { adminHasSignedOut } from 'ducks/admin'
+import Store from 'lib/Store'
 
 const Login = (props) => {
+  const { dispatch } = Store
+  dispatch(adminHasSignedOut())
+
   return (
     <div style={{ 'float': 'left', 'width': '100%', 'height': '100vh', 'background': '#222d32' }}>
       <div className='login-box'>

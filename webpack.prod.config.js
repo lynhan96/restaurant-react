@@ -4,10 +4,7 @@ const webpack = require('webpack')
 
 config.plugins = [
   new webpack.DefinePlugin({
-    '__DEV__': false,
-    'COMMUNITY_LINK': `'http://supplychainasia.org/subscription-form'`,
-    'GOOGLE_CAPTCHAR_KEY': `'6LdJdBwUAAAAACAxHqDTNu2Vny5l492NVuQ7-KZ8'`,
-    'API_SCFP_SEND_ADMIN_EMAIL': `'https://us-central1-sca-fellowship-5d601.cloudfunctions.net/services-scfp-sendMailToAdmin'`
+    '__DEV__': false
   }),
   new webpack.optimize.UglifyJsPlugin({
     sourceMap: false,

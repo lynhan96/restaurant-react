@@ -1,10 +1,11 @@
 import React from 'react'
 
+import Header from 'components/layout/Header'
 const App = (props) => {
   const { children } = props
-
   return (
     <div style={styles.container}>
+      <Header/>
       {children}
     </div>
   )

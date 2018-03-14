@@ -6,7 +6,6 @@ const defaultState = {
 
 const hydrationReducer = (state = defaultState, action) => {
   const { type } = action
-
   switch (type) {
     case HYDRATION_COMPLETED:
       return {

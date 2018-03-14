@@ -7,9 +7,6 @@ import { autoRehydrate, persistStore } from 'redux-persist'
 import Reactotron from 'reactotron-react-js'
 import { reactotronRedux } from 'reactotron-redux'
 
-import { database, firebaseAuth } from 'database/database'
-import { adminHasSignedIn, adminHasSignedOut } from 'ducks/admin'
-
 const middleware = [ thunk ]
 var applyMiddlewareConfig
 

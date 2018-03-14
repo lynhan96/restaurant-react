@@ -1,6 +1,3 @@
-import { firebaseAuth } from 'database/database'
-
-// Actions
 const ADMIN_SIGNED_IN = 'admin/ADMIN_SIGNED_IN'
 export const ADMIN_SIGNED_OUT = 'admin/ADMIN_SIGNED_OUT'
 
@@ -17,8 +14,6 @@ export const adminHasSignedIn = (admin) => (dispatch) => {
   // dispatch(fetchAllResults())
 }
 
-export const requestLogout = () => (dispatch) => firebaseAuth.signOut()
-
 // Reducer
 const defaultState = {
   signedIn: false,
@@ -27,7 +22,6 @@ const defaultState = {
 
 const reducer = (state = defaultState, action) => {
   const { type, data } = action
-
   switch (type) {
     case ADMIN_SIGNED_IN:
       return {

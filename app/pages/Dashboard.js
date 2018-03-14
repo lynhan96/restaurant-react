@@ -1,4 +1,6 @@
 import React from 'react'
+import R from 'ramda'
+import { isAdmin } from 'components/wrappers/isAdmin'
 
 const Dashboard = (props) => {
   return (
@@ -10,4 +12,6 @@ const Dashboard = (props) => {
   )
 }
 
-export default Dashboard
+export default R.pipe(
+  isAdmin
+)(Dashboard)

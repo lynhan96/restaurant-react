@@ -1,8 +1,8 @@
 import { SubmissionError } from 'redux-form'
+import request from 'request-promise'
 
-import { database, firebaseAuth } from 'database/database'
+import { makeHeader } from '../requestHeader'
 import { adminHasSignedIn } from 'ducks/admin'
-
 // Redux-form requires a promise for async submission
 // so we return a promise
 export const submitLogin =
@@ -10,25 +10,26 @@ export const submitLogin =
     const { email, password } = values
     let admin = null
 
-    // firebaseAuth#signInWithEmailAndPassword returns a promise
-    return firebaseAuth.signInWithEmailAndPassword(email, password)
-      .then((firebaseUser) => {
-        admin = firebaseUser
+    const options = {
+      method: 'POST',
+      uri: 'http://localhost:8000/v1/login',
+      body: { email: email, password: password },
+      headers: makeHeader(),
+      json: true
+    }
+
+    return request(options).then(body => {
+      if (body.code === 0) {
+        admin = body.data
+        dispatch(adminHasSignedIn(admin))
         return Promise.resolve(admin)
-      })
-      .then((user) => database.ref(`admins/${user.uid}`).once('value'))
-      .then((snapshot) => {
-        const isAdmin = snapshot.val()
-        if (!isAdmin) throw new Error('User is not an admin.')
-        return Promise.resolve()
-      })
-      .then(() => dispatch(adminHasSignedIn(admin)))
-      .catch((error) => {
-        // { _error: 'ERROR' } will be passed to form
-        // { email: 'ERROR' } will be passed to email field
-        const { code, message } = error
-        const userIsNotAdmin = code === 'PERMISSION_DENIED'
-        const errorMessage = userIsNotAdmin ? 'User not found' : message
-        throw new SubmissionError({ _error: errorMessage })
-      })
+      } else if (body.code === 416) {
+        throw new SubmissionError({ _error: 'Mật khẩu không hợp lệ!' })
+      } else if (body.code === 414) {
+        throw new SubmissionError({ _error: 'Tài khoản không tồn tại!' })
+      }
+    })
+    .catch(function (err) {
+      throw new SubmissionError({ _error: err.errors._error })
+    })
   }

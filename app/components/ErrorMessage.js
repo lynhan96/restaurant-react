@@ -7,7 +7,7 @@ const ErrorMessage = (props) => {
     <div className="alert alert-danger alert-dismissible">
       <button type="button" className="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <i className="icon fa fa-ban"></i>
-      {text}
+      {typeof text === 'object' ? '' : text}
     </div>
   )
 }
