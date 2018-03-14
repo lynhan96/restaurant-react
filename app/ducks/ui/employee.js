@@ -4,6 +4,8 @@ import {
   FETCH_EMPLOYEES_ERROR
 } from '../../lib/actions/employee'
 
+import { ADMIN_SIGNED_OUT } from 'ducks/admin'
+
 const initialState = {
   items: [],
   loading: false,
@@ -31,20 +33,15 @@ export default function productReducer(state = initialState, action) {
       }
 
     case FETCH_EMPLOYEES_ERROR:
-      // The request failed, but it did stop, so set loading to "false".
-      // Save the error, and we can display it somewhere
-      // Since it failed, we don't have items to display anymore, so set it empty.
-      // This is up to you and your app though: maybe you want to keep the items
-      // around! Do whatever seems right.
       return {
         ...state,
         loading: false,
         error: action.payload.error,
         items: []
       }
-
+    case ADMIN_SIGNED_OUT:
+      return {...initialState}
     default:
-      // ALWAYS have a default case in a reducer
       return state
   }
 }
