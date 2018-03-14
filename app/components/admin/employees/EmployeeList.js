@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import R from 'ramda'
-import { Link } from 'react-router'
-import $ from 'jquery'
+
 import 'datatables.net'
 import 'datatables.net-bs/js/dataTables.bootstrap'
 import 'datatables.net-bs/css/dataTables.bootstrap.css'
@@ -20,13 +19,21 @@ class EmployeeList extends Component {
     const header = tableHeader()
 
     if (error) {
-      return <div>Error! {error.message}</div>
+      return (
+        <div style={style.loadingWrapper}>
+          <i className='fa fa-warning' style={style.loadingIcon} />
+          <p style={style.loadingText}>Quá trình tải dữ liệu xảy ra lỗi ...</p>
+        </div>
+      )
     }
 
     if (loading) {
-      return <div>Loading...</div>
-    } else {
-      $('#table').DataTable()
+      return (
+        <div style={style.loadingWrapper}>
+          <i className='fa fa-spinner fa-spin' style={style.loadingIcon} />
+          <p style={style.loadingText}>Đang tải dữ liệu ...</p>
+        </div>
+      )
     }
 
     return (
@@ -73,3 +80,17 @@ export default R.pipe(
   connect(mapStateToProps),
   isAdmin
 )(EmployeeList)
+
+const style = {
+  loadingWrapper: {
+    textAlign: 'center',
+    margin: '30px'
+  },
+  loadingIcon: {
+    fontSize: '30px'
+  },
+  loadingText: {
+    fontSize: '17px',
+    marginTop: '10px'
+  }
+}

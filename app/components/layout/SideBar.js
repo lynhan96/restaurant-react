@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { dispatchLogout } from 'ducks/admin'
 
 const SideBar = (props) => {
-  const { signedIn, dispatch } = props
+  const { signedIn, dispatch, activeLink } = props
   const logout = dispatchLogout(dispatch)
 
   if (signedIn) {
@@ -17,13 +17,13 @@ const SideBar = (props) => {
         </div>
         <div className='sidebar-wrapper'>
           <ul className='nav'>
-            <li className='active'>
+            <li className={activeLink === 'dashboard' ? 'active' : ''}>
               <Link to='dashboard'>
                 <i className='material-icons'>dashboard</i>
                 <p>Dashboard</p>
               </Link>
             </li>
-            <li>
+            <li className={activeLink === 'employees' ? 'active' : ''}>
               <Link to='employees'>
                 <i className='material-icons'>account_circle</i>
                 <p>Nhân viên</p>
