@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
+import { dispatchLogout } from 'ducks/admin'
 
 const SideBar = (props) => {
-  const { signedIn } = props
+  const { signedIn, dispatch } = props
+  const logout = dispatchLogout(dispatch)
 
   if (signedIn) {
     return (
@@ -167,7 +169,7 @@ const SideBar = (props) => {
               </ul>
             </li>
             <li>
-              <Link to='/login'>
+              <Link to='/login' onClick={logout}>
                 <i className='fa fa-sign-out'></i> <span>Thoát</span>
               </Link>
             </li>

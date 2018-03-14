@@ -2,13 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
-import { adminHasSignedOut } from 'ducks/admin'
-
-const dispatchLogout = (dispatch) => () => {
-  if (confirm('Are you sure you want to logout?')) {
-    dispatch(adminHasSignedOut())
-  }
-}
+import { dispatchLogout } from 'ducks/admin'
 
 const Header = (props) => {
   const { signedIn, dispatch, data } = props

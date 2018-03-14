@@ -1,6 +1,12 @@
 const ADMIN_SIGNED_IN = 'admin/ADMIN_SIGNED_IN'
 export const ADMIN_SIGNED_OUT = 'admin/ADMIN_SIGNED_OUT'
 
+export const dispatchLogout = (dispatch) => () => {
+  if (confirm('Bạn có muốn rời khỏi trang Quản lý?')) {
+    dispatch(adminHasSignedOut())
+  }
+}
+
 // Creators
 export const adminHasSignedOut = () => (dispatch) => {
   dispatch({ type: ADMIN_SIGNED_OUT })
