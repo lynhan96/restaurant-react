@@ -19,8 +19,6 @@ class EmployeeList extends Component {
   render() {
     const { error, loading, employees } = this.props
     const header = tableHeader()
-    console.log(employees)
-    console.log(header)
 
     if (error) {
       return <div>Error! {error.message}</div>
@@ -39,16 +37,28 @@ class EmployeeList extends Component {
             <div className='box-body'>
               <table id='table' className='table table-bordered table-striped'>
                 <thead>
-                  {
-                    Object.keys(header).forEach(function (key) {
-                        var value = obj[key]
-                        <tr>{value}</tr>
-                    })
-                    $.each(header, (key, value) => )
-                  }
+                  <tr>
+                    {header.map((item, index) => <th key={index}>{ item.viewTitle }</th>)}
+                  </tr>
                 </thead>
                 <tbody>
-
+                  {employees.map(function(item, itemIndex) {
+                    return (
+                      <tr key={itemIndex}>
+                        {header.map(function(headerItem, headerIndex) {
+                          return <td key={headerIndex}>{item[headerItem.fieldName]}</td>
+                        })}
+                        <td>
+                          <Link to='#' className='btn btn-primary btn-block btn-flat' style={{ width: '30%', display: 'inline-block' }}>
+                            Chi tiết
+                          </Link>
+                          <Link to='#' className='btn btn-danger btn-block btn-flat' style={{ width: '30%', display: 'inline-block', margin: '0 10px' }}>
+                            Xóa
+                          </Link>
+                        </td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>

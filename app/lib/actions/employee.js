@@ -5,13 +5,13 @@ export const FETCH_EMPLOYEES_BEGIN = 'FETCH_EMPLOYEES_BEGIN'
 export const FETCH_EMPLOYEES_SUCCESS = 'FETCH_EMPLOYEES_SUCCESS'
 export const FETCH_EMPLOYEES_ERROR = 'FETCH_EMPLOYEES_ERROR'
 
-export const tableHeader = () => ({
-  'id': 'ID',
-  'name': 'Name',
-  'position': 'Position',
-  'phoneNumber': 'Phone Number',
-  'gender': 'Gender'
-})
+export const tableHeader = () => ([
+  { 'fieldName': 'id', 'viewTitle': 'ID' },
+  { 'fieldName': 'name', 'viewTitle': 'Name' },
+  { 'fieldName': 'position', 'viewTitle': 'Position' },
+  { 'fieldName': 'phoneNumber', 'viewTitle': 'Phone Number' },
+  { 'fieldName': 'gender', 'viewTitle': 'Gender' }
+])
 
 export const fetchEmployeesBegin = () => ({
   type: FETCH_EMPLOYEES_BEGIN
