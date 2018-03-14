@@ -2,16 +2,12 @@ const ADMIN_SIGNED_IN = 'admin/ADMIN_SIGNED_IN'
 export const ADMIN_SIGNED_OUT = 'admin/ADMIN_SIGNED_OUT'
 
 // Creators
-export const adminHasSignedOut = () => ({ type: ADMIN_SIGNED_OUT })
+export const adminHasSignedOut = () => (dispatch) => {
+  dispatch({ type: ADMIN_SIGNED_OUT })
+}
 
 export const adminHasSignedIn = (admin) => (dispatch) => {
   dispatch({ type: ADMIN_SIGNED_IN, data: admin })
-
-  // initialise state for admin
-  // dispatch(fetchUsers())
-  // dispatch(fetchSets())
-  // dispatch(fetchQuestions())
-  // dispatch(fetchAllResults())
 }
 
 // Reducer

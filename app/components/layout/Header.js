@@ -2,8 +2,17 @@ import React from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
+import { adminHasSignedOut } from 'ducks/admin'
+
+const dispatchLogout = (dispatch) => () => {
+  if (confirm('Are you sure you want to logout?')) {
+    dispatch(adminHasSignedOut())
+  }
+}
+
 const Header = (props) => {
-  const { signedIn, data } = props
+  const { signedIn, dispatch, data } = props
+  const logout = dispatchLogout(dispatch)
 
   if (signedIn) {
     return (
@@ -62,7 +71,7 @@ const Header = (props) => {
                       <Link to='/profile' className='btn btn-default btn-flat'>Trang cá nhân</Link>
                     </div>
                     <div className='pull-right'>
-                      <Link className='btn btn-default btn-flat' to='/login'>Thoát</Link>
+                      <Link className='btn btn-default btn-flat' to='/login' onClick={logout}>Thoát</Link>
                     </div>
                   </li>
                 </ul>

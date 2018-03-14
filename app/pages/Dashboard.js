@@ -73,7 +73,7 @@ const Dashboard = (props) => {
               <div className='box-header with-border'>
                 <h3 className='box-title'>Doanh Thu</h3>
               </div>
-              <div className='box-body chart-responsive' style={{ 'height': '385' }}>
+              <div className='box-body chart-responsive'>
               </div>
             </div>
           </div>
