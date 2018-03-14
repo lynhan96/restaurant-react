@@ -1,19 +1,10 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import Header from 'components/layout/Header'
 import SideBar from 'components/layout/SideBar'
 
 const App = (props) => {
-  const { signedIn, children } = props
-
-  if (!signedIn) {
-    return (
-      <div className='wrapper'>
-        {children}
-      </div>
-    )
-  }
+  const { children } = props
 
   return (
     <div className='wrapper'>
@@ -26,6 +17,4 @@ const App = (props) => {
   )
 }
 
-const mapStateToProps = (state) => state.admin
-
-export default connect(mapStateToProps)(App)
+export default App

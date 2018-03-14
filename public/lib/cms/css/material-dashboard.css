@@ -23,6 +23,10 @@
 
 /* Shadows (from mdl http://www.getmdl.io/) */
 
+.login-form-wrapper{
+    margin-left: -260px;
+}
+
 .login-bg{
     background-size: cover;
     background-image: url('../../../images/login-bg.png');
@@ -6380,6 +6384,10 @@ footer .btn {
 /*          Changes for small display      */
 
 @media (max-width: 991px) {
+    .login-form-wrapper{
+        margin: 0 !important;
+    }
+
     .sidebar {
         display: none;
         box-shadow: none;

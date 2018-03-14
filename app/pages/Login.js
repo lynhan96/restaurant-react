@@ -12,7 +12,7 @@ const Login = (props) => {
   dispatch(adminHasSignedOut())
 
   return (
-    <div>
+    <div className='login-form-wrapper'>
       <div className='col-md-4'/>
       <div className='col-md-4'>
         <div className='card' style={style.cardBackground}>
