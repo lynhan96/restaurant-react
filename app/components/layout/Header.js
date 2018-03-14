@@ -5,64 +5,61 @@ import { connect } from 'react-redux'
 import { dispatchLogout } from 'ducks/admin'
 
 const Header = (props) => {
-  const { signedIn, dispatch, data } = props
+  const { signedIn, dispatch } = props
   const logout = dispatchLogout(dispatch)
 
   if (signedIn) {
     return (
-      <nav className='navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top'>
+      <nav className='navbar navbar-transparent navbar-absolute fixed'>
         <div className='container-fluid'>
-           <div className='navbar-wrapper'>
-              <div className='navbar-toggle'>
-                <button type='button' className='navbar-toggler'>
-                  <span className='navbar-toggler-bar bar1'/>
-                  <span className='navbar-toggler-bar bar2'/>
-                  <span className='navbar-toggler-bar bar3'/>
-                </button>
-              </div>
-              <Link className='navbar-brand' href='#pablo'>Table List</Link>
-           </div>
-           <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navigation' aria-controls='navigation-index' aria-expanded='false' aria-label='Toggle navigation'>
-              <span className='navbar-toggler-bar navbar-kebab'></span>
-              <span className='navbar-toggler-bar navbar-kebab'></span>
-              <span className='navbar-toggler-bar navbar-kebab'></span>
-           </button>
-           <div className='collapse navbar-collapse justify-content-end' id='navigation'>
-              <form>
-                 <div className='input-group no-border'>
-                    <input type='text' value='' className='form-control' placeholder='Search...'/>
-                    <span className='input-group-addon'>
-                    <i className='now-ui-icons ui-1_zoom-bold'></i>
-                    </span>
-                 </div>
-              </form>
-              <ul className='navbar-nav'>
-                 <li className='nav-item'>
-                    <Link className='nav-link' href='#pablo'>
-                       <i className='now-ui-icons media-2_sound-wave'></i>
-                       <p>
-                          <span className='d-lg-none d-md-block'>Stats</span>
-                       </p>
-                    </Link>
-                 </li>
-                 <li className='nav-item dropdown'>
-                    <Link className='nav-link dropdown-toggle' href='http://example.com' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                       <i className='now-ui-icons location_world'></i>
-                       <p>
-                          <span className='d-lg-none d-md-block'>Some Actions</span>
-                       </p>
-                    </Link>
-                 </li>
-                 <li className='nav-item'>
-                    <Link className='nav-link' href='#pablo'>
-                       <i className='now-ui-icons users_single-02'></i>
-                       <p>
-                          <span className='d-lg-none d-md-block'>Account</span>
-                       </p>
-                    </Link>
-                 </li>
-              </ul>
-           </div>
+          <div className='navbar-header'>
+            <button type='button' className='navbar-toggle' data-toggle='collapse'>
+            <span className='sr-only'>Toggle navigation</span>
+            <span className='icon-bar'></span>
+            <span className='icon-bar'></span>
+            <span className='icon-bar'></span>
+            </button>
+          </div>
+          <div className='collapse navbar-collapse' style={{ background: 'white' }}>
+            <ul className='nav navbar-nav navbar-right'>
+              <li className='dropdown'>
+                <a href='#' className='dropdown-toggle' data-toggle='dropdown' aria-expanded="false">
+                  <i className='material-icons'>notifications</i>
+                  <span className='notification'>5</span>
+                  <p className='hidden-lg hidden-md'>Notifications</p>
+                </a>
+                <ul className='dropdown-menu'>
+                  <li>
+                    <a href='#'>Mike John responded to your email</a>
+                  </li>
+                  <li>
+                    <a href='#'>You have 5 new tasks</a>
+                  </li>
+                  <li>
+                    <a href='#'>You're now friend with Andrew</a>
+                  </li>
+                  <li>
+                    <a href='#'>Another Notification</a>
+                  </li>
+                  <li>
+                    <a href='#'>Another One</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <Link to='#'>
+                  <i className='material-icons'>person</i>
+                  <p className='hidden-lg hidden-md'>Trang cá nhân</p>
+                </Link>
+              </li>
+              <li>
+                <Link to='#' onClick={logout}>
+                  <i className='material-icons'>subdirectory_arrow_right</i>
+                  <p className='hidden-lg hidden-md'>Thoát</p>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     )

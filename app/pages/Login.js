@@ -12,14 +12,14 @@ const Login = (props) => {
   dispatch(adminHasSignedOut())
 
   return (
-    <div className='content'>
+    <div>
       <div className='col-md-4'/>
       <div className='col-md-4'>
         <div className='card' style={style.cardBackground}>
-          <div className='card-header'>
-            <h2 className='card-title' style={style.cardTitle}> Restaurant CMS</h2>
+          <div className='card-header' style={style.cardHeaderBackground}>
+            <h2 className='card-title' style={style.cardTitle}> BK Food CMS</h2>
           </div>
-          <div className='card-body'>
+          <div className='card-body' style={{ padding: '0 30px' }}>
             <DecoratedLoginForm />
           </div>
         </div>
@@ -44,8 +44,13 @@ const style = {
     background: 'white',
     marginTop: '20vh'
   },
+  cardHeaderBackground: {
+    background: '#ff9800'
+  },
   cardTitle: {
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white',
+    fontWeight: '600'
   }
 }
 

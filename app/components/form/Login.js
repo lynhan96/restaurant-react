@@ -10,21 +10,19 @@ import SubmitButton from 'components/form/SubmitButton'
 const LoginForm = (props) => {
   const { error, submitting, handleSubmit } = props
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
       {error && <ErrorMessage text={error} />}
       <Field
         name='email'
         component={InputText}
-        label='Email:'
+        label='Email'
         type='email'
-        holderText='Email'
       />
       <Field
         name='password'
         component={InputText}
-        label='Password:'
+        label='Password'
         type='password'
-        holderText='Password'
       />
       <SubmitButton
         text='Đăng nhập'

@@ -23,6 +23,11 @@
 
 /* Shadows (from mdl http://www.getmdl.io/) */
 
+.login-bg{
+    background-size: cover;
+    background-image: url('../../../images/login-bg.png');
+}
+
 .noUi-target,
 .noUi-target * {
     -webkit-touch-callout: none;
