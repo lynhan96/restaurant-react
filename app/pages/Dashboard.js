@@ -159,7 +159,7 @@ const Dashboard = (props) => {
                   </div>
                 </div>
               </div>
-{/*              <div className='card-content'>
+              <div className='card-content'>
                 <div className='tab-content'>
                   <div className='tab-pane active' id='profile'>
                     <table className='table'>
@@ -345,7 +345,7 @@ const Dashboard = (props) => {
                     </table>
                   </div>
                 </div>
-              </div>*/}
+              </div>
             </div>
           </div>
 {/*          <div className='col-lg-6 col-md-12'>

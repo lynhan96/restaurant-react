@@ -30,40 +30,34 @@ class EmployeeList extends Component {
     }
 
     return (
-      <div className='row' style={{ 'margin': '0' }}>
-        <div className='box'>
-          <div className='box-header' style={{ 'textAlign': 'center' }}>
-            <h3 className='box-title' style={{ 'fontSize': '30px' }}>Bảng Nhân viên</h3>
-          </div>
-            <div className='box-body'>
-              <table id='table' className='table table-bordered table-striped'>
-                <thead>
-                  <tr>
-                    {header.map((item, index) => <th key={index}>{ item.viewTitle }</th>)}
-                  </tr>
-                </thead>
-                <tbody>
-                  {employees.map(function(item, itemIndex) {
-                    return (
-                      <tr key={itemIndex}>
-                        {header.map(function(headerItem, headerIndex) {
-                          return <td key={headerIndex}>{item[headerItem.fieldName]}</td>
-                        })}
-                        <td>
-                          <Link to='#' className='btn btn-primary btn-block btn-flat' style={{ width: '30%', display: 'inline-block' }}>
-                            Chi tiết
-                          </Link>
-                          <Link to='#' className='btn btn-danger btn-block btn-flat' style={{ width: '30%', display: 'inline-block', margin: '0 10px' }}>
-                            Xóa
-                          </Link>
-                        </td>
-                      </tr>
-                    )
+      <div className='card-content table-responsive'>
+        <table className='table table-hover'>
+          <thead className='text-primary'>
+            <tr>
+              {header.map((item, index) => <th key={index}>{ item.viewTitle }</th>)}
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employees.map(function(item, itemIndex) {
+              return (
+                <tr key={itemIndex}>
+                  {header.map(function(headerItem, headerIndex) {
+                    return <td key={headerIndex}>{item[headerItem.fieldName]}</td>
                   })}
-                </tbody>
-              </table>
-            </div>
-        </div>
+                  <td className='td-actions text-right'>
+                    <button type='button' rel='tooltip' title='Chỉnh sửa dữ liệu' className='btn btn-primary btn-simple btn-xs'>
+                      <i className='material-icons'>edit</i>
+                    </button>
+                    <button type='button' rel='tooltip' title='Xóa dữ liệu' className='btn btn-danger btn-simple btn-xs'>
+                      <i className='material-icons'>close</i>
+                    </button>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </div>
     )
   }

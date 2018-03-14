@@ -24,6 +24,12 @@ const SideBar = (props) => {
               </Link>
             </li>
             <li>
+              <Link to='employees'>
+                <i className='material-icons'>account_circle</i>
+                <p>Nhân viên</p>
+              </Link>
+            </li>
+            <li>
               <Link to='#' onClick={logout}>
                 <i className='material-icons'>subdirectory_arrow_right</i>
                 <p>Thoát</p>
