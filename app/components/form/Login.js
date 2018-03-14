@@ -9,7 +9,6 @@ import SubmitButton from 'components/form/SubmitButton'
 // Page/Login will decorate it with the necessary props
 const LoginForm = (props) => {
   const { error, submitting, handleSubmit } = props
-
   return (
     <form onSubmit={handleSubmit}>
       {error && <ErrorMessage text={error} />}

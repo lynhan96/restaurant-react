@@ -12,16 +12,19 @@ const Login = (props) => {
   dispatch(adminHasSignedOut())
 
   return (
-    <div style={{ 'float': 'left', 'width': '100%', 'height': '100vh', 'background': '#222d32' }}>
-      <div className='login-box'>
-        <div className='login-logo'>
-          <a href=''><b style={{ 'color': 'white' }}>Restaurant CMS</b></a>
-        </div>
-        <div className='login-box-body'>
-          <p className='login-box-msg'>Đăng nhập</p>
-          <DecoratedLoginForm />
+    <div className='content'>
+      <div className='col-md-4'/>
+      <div className='col-md-4'>
+        <div className='card' style={style.cardBackground}>
+          <div className='card-header'>
+            <h2 className='card-title' style={style.cardTitle}> Restaurant CMS</h2>
+          </div>
+          <div className='card-body'>
+            <DecoratedLoginForm />
+          </div>
         </div>
       </div>
+      <div className='col-md-4'/>
     </div>
   )
 }
@@ -35,5 +38,15 @@ const DecoratedLoginForm = reduxForm({
   // redirect after submit is successful
   onSubmitSuccess: () => Navigator.push('dashboard')
 })(LoginForm)
+
+const style = {
+  cardBackground: {
+    background: 'white',
+    marginTop: '20vh'
+  },
+  cardTitle: {
+    textAlign: 'center'
+  }
+}
 
 export default Login

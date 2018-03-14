@@ -6,24 +6,16 @@ import SideBar from 'components/layout/SideBar'
 const App = (props) => {
   const { children } = props
   return (
-    <div style={styles.container}>
-      <Header/>
+    <div className='wrapper'>
       <SideBar/>
-      {children}
+      <div className='main-panel'>
+        <Header/>
+        <div className='panel-header panel-header-sm'>
+        </div>
+        {children}
+      </div>
     </div>
   )
 }
 
 export default App
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh'
-  },
-  mainContainer: {
-    flex: '1',
-    flexBasis: 'auto'
-  }
-}

@@ -4,9 +4,8 @@ const ErrorMessage = (props) => {
   const { text } = props
 
   return (
-    <div className="alert alert-danger alert-dismissible">
-      <button type="button" className="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <i className="icon fa fa-ban"></i>
+    <div className='alert alert-danger alert-dismissible'>
+      <i className='icon fa fa-ban' style={{ marginRight: '10px' }}></i>
       {typeof text === 'object' ? '' : text}
     </div>
   )
