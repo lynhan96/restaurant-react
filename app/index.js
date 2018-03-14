@@ -8,7 +8,7 @@ import Store from 'lib/Store'
 import App from 'App'
 import Login from 'pages/Login'
 import Dashboard from 'pages/Dashboard'
-import 'styles/website.less'
+import Employees from 'pages/admin/Employees'
 
 ReactDOM.render((
   <Provider store={Store}>
@@ -17,6 +17,7 @@ ReactDOM.render((
         <IndexRoute component={Login} />
         <Route path='login' component={Login} />
         <Route path='dashboard' component={Dashboard} />
+        <Route path='employees' component={Employees} />
       </Route>
     </Router>
   </Provider>

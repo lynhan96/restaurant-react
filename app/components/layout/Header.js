@@ -50,12 +50,12 @@ const Header = (props) => {
               </li>
               <li className='dropdown user user-menu'>
                 <a href='' className='dropdown-toggle' data-toggle='dropdown'>
-                  <img className='user-image' alt='Error' />
+                  <img src='../images/avatar5.png' className='user-image' alt='Error' />
                   <span className='hidden-xs'>{data.name}</span>
                 </a>
                 <ul className='dropdown-menu'>
                   <li className='user-header'>
-                    <img className='img-circle' alt='Error' />
+                    <img src='../images/avatar5.png'className='img-circle' alt='Error' />
                     <p>
                       {data.name} - {data.position}
                     </p>

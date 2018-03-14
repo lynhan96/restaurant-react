@@ -29,7 +29,7 @@ const SideBar = (props) => {
               </Link>
             </li>
             <li>
-              <Link to='/employee-table'>
+              <Link to='/employees'>
                 <i className='fa fa-user-o'></i> <span>Nhân viên</span>
               </Link>
             </li>
