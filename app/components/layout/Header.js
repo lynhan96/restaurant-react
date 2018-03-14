@@ -7,7 +7,7 @@ const Header = (props) => {
 
   if (signedIn) {
     return (
-      <header className='main-header' style={{ 'width': '100%', 'position': 'fixed' }}>
+      <header className='main-header'>
         <a href='' className='logo'>
           <span className='logo-mini'><b>BK</b></span>
           <span className='logo-lg'><b>BK Food</b></span>
