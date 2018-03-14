@@ -13,7 +13,6 @@ import { tableHeader, fetchEmployees } from '../../../lib/actions/employee'
 class EmployeeList extends Component {
   componentDidMount() {
     this.props.dispatch(fetchEmployees())
-    // $('#table').DataTable()
   }
 
   render() {
@@ -26,10 +25,12 @@ class EmployeeList extends Component {
 
     if (loading) {
       return <div>Loading...</div>
+    } else {
+      $('#table').DataTable()
     }
 
     return (
-      <div className='row'>
+      <div className='row' style={{ 'margin': '0' }}>
         <div className='box'>
           <div className='box-header' style={{ 'textAlign': 'center' }}>
             <h3 className='box-title' style={{ 'fontSize': '30px' }}>Bảng Nhân viên</h3>
