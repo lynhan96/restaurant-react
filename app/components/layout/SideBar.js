@@ -20,7 +20,7 @@ const SideBar = (props) => {
             <li className={activeLink === 'dashboard' ? 'active' : ''}>
               <Link to='dashboard'>
                 <i className='material-icons'>dashboard</i>
-                <p>Dashboard</p>
+                <p>Trang chủ</p>
               </Link>
             </li>
             <li className={activeLink === 'employees' ? 'active' : ''}>
@@ -30,7 +30,7 @@ const SideBar = (props) => {
               </Link>
             </li>
             <li>
-              <Link to='' onClick={e => { e.preventDefault(); logout() }}>
+              <Link to='#' onClick={e => { e.preventDefault(); logout() }}>
                 <i className='material-icons'>subdirectory_arrow_right</i>
                 <p>Thoát</p>
               </Link>
