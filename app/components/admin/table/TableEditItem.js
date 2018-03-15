@@ -9,9 +9,9 @@ import 'datatables.net-bs/css/dataTables.bootstrap.css'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
 
-class TableViewItem extends Component {
+class TableEditItem extends Component {
   render() {
-    const { indexData, viewLabelHeader, viewHeader, data, subHeader, arrLink } = this.props
+    const { indexData, editLabelHeader, editHeader, data, subHeader, arrLink } = this.props
 
     return (
       <div className='row'>
@@ -19,7 +19,7 @@ class TableViewItem extends Component {
         <div className='col-md-8'>
             <div className='card'>
               <div className='card-header' data-background-color='purple'>
-                <h4 className='title'>{viewHeader}</h4>
+                <h4 className='title'>{editHeader}</h4>
                 <p className='category'>{subHeader}</p>
               </div>
               <div className='card-content'>
@@ -27,15 +27,15 @@ class TableViewItem extends Component {
                   <Link to={arrLink.list} className='btn btn-success btn-round' style={style.buttonMargin}>
                     Trở lại
                   </Link>
-                  <Link to={arrLink.edit + '?index=' + indexData} className='btn btn-primary btn-round' style={style.buttonMargin}>
-                    Chỉnh sửa dữ liệu
+                  <Link to={arrLink.view + '?index=' + indexData} className='btn btn-primary btn-round' style={style.buttonMargin}>
+                    Thông tin chi tiết
                   </Link>
                   <Link to='/' className='btn btn-danger btn-round' style={style.buttonMargin}>
                     Xóa dữ liệu
                   </Link>
                 </div>
                 <form>
-                  {viewLabelHeader.map((item, index) => {
+                  {editLabelHeader.map((item, index) => {
                     if (item.fieldName === 'birthday' || item.fieldName === 'createdAt') {
                       data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD hh:mm:ss')
                     }
@@ -43,7 +43,7 @@ class TableViewItem extends Component {
                       <div className='col-md-6' key={index}>
                         <div className='form-group label-floating' style={{ marginTop: '0' }}>
                           <label>{item.viewTitle}</label>
-                          <div className='form-control'>{data[item.fieldName]}</div>
+                          <input className='form-control' type='text' value={data[item.fieldName]}/>
                         </div>
                       </div>
                     )
@@ -59,7 +59,7 @@ class TableViewItem extends Component {
 
 export default R.pipe(
   isAdmin
-)(TableViewItem)
+)(TableEditItem)
 
 const style = {
   buttonMargin: {

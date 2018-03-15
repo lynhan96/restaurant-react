@@ -1,22 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import R from 'ramda'
-
+import ReactQueryParams from 'react-query-params'
 import 'datatables.net'
 import 'datatables.net-bs/js/dataTables.bootstrap'
 import 'datatables.net-bs/css/dataTables.bootstrap.css'
 import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { tableHeader, fetchEmployees } from '../../../lib/actions/employee'
-import TableListing from 'components/admin/table/TableListing'
+import TableEditItem from 'components/admin/table/TableEditItem'
+import ErrorMessage from 'components/ErrorMessage'
+import { viewLabelHeader } from '../../../lib/actions/employee'
 
-class EmployeeList extends Component {
-  componentDidMount() {
-    this.props.dispatch(fetchEmployees())
-  }
-
+class EmployeeList extends ReactQueryParams {
   render() {
     const { error, loading, employees } = this.props
+    const params = this.queryParams
 
     if (error) {
       return (
@@ -41,13 +39,19 @@ class EmployeeList extends Component {
     }
 
     return (
-      <TableListing
-        datas={employees}
-        tableHeader={tableHeader()}
-        actionLink='/employees'
-        viewHeader='Danh sách Nhân viên'
-        arrLink={{ edit: 'employee-edit', view: 'employee-view', list: 'employees' }}
-      />
+      <div className='content'>
+        <div className='container-fluid'>
+          {error && <ErrorMessage text={error} />}
+          <TableEditItem
+            editLabelHeader={viewLabelHeader()}
+            editHeader='Chỉnh sửa thông tin Nhân viên'
+            arrLink={{ list: 'employees', view: 'employee-view' }}
+            data={employees[params.index]}
+            subHeader={employees[params.index].name}
+            indexData={params.index}
+          />
+        </div>
+      </div>
     )
   }
 }

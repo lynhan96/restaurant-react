@@ -10,6 +10,7 @@ import Login from 'pages/Login'
 import Dashboard from 'pages/Dashboard'
 import Employees from 'pages/admin/Employees'
 import EmployeeView from 'components/admin/employees/EmployeeView'
+import EmployeeEdit from 'components/admin/employees/EmployeeEdit'
 
 ReactDOM.render((
   <Provider store={Store}>
@@ -18,8 +19,10 @@ ReactDOM.render((
         <IndexRoute component={Login} />
         <Route path='login' component={Login} />
         <Route path='dashboard' component={Dashboard} />
+
         <Route path='employees' component={Employees} />
         <Route path='employee-view' component={EmployeeView} />
+        <Route path='employee-edit' component={EmployeeEdit} />
       </Route>
     </Router>
   </Provider>

@@ -45,9 +45,10 @@ class EmployeeList extends ReactQueryParams {
           <TableViewItem
             viewLabelHeader={viewLabelHeader()}
             viewHeader='Thông tin Nhân viên'
-            arrLink={{ list: 'employees' }}
+            arrLink={{ list: 'employees', edit: 'employee-edit' }}
             data={employees[params.index]}
             subHeader={employees[params.index].name}
+            indexData={params.index}
           />
         </div>
       </div>
