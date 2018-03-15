@@ -23,14 +23,19 @@
 
 /* Shadows (from mdl http://www.getmdl.io/) */
 
+.slde-bar-bg-image{
+    background-size: cover;
+    background-image: url('../../../images/sidebar-bg.png');
+}
+
 .login-form-wrapper{
     margin-left: -260px;
 }
 
-.login-bg{
-    background-size: cover;
-    background-image: url('../../../images/login-bg.png');
-}
+.login-bg{ 
+    background-size: cover; 
+    background-image: url('../../../images/login-bg.png');  
+} 
 
 .noUi-target,
 .noUi-target * {

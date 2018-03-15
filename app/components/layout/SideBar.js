@@ -9,7 +9,7 @@ const SideBar = (props) => {
 
   if (signedIn) {
     return (
-      <div className='sidebar' data-color='purple' data-image='../images/sidebar-1.jpg'>
+      <div className='sidebar slde-bar-bg-image' data-color='purple'>
         <div className='logo'>
           <Link to='dashboard' className='simple-text'>
             BK Food

@@ -59,6 +59,8 @@ const Header = (props) => {
                 </Link>
               </li>
             </ul>
+            <form className='navbar-form navbar-right' role='search'>
+            </form>
           </div>
         </div>
       </nav>
