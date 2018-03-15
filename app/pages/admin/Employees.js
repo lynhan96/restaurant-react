@@ -27,7 +27,6 @@ class Employees extends ReactQueryParams {
             </div>
           </div>
         </div>
-
       </div>
     )
   }

@@ -13,7 +13,7 @@ const goto = (url) => () => Navigator.push(url)
 
 class TableListing extends Component {
   render() {
-    const { tableHeader, datas, actionLink, viewHeader } = this.props
+    const { tableHeader, datas, arrLink, viewHeader } = this.props
 
     return (
       <div className='card'>
@@ -42,7 +42,7 @@ class TableListing extends Component {
                       return <td key={headerIndex}>{item[headerItem.fieldName]}</td>
                     })}
                     <td className='td-actions text-right'>
-                      <button onClick={goto(actionLink + '?action=view&index=' + itemIndex)} type='button' rel='tooltip' title='Xem thông thi tiết' className='btn btn-primary btn-simple btn-xs'>
+                      <button onClick={goto(arrLink.view + '?index=' + itemIndex)} type='button' rel='tooltip' title='Xem thông thi tiết' className='btn btn-primary btn-simple btn-xs'>
                         <i className='material-icons'>visibility</i>
                       </button>
                       <button type='button' rel='tooltip' title='Chỉnh sửa dữ liệu' className='btn btn-primary btn-simple btn-xs'>
