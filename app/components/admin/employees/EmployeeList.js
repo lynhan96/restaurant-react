@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
 import { tableHeader, fetchEmployees } from '../../../lib/actions/employee'
+import TableListing from 'components/admin/table/TableListing'
 
 class EmployeeList extends Component {
   componentDidMount() {
@@ -16,7 +17,6 @@ class EmployeeList extends Component {
 
   render() {
     const { error, loading, employees } = this.props
-    const header = tableHeader()
 
     if (error) {
       return (
@@ -37,35 +37,11 @@ class EmployeeList extends Component {
     }
 
     return (
-      <div className='card-content table-responsive'>
-        <table className='table table-hover'>
-          <thead className='text-primary'>
-            <tr>
-              {header.map((item, index) => <th key={index}>{ item.viewTitle }</th>)}
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {employees.map(function(item, itemIndex) {
-              return (
-                <tr key={itemIndex}>
-                  {header.map(function(headerItem, headerIndex) {
-                    return <td key={headerIndex}>{item[headerItem.fieldName]}</td>
-                  })}
-                  <td className='td-actions text-right'>
-                    <button type='button' rel='tooltip' title='Chỉnh sửa dữ liệu' className='btn btn-primary btn-simple btn-xs'>
-                      <i className='material-icons'>edit</i>
-                    </button>
-                    <button type='button' rel='tooltip' title='Xóa dữ liệu' className='btn btn-danger btn-simple btn-xs'>
-                      <i className='material-icons'>close</i>
-                    </button>
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
+      <TableListing
+        datas={employees}
+        header={tableHeader()}
+        arrLink={[]}
+      />
     )
   }
 }

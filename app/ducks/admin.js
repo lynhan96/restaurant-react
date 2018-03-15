@@ -1,11 +1,25 @@
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
+
 const ADMIN_SIGNED_IN = 'admin/ADMIN_SIGNED_IN'
 const UPDATE_ACTIVE_LINK = 'admin/UPDATE_ACTIVE_LINK'
 export const ADMIN_SIGNED_OUT = 'admin/ADMIN_SIGNED_OUT'
 
 export const dispatchLogout = (dispatch) => () => {
-  if (confirm('Bạn có muốn rời khỏi trang Quản lý?')) {
-    dispatch(adminHasSignedOut())
-  }
+  confirmAlert({
+    title: '',
+    message: 'Bạn có muốn rời khỏi trang Quản lý?',
+    buttons: [
+      {
+        label: 'Có',
+        onClick: () => dispatch(adminHasSignedOut())
+      },
+      {
+        label: 'Không',
+        onClick: () => {}
+      }
+    ]
+  })
 }
 
 // Creators

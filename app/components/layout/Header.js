@@ -53,7 +53,7 @@ const Header = (props) => {
                 </Link>
               </li>
               <li>
-                <Link to='#' onClick={logout}>
+                <Link to='dashboard' onClick={e => { e.preventDefault(); logout() }}>
                   <i className='material-icons'>subdirectory_arrow_right</i>
                   <p className='hidden-lg hidden-md'>Thoát</p>
                 </Link>

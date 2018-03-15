@@ -7,10 +7,10 @@ export const FETCH_EMPLOYEES_ERROR = 'FETCH_EMPLOYEES_ERROR'
 
 export const tableHeader = () => ([
   { 'fieldName': 'id', 'viewTitle': 'ID' },
-  { 'fieldName': 'name', 'viewTitle': 'Name' },
-  { 'fieldName': 'position', 'viewTitle': 'Position' },
-  { 'fieldName': 'phoneNumber', 'viewTitle': 'Phone Number' },
-  { 'fieldName': 'gender', 'viewTitle': 'Gender' }
+  { 'fieldName': 'name', 'viewTitle': 'Tên' },
+  { 'fieldName': 'position', 'viewTitle': 'Vị trí' },
+  { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
+  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' }
 ])
 
 export const fetchEmployeesBegin = () => ({

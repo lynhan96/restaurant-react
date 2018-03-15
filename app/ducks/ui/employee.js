@@ -15,8 +15,6 @@ const initialState = {
 export default function productReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_EMPLOYEES_BEGIN:
-      // Mark the state as "loading" so we can show a spinner or something
-      // Also, reset any errors. We're starting fresh.
       return {
         ...state,
         loading: true,
@@ -24,8 +22,6 @@ export default function productReducer(state = initialState, action) {
       }
 
     case FETCH_EMPLOYEES_SUCCESS:
-      // All done: set loading "false".
-      // Also, replace the items with the ones from the server
       return {
         ...state,
         loading: false,

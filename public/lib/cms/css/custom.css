@@ -1,0 +1,11 @@
+.react-confirm-alert-button-group{
+  justify-content: flex-end !important;
+}
+
+.react-confirm-alert-overlay{
+  align-items: flex-start !important;
+}
+
+.react-confirm-alert{
+  margin-top: 40px;
+}
