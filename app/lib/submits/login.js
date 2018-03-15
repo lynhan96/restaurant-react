@@ -30,7 +30,7 @@ export const submitLogin =
       }
     })
     .catch(function (err) {
-      console.log(err)
+
       if (err.errors && err.errors._error) {
         throw new SubmissionError({ _error: err.errors._error })
       } else {

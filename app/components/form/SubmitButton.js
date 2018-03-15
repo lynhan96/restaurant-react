@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SubmitButton = (props) => {
-  const { style, className, onClick, submitting, text = 'Submit', submittingText = 'Submitting...' } = props
+  const { style, className, onClick, submitting, text = 'Xác nhận', submittingText = 'Đang xác nhận...' } = props
 
   return (
     <button

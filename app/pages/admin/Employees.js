@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import R from 'ramda'
+import ReactQueryParams from 'react-query-params'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
 import EmployeeList from 'components/admin/employees/EmployeeList'
 import ErrorMessage from 'components/ErrorMessage'
 import { updateActiveLink } from 'ducks/admin'
 
-class Employees extends Component {
+class Employees extends ReactQueryParams {
   componentDidMount() {
     this.props.dispatch(updateActiveLink('employees'))
   }
@@ -20,12 +21,9 @@ class Employees extends Component {
         <div className='container-fluid'>
           <div className='row'>
             <div className='col-md-12'>
-              <div className='card'>
-                <div className='card-header' data-background-color='purple'>
-                  <h4 className='title'>Danh sách Nhân viên</h4>
-                </div>
-                <EmployeeList/>
-              </div>
+              <EmployeeList
+                params={this.queryParams}
+              />
             </div>
           </div>
         </div>

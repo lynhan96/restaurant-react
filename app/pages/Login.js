@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { reduxForm } from 'redux-form'
 import Navigator from 'lib/Navigator'
 
@@ -7,26 +7,30 @@ import { submitLogin } from 'lib/submits/login'
 import { adminHasSignedOut } from 'ducks/admin'
 import Store from 'lib/Store'
 
-const Login = (props) => {
-  const { dispatch } = Store
-  dispatch(adminHasSignedOut())
+class Login extends Component {
+  componentDidMount() {
+    const { dispatch } = Store
+    dispatch(adminHasSignedOut())
+  }
 
-  return (
-    <div className='login-form-wrapper'>
-      <div className='col-md-4'/>
-      <div className='col-md-4'>
-        <div className='card' style={style.cardBackground}>
-          <div className='card-header' style={style.cardHeaderBackground}>
-            <h2 className='card-title' style={style.cardTitle}> BK Food CMS</h2>
-          </div>
-          <div className='card-body' style={{ padding: '0 30px' }}>
-            <DecoratedLoginForm />
+  render() {
+    return (
+      <div className='login-form-wrapper'>
+        <div className='col-md-4'/>
+        <div className='col-md-4'>
+          <div className='card' style={style.cardBackground}>
+            <div className='card-header' style={style.cardHeaderBackground}>
+              <h2 className='card-title' style={style.cardTitle}> BK Food CMS</h2>
+            </div>
+            <div className='card-body' style={{ padding: '0 30px' }}>
+              <DecoratedLoginForm />
+            </div>
           </div>
         </div>
+        <div className='col-md-4'/>
       </div>
-      <div className='col-md-4'/>
-    </div>
-  )
+    )
+  }
 }
 
 // Decorate LoginForm so that form is pure
