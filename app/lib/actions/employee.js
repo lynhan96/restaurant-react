@@ -13,6 +13,16 @@ export const tableHeader = () => ([
   { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' }
 ])
 
+export const viewLabelHeader = () => ([
+  { 'fieldName': 'id', 'viewTitle': 'ID' },
+  { 'fieldName': 'name', 'viewTitle': 'Tên' },
+  { 'fieldName': 'position', 'viewTitle': 'Vị trí' },
+  { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
+  { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh' },
+  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' },
+  { 'fieldName': 'createdAt', 'viewTitle': 'Ngày tạo dữ liệu' }
+])
+
 export const fetchEmployeesBegin = () => ({
   type: FETCH_EMPLOYEES_BEGIN
 })

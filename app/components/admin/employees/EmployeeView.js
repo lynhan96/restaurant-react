@@ -1,6 +1,6 @@
 import React from 'react'
 import R from 'ramda'
-
+import ReactQueryParams from 'react-query-params'
 import 'datatables.net'
 import 'datatables.net-bs/js/dataTables.bootstrap'
 import 'datatables.net-bs/css/dataTables.bootstrap.css'
@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import { isAdmin } from 'components/wrappers/isAdmin'
 import TableViewItem from 'components/admin/table/TableViewItem'
 import ErrorMessage from 'components/ErrorMessage'
-import ReactQueryParams from 'react-query-params'
+import { viewLabelHeader } from '../../../lib/actions/employee'
 
 class EmployeeList extends ReactQueryParams {
   render() {
@@ -43,7 +43,9 @@ class EmployeeList extends ReactQueryParams {
         <div className='container-fluid'>
           {error && <ErrorMessage text={error} />}
           <TableViewItem
+            viewLabelHeader={viewLabelHeader()}
             viewHeader='Thông tin Nhân viên'
+            arrLink={{ list: 'employees' }}
             data={employees[params.index]}
             subHeader={employees[params.index].name}
           />
