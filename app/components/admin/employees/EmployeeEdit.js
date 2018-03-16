@@ -3,7 +3,6 @@ import R from 'ramda'
 import ReactQueryParams from 'react-query-params'
 import { connect } from 'react-redux'
 
-import ErrorMessage from 'components/ErrorMessage'
 import ContentLoading from 'components/ContentLoading'
 import { isAdmin } from 'components/wrappers/isAdmin'
 import { editLabelHeader } from '../../../lib/actions/employee'
@@ -34,7 +33,6 @@ class EmployeeEdit extends ReactQueryParams {
     return (
       <div className='content'>
         <div className='container-fluid'>
-          {error && <ErrorMessage text={error} />}
           <TableEditItem
             editLabelHeader={editLabelHeader()}
             editHeader='Chỉnh sửa thông tin Nhân viên'

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import R from 'ramda'
 import { Link } from 'react-router'
 import { reduxForm } from 'redux-form'
-import Navigator from 'lib/Navigator'
 
 import EditForm from 'components/form/EditForm'
 import { isAdmin } from 'components/wrappers/isAdmin'
@@ -46,11 +45,7 @@ class TableEditItem extends Component {
 }
 
 const DecoratedEditForm = reduxForm({
-  form: 'edit',
-  // Separate submitLogin into another file
-  // since the function is decoupled from Login
-  // redirect after submit is successful
-  onSubmitSuccess: () => Navigator.push('employees')
+  form: 'edit'
 })(EditForm)
 
 export default R.pipe(

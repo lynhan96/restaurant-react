@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field } from 'redux-form'
 
-import ErrorMessage from 'components/ErrorMessage'
+import ErrorMessageHaveRemove from 'components/ErrorMessageHaveRemove'
 import EditFormInputText from 'components/form/EditFormInputText'
 import SubmitButton from 'components/form/SubmitButton'
 import moment from 'moment'
@@ -14,7 +14,7 @@ const EditForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {error && <ErrorMessage text={error} />}
+      {error && <ErrorMessageHaveRemove text={error} />}
       {editLabelHeader.map((item, index) => {
         if (item.fieldName === 'birthday' || item.fieldName === 'createdAt') {
           data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD hh:mm:ss')

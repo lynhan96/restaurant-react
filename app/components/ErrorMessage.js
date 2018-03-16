@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ContentLoading = (props) => {
+const ErrorMessage = (props) => {
   const { text } = props
 
   return (
@@ -11,4 +11,4 @@ const ContentLoading = (props) => {
   )
 }
 
-export default ContentLoading
+export default ErrorMessage
