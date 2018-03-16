@@ -2,7 +2,7 @@ import {
   FETCH_EMPLOYEES_BEGIN,
   FETCH_EMPLOYEES_SUCCESS,
   FETCH_EMPLOYEES_ERROR
-} from '../../lib/actions/employee'
+} from '../lib/actions/employee'
 
 import { ADMIN_SIGNED_OUT } from 'ducks/admin'
 

@@ -13,3 +13,11 @@ export const makeHeader = _ => {
   headers['Authorization'] = md5(md5(headers['Token'] + headers['Uid'] + headers['Date']))
   return headers
 }
+
+export const makeRequestOptions = (params, url) => ({
+  method: 'POST',
+  uri: 'http://localhost:8000/v1/' + url,
+  body: params,
+  headers: makeHeader(),
+  json: true
+})

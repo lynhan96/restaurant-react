@@ -3,16 +3,10 @@ import { reduxForm } from 'redux-form'
 import Navigator from 'lib/Navigator'
 
 import LoginForm from 'components/form/Login'
-import { submitLogin } from 'lib/submits/login'
-import { adminHasSignedOut } from 'ducks/admin'
-import Store from 'lib/Store'
+import { submitLogin } from 'lib/actions/submit'
+// import { adminHasSignedOut } from 'ducks/admin'
 
 class Login extends Component {
-  componentDidMount() {
-    const { dispatch } = Store
-    dispatch(adminHasSignedOut())
-  }
-
   render() {
     return (
       <div className='login-form-wrapper'>

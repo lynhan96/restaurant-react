@@ -1,6 +1,7 @@
-import { makeHeader } from '../requestHeader'
 import request from 'request-promise'
+import { SubmissionError } from 'redux-form'
 
+import { makeRequestOptions } from '../requestHeader'
 export const FETCH_EMPLOYEES_BEGIN = 'FETCH_EMPLOYEES_BEGIN'
 export const FETCH_EMPLOYEES_SUCCESS = 'FETCH_EMPLOYEES_SUCCESS'
 export const FETCH_EMPLOYEES_ERROR = 'FETCH_EMPLOYEES_ERROR'
@@ -14,13 +15,20 @@ export const tableHeader = () => ([
 ])
 
 export const viewLabelHeader = () => ([
-  { 'fieldName': 'id', 'viewTitle': 'ID' },
   { 'fieldName': 'name', 'viewTitle': 'Tên' },
   { 'fieldName': 'position', 'viewTitle': 'Vị trí' },
   { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
   { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh' },
   { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' },
   { 'fieldName': 'createdAt', 'viewTitle': 'Ngày tạo dữ liệu' }
+])
+
+export const editLabelHeader = () => ([
+  { 'fieldName': 'name', 'viewTitle': 'Tên' },
+  { 'fieldName': 'position', 'viewTitle': 'Vị trí' },
+  { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
+  { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh' },
+  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' }
 ])
 
 export const fetchEmployeesBegin = () => ({
@@ -37,18 +45,27 @@ export const fetchEmployeesError = error => ({
   payload: { error }
 })
 
-export function fetchEmployees() {
-  const options = {
-    method: 'POST',
-    uri: 'http://localhost:8000/v1/employees',
-    body: { },
-    headers: makeHeader(),
-    json: true
-  }
-
+export const fetchEmployees = _ => {
   return dispatch => {
     dispatch(fetchEmployeesBegin())
-    request(options).then(body => dispatch(fetchEmployeesSuccess(body.data)))
+    request(makeRequestOptions({}, 'employees')).then(body => dispatch(fetchEmployeesSuccess(body.data)))
     .catch(err => dispatch(fetchEmployeesError(err)))
   }
 }
+
+export const editEmployee =
+  (values, dispatch, props) => {
+    console.log(values)
+    const url = 'employees-edit'
+
+    return request(makeRequestOptions(values, url)).then(body => {
+      return Promise.resolve()
+    })
+    .catch(function (err) {
+      if (err.errors && err.errors._error) {
+        throw new SubmissionError({ _error: err.errors._error })
+      } else {
+        throw new SubmissionError({ _error: err.message })
+      }
+    })
+  }

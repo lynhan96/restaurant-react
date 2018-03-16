@@ -1,7 +1,7 @@
 import { SubmissionError } from 'redux-form'
 import request from 'request-promise'
 
-import { makeHeader } from '../requestHeader'
+import { makeRequestOptions } from '../requestHeader'
 import { adminHasSignedIn } from 'ducks/admin'
 // Redux-form requires a promise for async submission
 // so we return a promise
@@ -10,15 +10,10 @@ export const submitLogin =
     const { email, password } = values
     let admin = null
 
-    const options = {
-      method: 'POST',
-      uri: 'http://localhost:8000/v1/login',
-      body: { email: email, password: password },
-      headers: makeHeader(),
-      json: true
-    }
+    const url = 'login'
+    const params = { email: email, password: password }
 
-    return request(options).then(body => {
+    return request(makeRequestOptions(params, url)).then(body => {
       if (body.code === 0) {
         admin = body.data
         dispatch(adminHasSignedIn(admin))
@@ -30,7 +25,6 @@ export const submitLogin =
       }
     })
     .catch(function (err) {
-
       if (err.errors && err.errors._error) {
         throw new SubmissionError({ _error: err.errors._error })
       } else {
@@ -38,3 +32,4 @@ export const submitLogin =
       }
     })
   }
+

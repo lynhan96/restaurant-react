@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import R from 'ramda'
 import { Link } from 'react-router'
-import moment from 'moment'
+import { reduxForm } from 'redux-form'
+import Navigator from 'lib/Navigator'
 
-import 'datatables.net'
-import 'datatables.net-bs/js/dataTables.bootstrap'
-import 'datatables.net-bs/css/dataTables.bootstrap.css'
-
+import EditForm from 'components/form/EditForm'
 import { isAdmin } from 'components/wrappers/isAdmin'
 
 class TableEditItem extends Component {
   render() {
-    const { indexData, editLabelHeader, editHeader, data, subHeader, arrLink } = this.props
+    const { submitEdit, indexData, editLabelHeader, editHeader, data, subHeader, arrLink } = this.props
 
     return (
       <div className='row'>
@@ -34,21 +32,11 @@ class TableEditItem extends Component {
                     Xóa dữ liệu
                   </Link>
                 </div>
-                <form>
-                  {editLabelHeader.map((item, index) => {
-                    if (item.fieldName === 'birthday' || item.fieldName === 'createdAt') {
-                      data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD hh:mm:ss')
-                    }
-                    return (
-                      <div className='col-md-6' key={index}>
-                        <div className='form-group label-floating' style={{ marginTop: '0' }}>
-                          <label>{item.viewTitle}</label>
-                          <input className='form-control' type='text' value={data[item.fieldName]}/>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </form>
+                <DecoratedEditForm
+                  data={data}
+                  editLabelHeader={editLabelHeader}
+                  onSubmit={submitEdit}
+                />
               </div>
             </div>
         </div>
@@ -56,6 +44,14 @@ class TableEditItem extends Component {
     )
   }
 }
+
+const DecoratedEditForm = reduxForm({
+  form: 'edit',
+  // Separate submitLogin into another file
+  // since the function is decoupled from Login
+  // redirect after submit is successful
+  onSubmitSuccess: () => Navigator.push('employees')
+})(EditForm)
 
 export default R.pipe(
   isAdmin

@@ -1,40 +1,33 @@
 import React from 'react'
 import R from 'ramda'
 import ReactQueryParams from 'react-query-params'
-import 'datatables.net'
-import 'datatables.net-bs/js/dataTables.bootstrap'
-import 'datatables.net-bs/css/dataTables.bootstrap.css'
 import { connect } from 'react-redux'
 
-import { isAdmin } from 'components/wrappers/isAdmin'
-import TableEditItem from 'components/admin/table/TableEditItem'
 import ErrorMessage from 'components/ErrorMessage'
-import { viewLabelHeader } from '../../../lib/actions/employee'
+import ContentLoading from 'components/ContentLoading'
+import { isAdmin } from 'components/wrappers/isAdmin'
+import { editLabelHeader } from '../../../lib/actions/employee'
+import TableEditItem from 'components/admin/table/TableEditItem'
+import { editEmployee } from 'lib/actions/employee'
 
-class EmployeeList extends ReactQueryParams {
+class EmployeeEdit extends ReactQueryParams {
   render() {
     const { error, loading, employees } = this.props
     const params = this.queryParams
 
     if (error) {
       return (
-        <div className='card'>
-          <div style={style.loadingWrapper}>
-            <i className='fa fa-warning' style={style.loadingIcon} />
-            <p style={style.loadingText}>Quá trình tải dữ liệu xảy ra lỗi ...</p>
-          </div>
-        </div>
+        <ContentLoading
+          message='Quá trình tải dữ liệu xảy ra lỗi!'
+        />
       )
     }
 
     if (loading) {
       return (
-        <div className='card'>
-          <div style={style.loadingWrapper}>
-            <i className='fa fa-spinner fa-spin' style={style.loadingIcon} />
-            <p style={style.loadingText}>Đang tải dữ liệu ...</p>
-          </div>
-        </div>
+        <ContentLoading
+          message='Đang tải dữ liệu ...'
+        />
       )
     }
 
@@ -43,12 +36,13 @@ class EmployeeList extends ReactQueryParams {
         <div className='container-fluid'>
           {error && <ErrorMessage text={error} />}
           <TableEditItem
-            editLabelHeader={viewLabelHeader()}
+            editLabelHeader={editLabelHeader()}
             editHeader='Chỉnh sửa thông tin Nhân viên'
             arrLink={{ list: 'employees', view: 'employee-view' }}
             data={employees[params.index]}
             subHeader={employees[params.index].name}
             indexData={params.index}
+            submitEdit={editEmployee}
           />
         </div>
       </div>
@@ -65,18 +59,4 @@ const mapStateToProps = state => ({
 export default R.pipe(
   connect(mapStateToProps),
   isAdmin
-)(EmployeeList)
-
-const style = {
-  loadingWrapper: {
-    textAlign: 'center',
-    margin: '30px'
-  },
-  loadingIcon: {
-    fontSize: '30px'
-  },
-  loadingText: {
-    fontSize: '17px',
-    marginTop: '10px'
-  }
-}
+)(EmployeeEdit)
