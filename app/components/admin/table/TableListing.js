@@ -8,12 +8,13 @@ import 'datatables.net-bs/css/dataTables.bootstrap.css'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
 import Navigator from 'lib/Navigator'
+import { showConfirmAlertDeleteItem } from '../../../lib/actions/showNotification'
 
 const goto = (url) => () => Navigator.push(url)
 
 class TableListing extends Component {
   render() {
-    const { tableHeader, datas, arrLink, viewHeader } = this.props
+    const { deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
 
     return (
       <div className='card'>
@@ -48,7 +49,7 @@ class TableListing extends Component {
                       <button onClick={goto(arrLink.edit + '?index=' + itemIndex)} type='button' rel='tooltip' title='Chỉnh sửa dữ liệu' className='btn btn-primary btn-simple btn-xs'>
                         <i className='material-icons'>edit</i>
                       </button>
-                      <button type='button' rel='tooltip' title='Xóa dữ liệu' className='btn btn-danger btn-simple btn-xs'>
+                      <button onClick={showConfirmAlertDeleteItem(deleteItem, item.id, dispatch, datas, itemIndex)}type='button' rel='tooltip' title='Xóa dữ liệu' className='btn btn-danger btn-simple btn-xs'>
                         <i className='material-icons'>close</i>
                       </button>
                     </td>

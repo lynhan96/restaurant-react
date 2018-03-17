@@ -1,6 +1,25 @@
 import { toast } from 'react-toastify'
 import { css } from 'glamor'
 import R from 'ramda'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
+
+export const showConfirmAlertDeleteItem = (deleteFunc, itemId, dispatch, items, itemIndex) => () => {
+  confirmAlert({
+    title: '',
+    message: 'Bạn có muốn xóa dữ liệu này?',
+    buttons: [
+      {
+        label: 'Có',
+        onClick: () => deleteFunc(dispatch, itemId, items, itemIndex)
+      },
+      {
+        label: 'Không',
+        onClick: () => {}
+      }
+    ]
+  })
+}
 
 const notificationPosition = position => {
   switch (position) {
@@ -23,7 +42,7 @@ export const showNotification = (position, type, message) => {
   let customOption = {}
   let toastOptions = {
     position: toast.POSITION[notificationPosition(position)],
-    autoClose: 4000
+    autoClose: 3000
   }
 
   if (type === 'success') {

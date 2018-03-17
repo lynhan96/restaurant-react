@@ -5,13 +5,13 @@ import { connect } from 'react-redux'
 
 import ContentLoading from 'components/ContentLoading'
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { editLabelHeader } from '../../../lib/actions/employee'
+import { editLabelHeader, deleteEmployee } from '../../../lib/actions/employee'
 import TableEditItem from 'components/admin/table/TableEditItem'
 import { editEmployee } from 'lib/actions/employee'
 
 class EmployeeEdit extends ReactQueryParams {
   render() {
-    const { error, loading, employees } = this.props
+    const { error, loading, employees, dispatch } = this.props
     const params = this.queryParams
 
     if (error) {
@@ -41,6 +41,8 @@ class EmployeeEdit extends ReactQueryParams {
             subHeader={employees[params.index].name}
             submitEdit={editEmployee}
             items={employees}
+            dispatch={dispatch}
+            deleteItem={deleteEmployee}
           />
         </div>
       </div>

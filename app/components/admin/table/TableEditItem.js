@@ -5,10 +5,11 @@ import { reduxForm } from 'redux-form'
 
 import EditForm from 'components/form/EditForm'
 import { isAdmin } from 'components/wrappers/isAdmin'
+import { showConfirmAlertDeleteItem } from '../../../lib/actions/showNotification'
 
 class TableEditItem extends Component {
   render() {
-    const { submitEdit, itemIndex, editLabelHeader, editHeader, items, subHeader, arrLink } = this.props
+    const { dispatch, deleteItem, submitEdit, itemIndex, editLabelHeader, editHeader, items, subHeader, arrLink } = this.props
 
     return (
       <div className='row'>
@@ -27,9 +28,9 @@ class TableEditItem extends Component {
                   <Link to={arrLink.view + '?index=' + itemIndex} className='btn btn-primary btn-round' style={style.buttonMargin}>
                     Thông tin chi tiết
                   </Link>
-                  <Link to='/' className='btn btn-danger btn-round' style={style.buttonMargin}>
+                  <button onClick={showConfirmAlertDeleteItem(deleteItem, items[itemIndex].id, dispatch, items, itemIndex)} type='button' className='btn btn-danger btn-round' style={style.buttonMargin}>
                     Xóa dữ liệu
-                  </Link>
+                  </button>
                 </div>
                 <DecoratedEditForm
                   itemIndex={itemIndex}

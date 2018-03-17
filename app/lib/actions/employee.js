@@ -93,10 +93,12 @@ export const createEmployee =
     return request(makeRequestOptions(values, url)).then(body => {
       if (body.code === 0) {
         showNotification('topRight', 'success', 'Tạo dữ liệu thành công')
-        return Navigator.push('employees')
+        Navigator.push('employees')
       } else {
         showNotification('topRight', 'error', 'Quá trình tạo dữ liệu xảy ra lỗi')
       }
+
+      return Promise.resolve()
     })
     .catch(function (err) {
       if (err.message) {
@@ -108,3 +110,31 @@ export const createEmployee =
       }
     })
   }
+
+export const deleteEmployee = (dispatch, employeeId, employees, itemIndex) => {
+  const url = 'deleteEmployee'
+  employees = R.remove(itemIndex, 1, employees)
+
+  return new Promise((resolve) => {
+    request(makeRequestOptions({employeeId: employeeId}, url)).then(body => {
+      if (body.code === 0) {
+        Navigator.push('employees')
+        showNotification('topRight', 'info', 'Xóa dữ liệu thành công')
+        dispatch(fetchEmployeesSuccess(employees))
+      } else {
+        showNotification('topRight', 'error', 'Quá trình xóa dữ liệu xảy ra lỗi')
+      }
+
+      return resolve
+    })
+    .catch(function (err) {
+      if (err.message) {
+        showNotification('topRight', 'error', err.message)
+        throw new SubmissionError({ _error: err.message })
+      } else {
+        showNotification('topRight', 'error', JSON.stringify(err))
+        throw new SubmissionError({ _error: JSON.stringify(err) })
+      }
+    })
+  })
+}
