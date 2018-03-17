@@ -37,9 +37,9 @@ export const fetchEmployeesBegin = () => ({
   type: FETCH_EMPLOYEES_BEGIN
 })
 
-export const fetchEmployeesSuccess = products => ({
+export const fetchEmployeesSuccess = employees => ({
   type: FETCH_EMPLOYEES_SUCCESS,
-  payload: { products }
+  payload: { employees }
 })
 
 export const fetchEmployeesError = error => ({
@@ -58,10 +58,15 @@ export const fetchEmployees = _ => {
 export const editEmployee =
   (values, dispatch, props) => {
     const url = 'updateEmployee'
-    const params = R.merge({ employeeId: props.data.id })(values)
+    const itemData = props.items[props.itemIndex]
+
+    const params = R.merge({ employeeId: itemData.id })(values)
 
     return request(makeRequestOptions(params, url)).then(body => {
       if (body.code === 0) {
+        props.items[props.itemIndex] = R.merge(itemData)(values)
+        dispatch(fetchEmployeesSuccess(props.items))
+
         showNotification('topRight', 'success', 'Cập nhập dữ liệu thành công')
       } else if (body.code === 417) {
         showNotification('topRight', 'error', 'Dữ liệu không tồn tại')

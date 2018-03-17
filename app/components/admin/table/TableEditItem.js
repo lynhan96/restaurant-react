@@ -8,7 +8,7 @@ import { isAdmin } from 'components/wrappers/isAdmin'
 
 class TableEditItem extends Component {
   render() {
-    const { submitEdit, indexData, editLabelHeader, editHeader, data, subHeader, arrLink } = this.props
+    const { submitEdit, itemIndex, editLabelHeader, editHeader, items, subHeader, arrLink } = this.props
 
     return (
       <div className='row'>
@@ -24,7 +24,7 @@ class TableEditItem extends Component {
                   <Link to={arrLink.list} className='btn btn-success btn-round' style={style.buttonMargin}>
                     Trở lại
                   </Link>
-                  <Link to={arrLink.view + '?index=' + indexData} className='btn btn-primary btn-round' style={style.buttonMargin}>
+                  <Link to={arrLink.view + '?index=' + itemIndex} className='btn btn-primary btn-round' style={style.buttonMargin}>
                     Thông tin chi tiết
                   </Link>
                   <Link to='/' className='btn btn-danger btn-round' style={style.buttonMargin}>
@@ -32,7 +32,8 @@ class TableEditItem extends Component {
                   </Link>
                 </div>
                 <DecoratedEditForm
-                  data={data}
+                  itemIndex={itemIndex}
+                  items={items}
                   editLabelHeader={editLabelHeader}
                   onSubmit={submitEdit}
                 />

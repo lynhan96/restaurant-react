@@ -70,4 +70,3 @@ export default R.pipe(
   connect(mapStateToProps),
   isAdmin
 )(EmployeeList)
-

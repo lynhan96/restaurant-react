@@ -8,8 +8,10 @@ import moment from 'moment'
 // This form is pure so it is easy to test
 // Page/Login will decorate it with the necessary props
 const EditForm = (props) => {
-  const { data, editLabelHeader, submitting, handleSubmit, onSubmit } = props
+  const { items, itemIndex, editLabelHeader, submitting, handleSubmit, onSubmit } = props
   handleSubmit.onSubmit = onSubmit
+  const data = items[itemIndex]
+
   return (
     <form onSubmit={handleSubmit}>
       {editLabelHeader.map((item, index) => {

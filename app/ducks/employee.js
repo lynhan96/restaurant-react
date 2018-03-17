@@ -25,7 +25,7 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        items: action.payload.products
+        items: action.payload.employees
       }
 
     case FETCH_EMPLOYEES_ERROR:

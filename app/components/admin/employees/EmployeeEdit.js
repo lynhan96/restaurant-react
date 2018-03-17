@@ -37,10 +37,10 @@ class EmployeeEdit extends ReactQueryParams {
             editLabelHeader={editLabelHeader()}
             editHeader='Chỉnh sửa thông tin Nhân viên'
             arrLink={{ list: 'employees', view: 'employee-view' }}
-            data={employees[params.index]}
+            itemIndex={params.index}
             subHeader={employees[params.index].name}
-            indexData={params.index}
             submitEdit={editEmployee}
+            items={employees}
           />
         </div>
       </div>
