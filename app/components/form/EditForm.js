@@ -1,7 +1,6 @@
 import React from 'react'
 import { Field } from 'redux-form'
 
-import ErrorMessageHaveRemove from 'components/ErrorMessageHaveRemove'
 import EditFormInputText from 'components/form/EditFormInputText'
 import SubmitButton from 'components/form/SubmitButton'
 import moment from 'moment'
@@ -9,12 +8,10 @@ import moment from 'moment'
 // This form is pure so it is easy to test
 // Page/Login will decorate it with the necessary props
 const EditForm = (props) => {
-  const { data, editLabelHeader, error, submitting, handleSubmit, onSubmit } = props
+  const { data, editLabelHeader, submitting, handleSubmit, onSubmit } = props
   handleSubmit.onSubmit = onSubmit
-
   return (
     <form onSubmit={handleSubmit}>
-      {error && <ErrorMessageHaveRemove text={error} />}
       {editLabelHeader.map((item, index) => {
         if (item.fieldName === 'birthday' || item.fieldName === 'createdAt') {
           data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD hh:mm:ss')

@@ -2,6 +2,7 @@ import request from 'request-promise'
 import { SubmissionError } from 'redux-form'
 import R from 'ramda'
 
+import { showNotification } from './showNotification'
 import { makeRequestOptions } from '../requestHeader'
 export const FETCH_EMPLOYEES_BEGIN = 'FETCH_EMPLOYEES_BEGIN'
 export const FETCH_EMPLOYEES_SUCCESS = 'FETCH_EMPLOYEES_SUCCESS'
@@ -60,20 +61,21 @@ export const editEmployee =
     const params = R.merge({ employeeId: props.data.id })(values)
 
     return request(makeRequestOptions(params, url)).then(body => {
-      console.log(body)
       if (body.code === 0) {
-        return Promise.resolve()
+        showNotification('topRight', 'success', 'Cập nhập dữ liệu thành công')
       } else if (body.code === 417) {
-        throw new SubmissionError({ _error: 'Dữ liệu không tồn tại' })
+        showNotification('topRight', 'error', 'Dữ liệu không tồn tại')
       } else {
-        throw new SubmissionError({ _error: 'Quá trình cập nhập dữ liệu xảy ra lỗi' })
+        showNotification('topRight', 'error', 'Quá trình cập nhập dữ liệu xảy ra lỗi')
       }
     })
     .catch(function (err) {
-      if (err.errors && err.errors._error) {
-        throw new SubmissionError({ _error: err.errors._error })
-      } else {
+      if (err.message) {
+        showNotification('topRight', 'error', err.message)
         throw new SubmissionError({ _error: err.message })
+      } else {
+        showNotification('topRight', 'error', JSON.stringify(err))
+        throw new SubmissionError({ _error: JSON.stringify(err) })
       }
     })
   }
