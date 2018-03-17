@@ -3,13 +3,13 @@ import React from 'react'
 // We receive props from ReduxForm's Field
 // and turn them into props for Bootstrap forms
 const InputText = (props) => {
-  const { input, label, type = 'text' } = props
+  const { required, input, label, type = 'text' } = props
   const { value, onChange } = input
 
   return (
     <div className='form-group label-floating'>
       {label && <label className='control-label'>{label}</label>}
-      <input type={type} className='form-control' name='email' required='true' value={value} onChange={onChange}/>
+      <input type={type} className='form-control' name='email' required={required} value={value} onChange={onChange}/>
     </div>
   )
 }

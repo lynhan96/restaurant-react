@@ -2,8 +2,8 @@ import React from 'react'
 import { Field } from 'redux-form'
 
 import ErrorMessage from 'components/ErrorMessage'
-import InputText from 'components/form/InputText'
-import SubmitButton from 'components/form/SubmitButton'
+import InputText from 'components/form/element/InputText'
+import SubmitButton from 'components/form/element/SubmitButton'
 
 // This form is pure so it is easy to test
 // Page/Login will decorate it with the necessary props
@@ -17,12 +17,14 @@ const LoginForm = (props) => {
         component={InputText}
         label='Email'
         type='email'
+        required={true}
       />
       <Field
         name='password'
         component={InputText}
         label='Password'
         type='password'
+        required={true}
       />
       <SubmitButton
         text='Đăng nhập'

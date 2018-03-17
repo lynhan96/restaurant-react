@@ -1,8 +1,8 @@
 import React from 'react'
 import { Field } from 'redux-form'
 
-import EditFormInputText from 'components/form/EditFormInputText'
-import SubmitButton from 'components/form/SubmitButton'
+import EditFormInputText from 'components/form/element/EditFormInputText'
+import SubmitButton from 'components/form/element/SubmitButton'
 import moment from 'moment'
 
 // This form is pure so it is easy to test
@@ -24,6 +24,7 @@ const EditForm = (props) => {
               name={item.fieldName}
               component={EditFormInputText}
               label={item.viewTitle}
+              required={item.isRequired}
               defaultValue={data[item.fieldName]}
               type='text'
             />

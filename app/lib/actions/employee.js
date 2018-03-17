@@ -27,11 +27,11 @@ export const viewLabelHeader = () => ([
 ])
 
 export const editLabelHeader = () => ([
-  { 'fieldName': 'name', 'viewTitle': 'Tên' },
-  { 'fieldName': 'position', 'viewTitle': 'Vị trí' },
-  { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
-  { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh' },
-  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' }
+  { 'fieldName': 'name', 'viewTitle': 'Tên', isRequired: true },
+  { 'fieldName': 'position', 'viewTitle': 'Vị trí', isRequired: true },
+  { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại', isRequired: true },
+  { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh', isRequired: false },
+  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh', isRequired: true }
 ])
 
 export const fetchEmployeesBegin = () => ({

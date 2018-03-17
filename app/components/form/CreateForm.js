@@ -1,8 +1,8 @@
 import React from 'react'
 import { Field } from 'redux-form'
 
-import InputText from 'components/form/InputText'
-import SubmitButton from 'components/form/SubmitButton'
+import InputText from 'components/form/element/InputText'
+import SubmitButton from 'components/form/element/SubmitButton'
 
 const CreateForm = (props) => {
   const { editLabelHeader, submitting, handleSubmit, onSubmit } = props
