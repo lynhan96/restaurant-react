@@ -22,7 +22,7 @@ class TableListing extends Component {
         </div>
         <div className='card-content table-responsive'>
           <div>
-            <Link to='/' className='btn btn-success pull-left btn-round'>
+            <Link to={arrLink.create} className='btn btn-success pull-left btn-round'>
               Thêm dữ liệu
               <div className='ripple-container'></div>
             </Link>

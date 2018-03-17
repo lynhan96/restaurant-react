@@ -50,7 +50,7 @@ class EmployeeList extends ReactQueryParams {
                 tableHeader={tableHeader()}
                 actionLink='/employees'
                 viewHeader='Danh sách Nhân viên'
-                arrLink={{ edit: 'employee-edit', view: 'employee-view', list: 'employees' }}
+                arrLink={{ create: 'employee-create', edit: 'employee-edit', view: 'employee-view', list: 'employees' }}
               />
             </div>
           </div>

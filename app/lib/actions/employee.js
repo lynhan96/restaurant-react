@@ -2,6 +2,7 @@ import request from 'request-promise'
 import { SubmissionError } from 'redux-form'
 import R from 'ramda'
 
+import Navigator from 'lib/Navigator'
 import { showNotification } from './showNotification'
 import { makeRequestOptions } from '../requestHeader'
 export const FETCH_EMPLOYEES_BEGIN = 'FETCH_EMPLOYEES_BEGIN'
@@ -72,6 +73,29 @@ export const editEmployee =
         showNotification('topRight', 'error', 'Dữ liệu không tồn tại')
       } else {
         showNotification('topRight', 'error', 'Quá trình cập nhập dữ liệu xảy ra lỗi')
+      }
+    })
+    .catch(function (err) {
+      if (err.message) {
+        showNotification('topRight', 'error', err.message)
+        throw new SubmissionError({ _error: err.message })
+      } else {
+        showNotification('topRight', 'error', JSON.stringify(err))
+        throw new SubmissionError({ _error: JSON.stringify(err) })
+      }
+    })
+  }
+
+export const createEmployee =
+  (values, dispatch, props) => {
+    const url = 'createEmployee'
+
+    return request(makeRequestOptions(values, url)).then(body => {
+      if (body.code === 0) {
+        showNotification('topRight', 'success', 'Tạo dữ liệu thành công')
+        Navigator.push('employees')
+      } else {
+        showNotification('topRight', 'error', 'Quá trình tạo dữ liệu xảy ra lỗi')
       }
     })
     .catch(function (err) {

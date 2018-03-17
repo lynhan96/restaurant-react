@@ -11,6 +11,7 @@ import Dashboard from 'pages/Dashboard'
 import EmployeeList from 'components/admin/employees/EmployeeList'
 import EmployeeView from 'components/admin/employees/EmployeeView'
 import EmployeeEdit from 'components/admin/employees/EmployeeEdit'
+import EmployeeCreate from 'components/admin/employees/EmployeeCreate'
 
 ReactDOM.render((
   <Provider store={Store}>
@@ -23,6 +24,7 @@ ReactDOM.render((
         <Route path='employees' component={EmployeeList} />
         <Route path='employee-view' component={EmployeeView} />
         <Route path='employee-edit' component={EmployeeEdit} />
+        <Route path='employee-create' component={EmployeeCreate} />
       </Route>
     </Router>
   </Provider>

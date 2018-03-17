@@ -4,8 +4,6 @@ import React from 'react'
 // and turn them into props for Bootstrap forms
 const InputText = (props) => {
   const { input, label, type = 'text' } = props
-  // pass onBlur to enable touched flag
-  // pass onChange so the ReduxForm can work
   const { value, onChange } = input
 
   return (
