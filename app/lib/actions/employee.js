@@ -93,7 +93,7 @@ export const createEmployee =
     return request(makeRequestOptions(values, url)).then(body => {
       if (body.code === 0) {
         showNotification('topRight', 'success', 'Tạo dữ liệu thành công')
-        Navigator.push('employees')
+        return Navigator.push('employees')
       } else {
         showNotification('topRight', 'error', 'Quá trình tạo dữ liệu xảy ra lỗi')
       }

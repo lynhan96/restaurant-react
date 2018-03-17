@@ -1,6 +1,8 @@
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
+import Navigator from 'lib/Navigator'
+
 const ADMIN_SIGNED_IN = 'admin/ADMIN_SIGNED_IN'
 const UPDATE_ACTIVE_LINK = 'admin/UPDATE_ACTIVE_LINK'
 export const ADMIN_SIGNED_OUT = 'admin/ADMIN_SIGNED_OUT'
@@ -25,6 +27,7 @@ export const dispatchLogout = (dispatch) => () => {
 // Creators
 export const adminHasSignedOut = () => (dispatch) => {
   dispatch({ type: ADMIN_SIGNED_OUT })
+  Navigator.push('login')
 }
 
 export const adminHasSignedIn = (admin) => (dispatch) => {
