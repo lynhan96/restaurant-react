@@ -32,9 +32,7 @@ const DecoratedLoginForm = reduxForm({
   form: 'login',
   // Separate submitLogin into another file
   // since the function is decoupled from Login
-  onSubmit: submitLogin,
-  // redirect after submit is successful
-  onSubmitSuccess: () => Navigator.push('dashboard')
+  onSubmit: submitLogin
 })(LoginForm)
 
 const style = {

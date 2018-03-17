@@ -1,17 +1,15 @@
 import React from 'react'
 import { Field } from 'redux-form'
 
-import ErrorMessage from 'components/ErrorMessage'
 import InputText from 'components/form/element/InputText'
 import SubmitButton from 'components/form/element/SubmitButton'
 
 // This form is pure so it is easy to test
 // Page/Login will decorate it with the necessary props
 const LoginForm = (props) => {
-  const { error, submitting, handleSubmit } = props
+  const { submitting, handleSubmit } = props
   return (
     <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
-      {error && <ErrorMessage text={error} />}
       <Field
         name='email'
         component={InputText}

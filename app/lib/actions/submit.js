@@ -3,6 +3,8 @@ import request from 'request-promise'
 
 import { makeRequestOptions } from '../requestHeader'
 import { adminHasSignedIn } from 'ducks/admin'
+import { showNotification } from './showNotification'
+import Navigator from 'lib/Navigator'
 // Redux-form requires a promise for async submission
 // so we return a promise
 export const submitLogin =
@@ -17,18 +19,22 @@ export const submitLogin =
       if (body.code === 0) {
         admin = body.data
         dispatch(adminHasSignedIn(admin))
-        return Promise.resolve(admin)
+        Navigator.push('dashboard')
       } else if (body.code === 416) {
-        throw new SubmissionError({ _error: 'Mật khẩu không hợp lệ!' })
+        showNotification('topCenter', 'error', 'Mật khẩu không hợp lệ!')
       } else if (body.code === 414) {
-        throw new SubmissionError({ _error: 'Tài khoản không tồn tại!' })
+        showNotification('topCenter', 'error', 'Tài khoản không tồn tại!')
       }
+
+      return Promise.resolve()
     })
     .catch(function (err) {
-      if (err.errors && err.errors._error) {
-        throw new SubmissionError({ _error: err.errors._error })
-      } else {
+      if (err.message) {
+        showNotification('topCenter', 'error', err.message)
         throw new SubmissionError({ _error: err.message })
+      } else {
+        showNotification('topCenter', 'error', JSON.stringify(err))
+        throw new SubmissionError({ _error: JSON.stringify(err) })
       }
     })
   }

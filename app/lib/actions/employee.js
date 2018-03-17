@@ -5,6 +5,7 @@ import R from 'ramda'
 import Navigator from 'lib/Navigator'
 import { showNotification } from './showNotification'
 import { makeRequestOptions } from '../requestHeader'
+
 export const FETCH_EMPLOYEES_BEGIN = 'FETCH_EMPLOYEES_BEGIN'
 export const FETCH_EMPLOYEES_SUCCESS = 'FETCH_EMPLOYEES_SUCCESS'
 export const FETCH_EMPLOYEES_ERROR = 'FETCH_EMPLOYEES_ERROR'
