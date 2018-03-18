@@ -7,7 +7,12 @@ class SelectField extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  componentWillMount () {
+    this.props.input.onChange(this.props.selectFieldData[this.props.fieldName][0])
+  }
+
   handleChange (event) {
+    console.log(event.target.value)
     this.props.input.onChange(event.target.value)
   }
 

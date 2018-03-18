@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import ContentLoading from 'components/ContentLoading'
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { editLabelHeader, deleteEmployee, selectFieldData } from '../../../lib/actions/employee'
+import { editFieldInfo, deleteEmployee, selectFieldData } from '../../../lib/actions/employee'
 import TableEditItem from 'components/admin/table/TableEditItem'
 import { editEmployee } from 'lib/actions/employee'
 
@@ -34,7 +34,7 @@ class EmployeeEdit extends ReactQueryParams {
       <div className='content'>
         <div className='container-fluid'>
           <TableEditItem
-            editLabelHeader={editLabelHeader()}
+            editFieldInfo={editFieldInfo()}
             selectFieldData={selectFieldData()}
             editHeader='Chỉnh sửa thông tin Nhân viên'
             arrLink={{ list: 'employees', view: 'employee-view' }}

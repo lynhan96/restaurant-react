@@ -27,16 +27,17 @@ export const viewLabelHeader = () => ([
   { 'fieldName': 'createdAt', 'viewTitle': 'Ngày tạo dữ liệu' }
 ])
 
-export const editLabelHeader = () => ([
+export const editFieldInfo = () => ([
   { 'fieldName': 'name', 'viewTitle': 'Tên', isRequired: true, type: 'text' },
   { 'fieldName': 'position', 'viewTitle': 'Vị trí', isRequired: true, type: 'select' },
   { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại', isRequired: true, type: 'number' },
   { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh', isRequired: false, type: 'datetime' },
-  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh', isRequired: true, type: 'text' }
+  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh', isRequired: true, type: 'select' }
 ])
 
 export const selectFieldData = () => ({
-  'position': ['Nhân viên phục vụ', 'Quản trị viên', 'Nhân viên bếp', 'Nhân viên thu ngân']
+  'position': ['Nhân viên phục vụ', 'Quản trị viên', 'Nhân viên bếp', 'Nhân viên thu ngân'],
+  'gender': ['Nam', 'Nữ']
 })
 
 export const fetchEmployeesBegin = () => ({

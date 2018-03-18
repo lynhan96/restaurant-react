@@ -21,13 +21,13 @@ const checkFieldType = type => {
 }
 
 const EditForm = (props) => {
-  const { selectFieldData, items, itemIndex, editLabelHeader, submitting, handleSubmit, onSubmit } = props
+  const { selectFieldData, items, itemIndex, editFieldInfo, submitting, handleSubmit, onSubmit } = props
   handleSubmit.onSubmit = onSubmit
   const data = items[itemIndex]
 
   return (
     <form onSubmit={handleSubmit}>
-      {editLabelHeader.map((item, index) => {
+      {editFieldInfo.map((item, index) => {
         return (
           <div className='col-md-6' key={index}>
             <Field

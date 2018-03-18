@@ -5,12 +5,12 @@ import InputText from 'components/form/element/InputText'
 import SubmitButton from 'components/form/element/SubmitButton'
 
 const CreateForm = (props) => {
-  const { editLabelHeader, submitting, handleSubmit, onSubmit } = props
+  const { editFieldInfo, submitting, handleSubmit, onSubmit } = props
   handleSubmit.onSubmit = onSubmit
 
   return (
     <form onSubmit={handleSubmit}>
-      {editLabelHeader.map((item, index) => {
+      {editFieldInfo.map((item, index) => {
         return (
           <div className='col-md-6' key={index}>
             <Field
