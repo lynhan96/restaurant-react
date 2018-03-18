@@ -5,7 +5,7 @@ import R from 'ramda'
 import Navigator from 'lib/Navigator'
 import { showNotification } from './showNotification'
 import { makeRequestOptions } from '../requestHeader'
-import { sortObjectsByKey } from '../objects'
+import { sortObjectsByKeyAtoZ, sortObjectsByKeyZtoA } from '../objects'
 
 export const FETCH_EMPLOYEES_BEGIN = 'FETCH_EMPLOYEES_BEGIN'
 export const FETCH_EMPLOYEES_SUCCESS = 'FETCH_EMPLOYEES_SUCCESS'
@@ -57,7 +57,7 @@ export const fetchEmployeesError = error => ({
 
 export const sortBy = (datas, fieldName, dispatch) => {
   dispatch(fetchEmployeesBegin())
-  dispatch(fetchEmployeesSuccess(sortObjectsByKey(datas, fieldName)))
+  dispatch(fetchEmployeesSuccess(sortObjectsByKeyAtoZ(datas, fieldName)))
 }
 
 export const fetchEmployees = _ => {
