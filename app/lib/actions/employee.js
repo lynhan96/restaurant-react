@@ -62,10 +62,16 @@ export const fetchEmployeesSortValue = (fieldName, sortType) => ({
   sortBy: fieldName
 })
 
-export const sortByKey = (datas, fieldName, dispatch) => {
-  dispatch(fetchEmployeesSortValue(fieldName, 'AtoZ'))
+export const sortByKey = (datas, fieldName, currentFieldName, sortType, dispatch) => {
   dispatch(fetchEmployeesBegin())
-  dispatch(fetchEmployeesSuccess(sortObjectsByKeyAtoZ(datas, fieldName)))
+
+  if (sortType === 'AtoZ' && fieldName === currentFieldName) {
+    dispatch(fetchEmployeesSortValue(fieldName, 'ZtoA'))
+    dispatch(fetchEmployeesSuccess(sortObjectsByKeyZtoA(datas, fieldName)))
+  } else {
+    dispatch(fetchEmployeesSortValue(fieldName, 'AtoZ'))
+    dispatch(fetchEmployeesSuccess(sortObjectsByKeyAtoZ(datas, fieldName)))
+  }
 }
 
 export const fetchEmployees = _ => {

@@ -9,7 +9,6 @@ import 'datatables.net-bs/css/dataTables.bootstrap.css'
 import { isAdmin } from 'components/wrappers/isAdmin'
 import Navigator from 'lib/Navigator'
 import { showConfirmAlertDeleteItem } from '../../../lib/actions/showNotification'
-import $ from 'jquery'
 
 const goto = (url) => () => Navigator.push(url)
 
@@ -21,7 +20,12 @@ class TableListing extends Component {
 
   render() {
     const { sortType, sortFieldName, deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
-    console.log(sortFieldName)
+    let iconName = 'vertical_align_bottom'
+
+    if (sortType === 'ZtoA') {
+      iconName = 'vertical_align_top'
+    }
+
     return (
       <div className='card'>
         <div className='card-header' data-background-color='purple'>
@@ -40,10 +44,10 @@ class TableListing extends Component {
                 {tableHeader.map((item, index) => {
                   return (
                     <th key={index}>
-                      <Link to='#' onClick={e => { e.preventDefault(); this.sortBy(datas, item.fieldName, dispatch) }}>
+                      <Link to='#' onClick={e => { e.preventDefault(); this.sortBy(datas, item.fieldName, sortFieldName, sortType, dispatch) }}>
                         { item.viewTitle }
                       </Link>
-                      <i className={sortFieldName === item.fieldName ? 'material-icons sort-icon-active' : 'material-icons'} style={{ fontSize: '14px', marginLeft: '5px', display: 'none' }}>vertical_align_bottom</i>
+                      <i className={sortFieldName === item.fieldName ? 'material-icons sort-icon-active' : 'material-icons'} style={style.iconStyle}>{iconName}</i>
                     </th>
                   )
                 })}
@@ -82,3 +86,11 @@ class TableListing extends Component {
 export default R.pipe(
   isAdmin
 )(TableListing)
+
+const style = {
+  iconStyle: {
+    fontSize: '14px',
+    marginLeft: '5px',
+    display: 'none'
+  }
+}
