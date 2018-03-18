@@ -5,7 +5,7 @@ import ReactQueryParams from 'react-query-params'
 import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { tableHeader, fetchEmployees, deleteEmployee, sortByKey, searchByKeyword, searchFieldList } from '../../../lib/actions/employee'
+import { tableHeader, fetchEmployees, deleteEmployee, sortByKey, searchByKeyword } from '../../../lib/actions/employee'
 import TableListing from 'components/admin/table/TableListing'
 import { updateActiveLink } from 'ducks/admin'
 
@@ -35,7 +35,6 @@ class EmployeeList extends ReactQueryParams {
                 sortFieldName={sortBy}
                 sortType={sortType}
                 searchFunc={searchByKeyword}
-                searchFieldList={searchFieldList()}
                 error={error}
                 loading={loading}
               />

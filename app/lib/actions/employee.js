@@ -37,12 +37,6 @@ export const editFieldInfo = () => ([
   { 'fieldName': 'gender', 'viewTitle': 'Giới tinh', isRequired: true, type: 'select' }
 ])
 
-export const searchFieldList = () => ([
-  { 'fieldName': 'name' },
-  { 'fieldName': 'position' },
-  { 'fieldName': 'gender' }
-])
-
 export const selectFieldData = () => ({
   'position': ['Nhân viên phục vụ', 'Quản trị viên', 'Nhân viên bếp', 'Nhân viên thu ngân'],
   'gender': ['Nam', 'Nữ']
@@ -68,9 +62,12 @@ export const fetchEmployeesSortValue = (fieldName, sortType) => ({
   sortBy: fieldName
 })
 
-export const searchByKeyword = (event, dispatch, searchFieldList) => {
-  // dispatch(fetchEmployeesBegin())
-  dispatch(fetchEmployees())
+export const searchByKeyword = (event, dispatch) => {
+  return new Promise((resolve) => {
+    dispatch(fetchEmployeesBegin())
+    request(makeRequestOptions({keyword: event.target.value}, 'employees')).then(body => dispatch(fetchEmployeesSuccess(body.data)))
+    .catch(err => dispatch(fetchEmployeesError(err)))
+  })
 }
 
 export const sortByKey = (datas, fieldName, currentFieldName, sortType, dispatch) => {

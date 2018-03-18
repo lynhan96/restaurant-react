@@ -14,7 +14,7 @@ import TableBody from 'components/admin/table/tableListElement/TableBody'
 
 class TableListing extends Component {
   render() {
-    const { sortByKey, error, loading, searchFieldList, searchFunc, sortType, sortFieldName, deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
+    const { sortByKey, error, loading, searchFunc, sortType, sortFieldName, deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
 
     if (error) {
       return (
@@ -35,7 +35,6 @@ class TableListing extends Component {
               dispatch={dispatch}
               searchFunc={searchFunc}
               arrLink={arrLink}
-              searchFieldList={searchFieldList}
             />
             <TableContentLoading
               message='Đang tải dữ liệu ...'
@@ -55,7 +54,6 @@ class TableListing extends Component {
             dispatch={dispatch}
             searchFunc={searchFunc}
             arrLink={arrLink}
-            searchFieldList={searchFieldList}
           />
           {error && <ErrorMessage text={error} />}
           <table className='table table-hover'>

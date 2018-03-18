@@ -7,7 +7,7 @@ import { isAdmin } from 'components/wrappers/isAdmin'
 
 class ListHeaderElement extends ReactQueryParams {
   render() {
-    const { arrLink, dispatch, searchFunc, searchFieldList } = this.props
+    const { arrLink, dispatch, searchFunc } = this.props
 
     return (
       <div>
@@ -19,7 +19,7 @@ class ListHeaderElement extends ReactQueryParams {
         </div>
         <div className='row'>
           <div className='form-group col-md-4 col-xs-12' style={{ margin: '0' }}>
-            <input type='text' className='form-control' placeholder='Tìm kiếm' onChange={e => searchFunc(e, dispatch, searchFieldList)}/>
+            <input type='text' className='form-control' placeholder='Tìm kiếm' onChange={e => searchFunc(e, dispatch)}/>
             <span className='material-input'></span>
           </div>
         </div>
