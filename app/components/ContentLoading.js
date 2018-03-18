@@ -1,4 +1,5 @@
 import React from 'react'
+import CircularProgress from 'material-ui/CircularProgress'
 
 const ContentLoading = (props) => {
   const { message } = props
@@ -8,7 +9,7 @@ const ContentLoading = (props) => {
       <div className='container-fluid'>
         <div className='card'>
           <div style={style.loadingWrapper}>
-            <i className='fa fa-spinner fa-spin' style={style.loadingIcon} />
+            <CircularProgress size={60} thickness={7} />
             <p style={style.loadingText}>{message}</p>
           </div>
         </div>

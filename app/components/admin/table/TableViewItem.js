@@ -36,8 +36,10 @@ class TableViewItem extends Component {
                 </div>
                 <form>
                   {viewLabelHeader.map((item, index) => {
-                    if (item.fieldName === 'birthday' || item.fieldName === 'createdAt') {
+                    if (item.fieldName === 'createdAt') {
                       data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD hh:mm:ss')
+                    } else if (item.fieldName === 'birthday') {
+                      data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD')
                     }
                     return (
                       <div className='col-md-6' key={index}>
