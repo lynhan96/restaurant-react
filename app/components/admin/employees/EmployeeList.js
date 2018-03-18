@@ -17,7 +17,7 @@ class EmployeeList extends ReactQueryParams {
   }
 
   render() {
-    const { sortType, sortBy, error, employees, dispatch } = this.props
+    const { totalPage, sortType, sortBy, error, employees, dispatch } = this.props
 
     if (error) {
       return (
@@ -47,6 +47,7 @@ class EmployeeList extends ReactQueryParams {
                 searchFunc={searchByKeyword}
                 error={error}
                 changePagination={changePagination}
+                totalPage={totalPage}
               />
             </div>
           </div>
@@ -61,7 +62,8 @@ const mapStateToProps = state => ({
   loading: state.employee.loading,
   error: state.employee.error,
   sortBy: state.employee.sortBy,
-  sortType: state.employee.sortType
+  sortType: state.employee.sortType,
+  totalPage: state.employee.totalPage
 })
 
 export default R.pipe(

@@ -2,7 +2,8 @@ import {
   FETCH_EMPLOYEES_BEGIN,
   FETCH_EMPLOYEES_SUCCESS,
   FETCH_EMPLOYEES_ERROR,
-  FETCH_EMPLOYEES_SORT_VALUE
+  FETCH_EMPLOYEES_SORT_VALUE,
+  FETCH_EMPLOYEES_TOTAL_PAGE
 } from '../lib/actions/employee'
 
 import { ADMIN_SIGNED_OUT } from 'ducks/admin'
@@ -11,6 +12,7 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
+  totalPage: 0,
   sortBy: 'id',
   sortType: 'AtoZ'
 }
@@ -44,6 +46,12 @@ export default function productReducer(state = initialState, action) {
         ...state,
         sortBy: action.sortBy,
         sortType: action.sortType
+      }
+
+    case FETCH_EMPLOYEES_TOTAL_PAGE:
+      return {
+        ...state,
+        totalPage: action.totalPage
       }
 
     case ADMIN_SIGNED_OUT:

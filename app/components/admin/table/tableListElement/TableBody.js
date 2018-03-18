@@ -26,7 +26,7 @@ class TableBody extends Component {
                 <button onClick={goto(arrLink.edit + '?index=' + itemIndex)} type='button' rel='tooltip' title='Chỉnh sửa dữ liệu' className='btn btn-primary btn-simple btn-xs'>
                   <i className='material-icons'>edit</i>
                 </button>
-                <button onClick={showConfirmAlertDeleteItem(deleteItem, item.id, dispatch, datas, itemIndex)}type='button' rel='tooltip' title='Xóa dữ liệu' className='btn btn-danger btn-simple btn-xs'>
+                <button onClick={showConfirmAlertDeleteItem(deleteItem, item.id, dispatch, datas, itemIndex, 'list')}type='button' rel='tooltip' title='Xóa dữ liệu' className='btn btn-danger btn-simple btn-xs'>
                   <i className='material-icons'>close</i>
                 </button>
               </td>

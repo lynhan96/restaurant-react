@@ -5,12 +5,12 @@ import R from 'ramda'
 import Navigator from 'lib/Navigator'
 import { showNotification } from './showNotification'
 import { makeRequestOptions } from '../requestHeader'
-import { sortObjectsByKeyAtoZ, sortObjectsByKeyZtoA } from '../objects'
 
 export const FETCH_EMPLOYEES_BEGIN = 'FETCH_EMPLOYEES_BEGIN'
 export const FETCH_EMPLOYEES_SUCCESS = 'FETCH_EMPLOYEES_SUCCESS'
 export const FETCH_EMPLOYEES_ERROR = 'FETCH_EMPLOYEES_ERROR'
 export const FETCH_EMPLOYEES_SORT_VALUE = 'FETCH_EMPLOYEES_SORT_VALUE'
+export const FETCH_EMPLOYEES_TOTAL_PAGE = 'FETCH_EMPLOYEES_TOTAL_PAGE'
 
 export const tableHeader = () => ([
   { 'fieldName': 'id', 'viewTitle': 'ID' },
@@ -62,6 +62,11 @@ export const fetchEmployeesSortValue = (fieldName, sortType) => ({
   sortBy: fieldName
 })
 
+export const fetchEmployeesTotalPage = totalPage => ({
+  type: FETCH_EMPLOYEES_TOTAL_PAGE,
+  totalPage: totalPage
+})
+
 export const searchByKeyword = (event, dispatch) => {
   dispatch(fetchEmployees({keyword: event.target.value}))
   dispatch(fetchEmployeesSortValue('id', 'AtoZ'))
@@ -90,7 +95,10 @@ export const sortByKey = (datas, fieldName, currentFieldName, sortType, dispatch
 export const fetchEmployees = params => {
   return dispatch => {
     dispatch(fetchEmployeesBegin())
-    request(makeRequestOptions(params, 'employees')).then(body => dispatch(fetchEmployeesSuccess(body.data)))
+    request(makeRequestOptions(params, 'employees')).then(body => {
+      dispatch(fetchEmployeesSuccess(body.data.items))
+      dispatch(fetchEmployeesTotalPage(body.data.totalPage))
+    })
     .catch(err => dispatch(fetchEmployeesError(err)))
   }
 }
@@ -150,16 +158,20 @@ export const createEmployee =
     })
   }
 
-export const deleteEmployee = (dispatch, employeeId, employees, itemIndex) => {
+export const deleteEmployee = (dispatch, employeeId, employees, itemIndex, currentAction) => {
   const url = 'deleteEmployee'
   employees = R.remove(itemIndex, 1, employees)
 
   return new Promise((resolve) => {
     request(makeRequestOptions({employeeId: employeeId}, url)).then(body => {
       if (body.code === 0) {
-        Navigator.push('employees')
+        if (currentAction === 'list') {
+          dispatch(fetchEmployees())
+        } else {
+          Navigator.push('employees')
+        }
+
         showNotification('topRight', 'info', 'Xóa dữ liệu thành công')
-        dispatch(fetchEmployeesSuccess(employees))
       } else {
         showNotification('topRight', 'error', 'Quá trình xóa dữ liệu xảy ra lỗi')
       }

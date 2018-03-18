@@ -24,7 +24,7 @@ class TableListing extends Component {
   }
 
   render() {
-    const { sortByKey, searchFunc, sortType, sortFieldName, deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
+    const { totalPage, sortByKey, searchFunc, sortType, sortFieldName, deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
 
     return (
       <div className='card'>
@@ -61,7 +61,7 @@ class TableListing extends Component {
               onPageChange={this.onChangePagination}
               breakLabel={<a href=''>...</a>}
               breakClassName={'break-me'}
-              pageCount={3}
+              pageCount={totalPage}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
               containerClassName={'pagination'}
