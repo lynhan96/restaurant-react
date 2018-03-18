@@ -37,6 +37,12 @@ export const editFieldInfo = () => ([
   { 'fieldName': 'gender', 'viewTitle': 'Giới tinh', isRequired: true, type: 'select' }
 ])
 
+export const searchFieldList = () => ([
+  { 'fieldName': 'name' },
+  { 'fieldName': 'position' },
+  { 'fieldName': 'gender' }
+])
+
 export const selectFieldData = () => ({
   'position': ['Nhân viên phục vụ', 'Quản trị viên', 'Nhân viên bếp', 'Nhân viên thu ngân'],
   'gender': ['Nam', 'Nữ']
@@ -61,6 +67,11 @@ export const fetchEmployeesSortValue = (fieldName, sortType) => ({
   sortType: sortType,
   sortBy: fieldName
 })
+
+export const searchByKeyword = (event, dispatch, searchFieldList) => {
+  // dispatch(fetchEmployeesBegin())
+  dispatch(fetchEmployees())
+}
 
 export const sortByKey = (datas, fieldName, currentFieldName, sortType, dispatch) => {
   dispatch(fetchEmployeesBegin())

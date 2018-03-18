@@ -2,17 +2,12 @@ import React from 'react'
 import R from 'ramda'
 import ReactQueryParams from 'react-query-params'
 
-import 'datatables.net'
-import 'datatables.net-bs/js/dataTables.bootstrap'
-import 'datatables.net-bs/css/dataTables.bootstrap.css'
 import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { tableHeader, fetchEmployees, deleteEmployee, sortByKey } from '../../../lib/actions/employee'
+import { tableHeader, fetchEmployees, deleteEmployee, sortByKey, searchByKeyword, searchFieldList } from '../../../lib/actions/employee'
 import TableListing from 'components/admin/table/TableListing'
 import { updateActiveLink } from 'ducks/admin'
-import ErrorMessage from 'components/ErrorMessage'
-import ContentLoading from 'components/ContentLoading'
 
 class EmployeeList extends ReactQueryParams {
   componentDidMount() {
@@ -23,28 +18,11 @@ class EmployeeList extends ReactQueryParams {
   render() {
     const { sortType, sortBy, error, loading, employees, dispatch } = this.props
 
-    if (error) {
-      return (
-        <ContentLoading
-          message='Quá trình tải dữ liệu xảy ra lỗi!'
-        />
-      )
-    }
-
-    if (loading) {
-      return (
-        <ContentLoading
-          message='Đang tải dữ liệu ...'
-        />
-      )
-    }
-
     return (
       <div className='content'>
         <div className='container-fluid'>
           <div className='row'>
             <div className='col-md-12'>
-              {error && <ErrorMessage text={error} />}
               <TableListing
                 datas={employees}
                 tableHeader={tableHeader()}
@@ -56,6 +34,10 @@ class EmployeeList extends ReactQueryParams {
                 sortBy={sortByKey}
                 sortFieldName={sortBy}
                 sortType={sortType}
+                searchFunc={searchByKeyword}
+                searchFieldList={searchFieldList()}
+                error={error}
+                loading={loading}
               />
             </div>
           </div>

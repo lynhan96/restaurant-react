@@ -9,6 +9,9 @@ import 'datatables.net-bs/css/dataTables.bootstrap.css'
 import { isAdmin } from 'components/wrappers/isAdmin'
 import Navigator from 'lib/Navigator'
 import { showConfirmAlertDeleteItem } from '../../../lib/actions/showNotification'
+import TableContentLoading from 'components/admin/table/tableListElement/TableContentLoading'
+import ErrorMessage from 'components/ErrorMessage'
+import ListHeaderElement from 'components/admin/table/tableListElement/ListHeaderElement'
 
 const goto = (url) => () => Navigator.push(url)
 
@@ -19,11 +22,40 @@ class TableListing extends Component {
   }
 
   render() {
-    const { sortType, sortFieldName, deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
-    let iconName = 'vertical_align_bottom'
+    const { error, loading, searchFieldList, searchFunc, sortType, sortFieldName, deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
+    let iconName = 'fa fa-arrow-down '
 
     if (sortType === 'ZtoA') {
-      iconName = 'vertical_align_top'
+      iconName = 'fa fa-arrow-up '
+    }
+
+    if (error) {
+      return (
+        <TableContentLoading
+          message='Quá trình tải dữ liệu xảy ra lỗi!'
+        />
+      )
+    }
+
+    if (loading) {
+      return (
+        <div className='card'>
+          <div className='card-header' data-background-color='purple'>
+            <h4 className='title'>{viewHeader}</h4>
+          </div>
+          <div className='card-content table-responsive'>
+            <ListHeaderElement
+              dispatch={dispatch}
+              searchFunc={searchFunc}
+              arrLink={arrLink}
+              searchFieldList={searchFieldList}
+            />
+            <TableContentLoading
+              message='Đang tải dữ liệu ...'
+            />
+          </div>
+        </div>
+      )
     }
 
     return (
@@ -32,12 +64,13 @@ class TableListing extends Component {
           <h4 className='title'>{viewHeader}</h4>
         </div>
         <div className='card-content table-responsive'>
-          <div>
-            <Link to={arrLink.create} className='btn btn-success pull-left btn-round'>
-              Thêm dữ liệu
-              <div className='ripple-container'></div>
-            </Link>
-          </div>
+          <ListHeaderElement
+            dispatch={dispatch}
+            searchFunc={searchFunc}
+            arrLink={arrLink}
+            searchFieldList={searchFieldList}
+          />
+          {error && <ErrorMessage text={error} />}
           <table className='table table-hover'>
             <thead className='text-primary'>
               <tr>
@@ -47,7 +80,7 @@ class TableListing extends Component {
                       <Link to='#' onClick={e => { e.preventDefault(); this.sortBy(datas, item.fieldName, sortFieldName, sortType, dispatch) }}>
                         { item.viewTitle }
                       </Link>
-                      <i className={sortFieldName === item.fieldName ? 'material-icons sort-icon-active' : 'material-icons'} style={style.iconStyle}>{iconName}</i>
+                      <i className={sortFieldName === item.fieldName ? iconName + 'sort-icon-active' : iconName} style={style.iconStyle}></i>
                     </th>
                   )
                 })}
