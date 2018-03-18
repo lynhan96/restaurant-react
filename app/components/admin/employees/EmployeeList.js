@@ -8,7 +8,7 @@ import 'datatables.net-bs/css/dataTables.bootstrap.css'
 import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { tableHeader, fetchEmployees, deleteEmployee } from '../../../lib/actions/employee'
+import { tableHeader, fetchEmployees, deleteEmployee, sortBy } from '../../../lib/actions/employee'
 import TableListing from 'components/admin/table/TableListing'
 import { updateActiveLink } from 'ducks/admin'
 import ErrorMessage from 'components/ErrorMessage'
@@ -53,6 +53,7 @@ class EmployeeList extends ReactQueryParams {
                 arrLink={{ create: 'employee-create', edit: 'employee-edit', view: 'employee-view', list: 'employees' }}
                 deleteItem={deleteEmployee}
                 dispatch={dispatch}
+                sortBy={sortBy}
               />
             </div>
           </div>

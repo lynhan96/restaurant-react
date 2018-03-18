@@ -13,6 +13,11 @@ import { showConfirmAlertDeleteItem } from '../../../lib/actions/showNotificatio
 const goto = (url) => () => Navigator.push(url)
 
 class TableListing extends Component {
+  constructor (props) {
+    super(props)
+    this.sortBy = this.props.sortBy.bind(this)
+  }
+
   render() {
     const { deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
 
@@ -31,7 +36,15 @@ class TableListing extends Component {
           <table className='table table-hover'>
             <thead className='text-primary'>
               <tr>
-                {tableHeader.map((item, index) => <th key={index}>{ item.viewTitle }</th>)}
+                {tableHeader.map((item, index) => {
+                  return (
+                    <th key={index}>
+                      <Link to='#' onClick={e => { e.preventDefault(); this.sortBy(datas, item.fieldName, dispatch) }}>
+                        { item.viewTitle }
+                      </Link>
+                    </th>
+                  )
+                })}
                 <th>Actions</th>
               </tr>
             </thead>
