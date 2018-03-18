@@ -6,6 +6,8 @@ import { ToastContainer } from 'react-toastify'
 import Transition from 'react-transition-group/Transition'
 import '../public/lib/cms/css/custom.css'
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
 const ZoomInAndOut = ({ children, position, ...props }) => (
   <Transition
     {...props}
@@ -24,14 +26,16 @@ const App = (props) => {
   const { children } = props
 
   return (
-    <div className='wrapper'>
-      <SideBar/>
-      <div className='main-panel'>
-        <Header/>
-        {children}
-        <ToastContainer transition={ZoomInAndOut}/>
+     <MuiThemeProvider>
+      <div className='wrapper'>
+        <SideBar/>
+        <div className='main-panel'>
+          <Header/>
+          {children}
+          <ToastContainer transition={ZoomInAndOut}/>
+        </div>
       </div>
-    </div>
+    </MuiThemeProvider>
   )
 }
 

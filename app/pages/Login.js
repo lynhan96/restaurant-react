@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { reduxForm } from 'redux-form'
-import Navigator from 'lib/Navigator'
 
 import LoginForm from 'components/form/Login'
 import { submitLogin } from 'lib/actions/submit'

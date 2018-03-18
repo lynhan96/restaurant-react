@@ -9,7 +9,7 @@ const InputText = (props) => {
   return (
     <div className='form-group label-floating'>
       {label && <label className='control-label'>{label}</label>}
-      <input type={type} className='form-control' name='email' required={required} value={value} onChange={onChange}/>
+      <input type={type} className='form-control' required={required} value={value} onChange={onChange}/>
     </div>
   )
 }

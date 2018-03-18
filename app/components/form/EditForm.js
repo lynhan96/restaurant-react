@@ -2,6 +2,7 @@ import React from 'react'
 import { Field } from 'redux-form'
 
 import EditFormInputText from 'components/form/element/EditFormInputText'
+import InputDateTime from 'components/form/element/InputDateTime'
 import SubmitButton from 'components/form/element/SubmitButton'
 import moment from 'moment'
 
@@ -15,9 +16,21 @@ const EditForm = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       {editLabelHeader.map((item, index) => {
-        if (item.fieldName === 'birthday' || item.fieldName === 'createdAt') {
-          data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD hh:mm:ss')
+        if (item.fieldName === 'birthday') {
+          data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD')
+          return (
+            <div className='col-md-6' key={index}>
+              <Field
+                name={item.fieldName}
+                component={InputDateTime}
+                label={item.viewTitle}
+                required={item.isRequired}
+                defaultValue={data[item.fieldName]}
+              />
+            </div>
+          )
         }
+
         return (
           <div className='col-md-6' key={index}>
             <Field
