@@ -28,6 +28,7 @@ class InputDateTime extends React.Component {
         <DatePicker
           className='form-control'
           name={name}
+          openToYearSelection={true}
           defaultDate={new Date(defaultTime)}
           onChange={this.handleChange}
           mode='landscape'
