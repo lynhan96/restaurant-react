@@ -31,7 +31,7 @@ class EmployeeList extends ReactQueryParams {
                 arrLink={{ create: 'employee-create', edit: 'employee-edit', view: 'employee-view', list: 'employees' }}
                 deleteItem={deleteEmployee}
                 dispatch={dispatch}
-                sortBy={sortByKey}
+                sortByKey={sortByKey}
                 sortFieldName={sortBy}
                 sortType={sortType}
                 searchFunc={searchByKeyword}
