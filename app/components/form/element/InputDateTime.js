@@ -16,13 +16,19 @@ class InputDateTime extends React.Component {
   render() {
     const { defaultValue, label } = this.props
 
+    let defaultTime = defaultValue
+
+    if (!defaultValue) {
+      defaultTime = new Date()
+    }
+
     return (
       <div className='form-group label-floating' style={{ marginTop: '0' }}>
         {label && <label>{label}</label>}
         <DatePicker
           className='form-control'
           name={name}
-          defaultDate={new Date(defaultValue)}
+          defaultDate={new Date(defaultTime)}
           onChange={this.handleChange}
           mode='landscape'
           cancelLabel='Hủy'

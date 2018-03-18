@@ -1,11 +1,24 @@
 import React from 'react'
 import { Field } from 'redux-form'
 
-import InputText from 'components/form/element/InputText'
+import EditFormInputText from 'components/form/element/EditFormInputText'
+import InputDateTime from 'components/form/element/InputDateTime'
 import SubmitButton from 'components/form/element/SubmitButton'
+import SelectField from 'components/form/element/SelectField'
+
+const checkFieldType = type => {
+  switch (type) {
+    case 'datetime':
+      return InputDateTime
+    case 'select':
+      return SelectField
+    default:
+      return EditFormInputText
+  }
+}
 
 const CreateForm = (props) => {
-  const { editFieldInfo, submitting, handleSubmit, onSubmit } = props
+  const { selectFieldData, editFieldInfo, submitting, handleSubmit, onSubmit } = props
   handleSubmit.onSubmit = onSubmit
 
   return (
@@ -15,10 +28,12 @@ const CreateForm = (props) => {
           <div className='col-md-6' key={index}>
             <Field
               name={item.fieldName}
-              component={InputText}
+              component={checkFieldType(item.type)}
+              selectFieldData={selectFieldData}
               label={item.viewTitle}
-              defaultValue=''
-              type='text'
+              required={item.isRequired}
+              type={item.type}
+              fieldName={item.fieldName}
             />
           </div>
         )
