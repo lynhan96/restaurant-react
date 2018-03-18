@@ -9,6 +9,7 @@ import 'datatables.net-bs/css/dataTables.bootstrap.css'
 import { isAdmin } from 'components/wrappers/isAdmin'
 import Navigator from 'lib/Navigator'
 import { showConfirmAlertDeleteItem } from '../../../lib/actions/showNotification'
+import $ from 'jquery'
 
 const goto = (url) => () => Navigator.push(url)
 
@@ -19,8 +20,8 @@ class TableListing extends Component {
   }
 
   render() {
-    const { deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
-
+    const { sortType, sortFieldName, deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
+    console.log(sortFieldName)
     return (
       <div className='card'>
         <div className='card-header' data-background-color='purple'>
@@ -42,6 +43,7 @@ class TableListing extends Component {
                       <Link to='#' onClick={e => { e.preventDefault(); this.sortBy(datas, item.fieldName, dispatch) }}>
                         { item.viewTitle }
                       </Link>
+                      <i className={sortFieldName === item.fieldName ? 'material-icons sort-icon-active' : 'material-icons'} style={{ fontSize: '14px', marginLeft: '5px', display: 'none' }}>vertical_align_bottom</i>
                     </th>
                   )
                 })}

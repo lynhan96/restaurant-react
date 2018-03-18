@@ -8,7 +8,7 @@ import 'datatables.net-bs/css/dataTables.bootstrap.css'
 import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { tableHeader, fetchEmployees, deleteEmployee, sortBy } from '../../../lib/actions/employee'
+import { tableHeader, fetchEmployees, deleteEmployee, sortByKey } from '../../../lib/actions/employee'
 import TableListing from 'components/admin/table/TableListing'
 import { updateActiveLink } from 'ducks/admin'
 import ErrorMessage from 'components/ErrorMessage'
@@ -21,7 +21,7 @@ class EmployeeList extends ReactQueryParams {
   }
 
   render() {
-    const { error, loading, employees, dispatch } = this.props
+    const { sortType, sortBy, error, loading, employees, dispatch } = this.props
 
     if (error) {
       return (
@@ -53,7 +53,9 @@ class EmployeeList extends ReactQueryParams {
                 arrLink={{ create: 'employee-create', edit: 'employee-edit', view: 'employee-view', list: 'employees' }}
                 deleteItem={deleteEmployee}
                 dispatch={dispatch}
-                sortBy={sortBy}
+                sortBy={sortByKey}
+                sortFieldName={sortBy}
+                sortType={sortType}
               />
             </div>
           </div>
@@ -66,7 +68,9 @@ class EmployeeList extends ReactQueryParams {
 const mapStateToProps = state => ({
   employees: state.employee.items,
   loading: state.employee.loading,
-  error: state.employee.error
+  error: state.employee.error,
+  sortBy: state.employee.sortBy,
+  sortType: state.employee.sortType
 })
 
 export default R.pipe(

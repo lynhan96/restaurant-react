@@ -22,6 +22,10 @@
   border-top-left-radius: 0 !important;
 }
 
+.sort-icon-active{
+  display: inline-block !important;
+}
+
 @keyframes zoomIn {
   from {
     opacity: 0;

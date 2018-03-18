@@ -10,6 +10,7 @@ import { sortObjectsByKeyAtoZ, sortObjectsByKeyZtoA } from '../objects'
 export const FETCH_EMPLOYEES_BEGIN = 'FETCH_EMPLOYEES_BEGIN'
 export const FETCH_EMPLOYEES_SUCCESS = 'FETCH_EMPLOYEES_SUCCESS'
 export const FETCH_EMPLOYEES_ERROR = 'FETCH_EMPLOYEES_ERROR'
+export const FETCH_EMPLOYEES_SORT_VALUE = 'FETCH_EMPLOYEES_SORT_VALUE'
 
 export const tableHeader = () => ([
   { 'fieldName': 'id', 'viewTitle': 'ID' },
@@ -47,15 +48,22 @@ export const fetchEmployeesBegin = () => ({
 
 export const fetchEmployeesSuccess = employees => ({
   type: FETCH_EMPLOYEES_SUCCESS,
-  payload: { employees }
+  employees: employees
 })
 
 export const fetchEmployeesError = error => ({
   type: FETCH_EMPLOYEES_ERROR,
-  payload: { error }
+  error: error
 })
 
-export const sortBy = (datas, fieldName, dispatch) => {
+export const fetchEmployeesSortValue = (fieldName, sortType) => ({
+  type: FETCH_EMPLOYEES_SORT_VALUE,
+  sortType: sortType,
+  sortBy: fieldName
+})
+
+export const sortByKey = (datas, fieldName, dispatch) => {
+  dispatch(fetchEmployeesSortValue(fieldName, 'AtoZ'))
   dispatch(fetchEmployeesBegin())
   dispatch(fetchEmployeesSuccess(sortObjectsByKeyAtoZ(datas, fieldName)))
 }
