@@ -160,7 +160,6 @@ export const createEmployee =
 
 export const deleteEmployee = (dispatch, employeeId, employees, itemIndex, currentAction) => {
   const url = 'deleteEmployee'
-  employees = R.remove(itemIndex, 1, employees)
 
   return new Promise((resolve) => {
     request(makeRequestOptions({employeeId: employeeId}, url)).then(body => {

@@ -27,7 +27,7 @@ class InputDateTime extends React.Component {
         {label && <label>{label}</label>}
         <DatePicker
           className='form-control'
-          name={name}
+          name='datetimePiker'
           openToYearSelection={true}
           defaultDate={new Date(defaultTime)}
           onChange={this.handleChange}
