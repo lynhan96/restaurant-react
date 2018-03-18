@@ -3,15 +3,12 @@ import R from 'ramda'
 import { Link } from 'react-router'
 import moment from 'moment'
 
-import 'datatables.net'
-import 'datatables.net-bs/js/dataTables.bootstrap'
-import 'datatables.net-bs/css/dataTables.bootstrap.css'
-
 import { isAdmin } from 'components/wrappers/isAdmin'
+import { showConfirmAlertDeleteItem } from '../../../lib/actions/showNotification'
 
 class TableViewItem extends Component {
   render() {
-    const { indexData, viewLabelHeader, viewHeader, data, subHeader, arrLink } = this.props
+    const { items, itemIndex, deleteItem, viewLabelHeader, viewHeader, data, subHeader, arrLink, dispatch } = this.props
 
     return (
       <div className='row'>
@@ -27,12 +24,12 @@ class TableViewItem extends Component {
                   <Link to={arrLink.list} className='btn btn-success btn-round' style={style.buttonMargin}>
                     Trở lại
                   </Link>
-                  <Link to={arrLink.edit + '?index=' + indexData} className='btn btn-primary btn-round' style={style.buttonMargin}>
+                  <Link to={arrLink.edit + '?index=' + itemIndex} className='btn btn-primary btn-round' style={style.buttonMargin}>
                     Chỉnh sửa dữ liệu
                   </Link>
-                  <Link to='/' className='btn btn-danger btn-round' style={style.buttonMargin}>
+                  <button onClick={showConfirmAlertDeleteItem(deleteItem, items[itemIndex].id, dispatch, items, itemIndex, 'view')} type='button' className='btn btn-danger btn-round' style={style.buttonMargin}>
                     Xóa dữ liệu
-                  </Link>
+                  </button>
                 </div>
                 <form>
                   {viewLabelHeader.map((item, index) => {

@@ -6,12 +6,12 @@ import { connect } from 'react-redux'
 import ErrorMessage from 'components/ErrorMessage'
 import ContentLoading from 'components/ContentLoading'
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { viewLabelHeader } from '../../../lib/actions/employee'
+import { viewLabelHeader, deleteEmployee } from '../../../lib/actions/employee'
 import TableViewItem from 'components/admin/table/TableViewItem'
 
 class EmployeeList extends ReactQueryParams {
   render() {
-    const { error, loading, employees } = this.props
+    const { error, loading, employees, dispatch } = this.props
     const params = this.queryParams
 
     if (error) {
@@ -40,7 +40,10 @@ class EmployeeList extends ReactQueryParams {
             arrLink={{ list: 'employees', edit: 'employee-edit' }}
             data={employees[params.index]}
             subHeader={employees[params.index].name}
-            indexData={params.index}
+            deleteItem={deleteEmployee}
+            itemIndex={params.index}
+            items={employees}
+            dispatch={dispatch}
           />
         </div>
       </div>
