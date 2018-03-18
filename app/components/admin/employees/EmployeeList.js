@@ -5,9 +5,10 @@ import ReactQueryParams from 'react-query-params'
 import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { tableHeader, fetchEmployees, deleteEmployee, sortByKey, searchByKeyword } from '../../../lib/actions/employee'
+import { tableHeader, fetchEmployees, deleteEmployee, sortByKey, searchByKeyword, changePagination } from '../../../lib/actions/employee'
 import TableListing from 'components/admin/table/TableListing'
 import { updateActiveLink } from 'ducks/admin'
+import ContentLoading from 'components/ContentLoading'
 
 class EmployeeList extends ReactQueryParams {
   componentDidMount() {
@@ -16,7 +17,16 @@ class EmployeeList extends ReactQueryParams {
   }
 
   render() {
-    const { sortType, sortBy, error, loading, employees, dispatch } = this.props
+    const { sortType, sortBy, error, employees, dispatch } = this.props
+
+    if (error) {
+      return (
+        <ContentLoading
+          error={error}
+          message='Quá trình tải dữ liệu xảy ra lỗi!'
+        />
+      )
+    }
 
     return (
       <div className='content'>
@@ -36,7 +46,7 @@ class EmployeeList extends ReactQueryParams {
                 sortType={sortType}
                 searchFunc={searchByKeyword}
                 error={error}
-                loading={loading}
+                changePagination={changePagination}
               />
             </div>
           </div>

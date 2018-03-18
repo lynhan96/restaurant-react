@@ -63,11 +63,16 @@ export const fetchEmployeesSortValue = (fieldName, sortType) => ({
 })
 
 export const searchByKeyword = (event, dispatch) => {
-  return new Promise((resolve) => {
-    dispatch(fetchEmployeesBegin())
-    request(makeRequestOptions({keyword: event.target.value}, 'employees')).then(body => dispatch(fetchEmployeesSuccess(body.data)))
-    .catch(err => dispatch(fetchEmployeesError(err)))
-  })
+  dispatch(fetchEmployees({keyword: event.target.value}))
+  dispatch(fetchEmployeesSortValue('id', 'AtoZ'))
+}
+
+export const changePagination = (offset, sortFieldName, sortType, dispatch) => {
+  if (sortType === 'AtoZ') {
+    dispatch(fetchEmployees({sortBy: sortFieldName, sortDir: 'asc', offset: offset}))
+  } else {
+    dispatch(fetchEmployees({sortBy: sortFieldName, sortDir: 'desc', offset: offset}))
+  }
 }
 
 export const sortByKey = (datas, fieldName, currentFieldName, sortType, dispatch) => {
@@ -75,17 +80,17 @@ export const sortByKey = (datas, fieldName, currentFieldName, sortType, dispatch
 
   if (sortType === 'AtoZ' && fieldName === currentFieldName) {
     dispatch(fetchEmployeesSortValue(fieldName, 'ZtoA'))
-    dispatch(fetchEmployeesSuccess(sortObjectsByKeyZtoA(datas, fieldName)))
+    dispatch(fetchEmployees({sortBy: fieldName, sortDir: 'desc'}))
   } else {
     dispatch(fetchEmployeesSortValue(fieldName, 'AtoZ'))
-    dispatch(fetchEmployeesSuccess(sortObjectsByKeyAtoZ(datas, fieldName)))
+    dispatch(fetchEmployees({sortBy: fieldName, sortDir: 'asc'}))
   }
 }
 
-export const fetchEmployees = _ => {
+export const fetchEmployees = params => {
   return dispatch => {
     dispatch(fetchEmployeesBegin())
-    request(makeRequestOptions({}, 'employees')).then(body => dispatch(fetchEmployeesSuccess(body.data)))
+    request(makeRequestOptions(params, 'employees')).then(body => dispatch(fetchEmployeesSuccess(body.data)))
     .catch(err => dispatch(fetchEmployeesError(err)))
   }
 }

@@ -1,8 +1,9 @@
 import React from 'react'
 import CircularProgress from 'material-ui/CircularProgress'
+import ErrorMessage from 'components/ErrorMessage'
 
 const ContentLoading = (props) => {
-  const { message } = props
+  const { error, message } = props
 
   return (
     <div className='content'>
@@ -12,6 +13,7 @@ const ContentLoading = (props) => {
             <CircularProgress size={60} thickness={7} />
             <p style={style.loadingText}>{message}</p>
           </div>
+          {error && <ErrorMessage text={error} />}
         </div>
       </div>
     </div>

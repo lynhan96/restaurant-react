@@ -26,6 +26,11 @@
   display: inline-block !important;
 }
 
+.pagination a{
+  cursor: pointer;
+  outline: none;
+}
+
 @keyframes zoomIn {
   from {
     opacity: 0;

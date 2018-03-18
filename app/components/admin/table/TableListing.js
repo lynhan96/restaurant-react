@@ -6,43 +6,25 @@ import 'datatables.net-bs/js/dataTables.bootstrap'
 import 'datatables.net-bs/css/dataTables.bootstrap.css'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import TableContentLoading from 'components/admin/table/tableListElement/TableContentLoading'
-import ErrorMessage from 'components/ErrorMessage'
 import ListHeaderElement from 'components/admin/table/tableListElement/ListHeaderElement'
 import TableHeader from 'components/admin/table/tableListElement/TableHeader'
 import TableBody from 'components/admin/table/tableListElement/TableBody'
+import ReactPaginate from 'react-paginate'
 
 class TableListing extends Component {
+  constructor (props) {
+    super(props)
+    this.onChangePagination = this.onChangePagination.bind(this)
+  }
+
+  onChangePagination(data) {
+    const { changePagination, sortFieldName, sortType, dispatch } = this.props
+    const offset = data.selected
+    changePagination(offset, sortFieldName, sortType, dispatch)
+  }
+
   render() {
-    const { sortByKey, error, loading, searchFunc, sortType, sortFieldName, deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
-
-    if (error) {
-      return (
-        <TableContentLoading
-          message='Quá trình tải dữ liệu xảy ra lỗi!'
-        />
-      )
-    }
-
-    if (loading) {
-      return (
-        <div className='card'>
-          <div className='card-header' data-background-color='purple'>
-            <h4 className='title'>{viewHeader}</h4>
-          </div>
-          <div className='card-content table-responsive'>
-            <ListHeaderElement
-              dispatch={dispatch}
-              searchFunc={searchFunc}
-              arrLink={arrLink}
-            />
-            <TableContentLoading
-              message='Đang tải dữ liệu ...'
-            />
-          </div>
-        </div>
-      )
-    }
+    const { sortByKey, searchFunc, sortType, sortFieldName, deleteItem, tableHeader, datas, arrLink, viewHeader, dispatch } = this.props
 
     return (
       <div className='card'>
@@ -55,7 +37,6 @@ class TableListing extends Component {
             searchFunc={searchFunc}
             arrLink={arrLink}
           />
-          {error && <ErrorMessage text={error} />}
           <table className='table table-hover'>
             <TableHeader
               tableHeader={tableHeader}
@@ -73,6 +54,20 @@ class TableListing extends Component {
               datas={datas}
             />
           </table>
+          <div style={{ textAlign: 'center' }}>
+            <ReactPaginate
+              previousLabel={'previous'}
+              nextLabel={'next'}
+              onPageChange={this.onChangePagination}
+              breakLabel={<a href=''>...</a>}
+              breakClassName={'break-me'}
+              pageCount={3}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              containerClassName={'pagination'}
+              subContainerClassName={'pages pagination'}
+              activeClassName={'active'} />
+          </div>
         </div>
       </div>
     )
