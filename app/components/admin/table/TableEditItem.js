@@ -9,7 +9,7 @@ import { showConfirmAlertDeleteItem } from '../../../lib/actions/showNotificatio
 
 class TableEditItem extends Component {
   render() {
-    const { dispatch, deleteItem, submitEdit, itemIndex, editLabelHeader, editHeader, items, subHeader, arrLink } = this.props
+    const { selectFieldData, dispatch, deleteItem, submitEdit, itemIndex, editLabelHeader, editHeader, items, subHeader, arrLink } = this.props
 
     return (
       <div className='row'>
@@ -37,6 +37,7 @@ class TableEditItem extends Component {
                   items={items}
                   editLabelHeader={editLabelHeader}
                   onSubmit={submitEdit}
+                  selectFieldData={selectFieldData}
                 />
               </div>
             </div>

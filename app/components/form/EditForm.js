@@ -21,7 +21,7 @@ const checkFieldType = type => {
 }
 
 const EditForm = (props) => {
-  const { items, itemIndex, editLabelHeader, submitting, handleSubmit, onSubmit } = props
+  const { selectFieldData, items, itemIndex, editLabelHeader, submitting, handleSubmit, onSubmit } = props
   handleSubmit.onSubmit = onSubmit
   const data = items[itemIndex]
 
@@ -33,10 +33,12 @@ const EditForm = (props) => {
             <Field
               name={item.fieldName}
               component={checkFieldType(item.type)}
+              selectFieldData={selectFieldData}
               label={item.viewTitle}
               required={item.isRequired}
               defaultValue={data[item.fieldName]}
               type={item.type}
+              fieldName={item.fieldName}
             />
           </div>
         )

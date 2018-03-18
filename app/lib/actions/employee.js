@@ -35,6 +35,10 @@ export const editLabelHeader = () => ([
   { 'fieldName': 'gender', 'viewTitle': 'Giới tinh', isRequired: true, type: 'text' }
 ])
 
+export const selectFieldData = () => ({
+  'position': ['Nhân viên phục vụ', 'Quản trị viên', 'Nhân viên bếp', 'Nhân viên thu ngân']
+})
+
 export const fetchEmployeesBegin = () => ({
   type: FETCH_EMPLOYEES_BEGIN
 })

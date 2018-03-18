@@ -1,44 +1,41 @@
 import React from 'react'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
 // We receive props from ReduxForm's Field
 // and turn them into props for Bootstrap forms
-class InputDateTime extends React.Component {
+class SelectField extends React.Component {
   constructor (props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange (event, index, value) {
-    this.props.input.onChange(value)
+  handleChange (event) {
+    this.props.input.onChange(event.target.value)
   }
 
   render() {
-    const { defaultValue, label } = this.props
+    const { input, selectFieldData, fieldName, defaultValue, label } = this.props
+    let value = defaultValue
+
+    if (input.value) {
+      value = input.value
+    }
 
     return (
       <div className='form-group label-floating' style={{ marginTop: '0' }}>
         {label && <label>{label}</label>}
-        <SelectField
-          style={style.selectInput}
-          value={defaultValue}
+        <select
+          className='form-control'
           onChange={this.handleChange}
+          value={value}
         >
-          <MenuItem value='Never' primaryText='Never' />
-          <MenuItem value='Every Night' primaryText='Every Night' />
-          <MenuItem value='Weeknights' primaryText='Weeknights' />
-        </SelectField>
+          {selectFieldData[fieldName].map((item, index) => {
+            return (
+              <option value={item} key={index}>{item}</option>
+            )
+          })}
+        </select>
       </div>
     )
   }
 }
 
-export default InputDateTime
-
-const style = {
-  selectInput: {
-    width: '100%',
-    height: '43px',
-    fontSize: '14px'
-  }
-}
+export default SelectField
