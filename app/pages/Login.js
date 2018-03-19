@@ -4,6 +4,8 @@ import { reduxForm } from 'redux-form'
 import LoginForm from 'components/form/Login'
 import { submitLogin } from 'lib/actions/submit'
 // import { adminHasSignedOut } from 'ducks/admin'
+// import { dispatchLogout } from 'ducks/admin'
+// import Store from 'lib/Store'
 
 class Login extends Component {
   render() {
@@ -29,8 +31,6 @@ class Login extends Component {
 // Decorate LoginForm so that form is pure
 const DecoratedLoginForm = reduxForm({
   form: 'login',
-  // Separate submitLogin into another file
-  // since the function is decoupled from Login
   onSubmit: submitLogin
 })(LoginForm)
 

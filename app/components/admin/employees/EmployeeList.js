@@ -17,7 +17,7 @@ class EmployeeList extends ReactQueryParams {
   }
 
   render() {
-    const { totalPage, sortType, sortBy, error, employees, dispatch } = this.props
+    const { employeeState, error, dispatch } = this.props
 
     if (error) {
       return (
@@ -34,7 +34,7 @@ class EmployeeList extends ReactQueryParams {
           <div className='row'>
             <div className='col-md-12'>
               <TableListing
-                datas={employees}
+                employeeState={employeeState}
                 tableHeader={tableHeader()}
                 actionLink='/employees'
                 viewHeader='Danh sách Nhân viên'
@@ -42,12 +42,9 @@ class EmployeeList extends ReactQueryParams {
                 deleteItem={deleteEmployee}
                 dispatch={dispatch}
                 sortByKey={sortByKey}
-                sortFieldName={sortBy}
-                sortType={sortType}
                 searchFunc={searchByKeyword}
                 error={error}
                 changePagination={changePagination}
-                totalPage={totalPage}
               />
             </div>
           </div>
@@ -58,12 +55,7 @@ class EmployeeList extends ReactQueryParams {
 }
 
 const mapStateToProps = state => ({
-  employees: state.employee.items,
-  loading: state.employee.loading,
-  error: state.employee.error,
-  sortBy: state.employee.sortBy,
-  sortType: state.employee.sortType,
-  totalPage: state.employee.totalPage
+  employeeState: state.employee
 })
 
 export default R.pipe(
