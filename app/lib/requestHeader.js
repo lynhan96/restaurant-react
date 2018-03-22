@@ -1,5 +1,6 @@
 import moment from 'moment'
 import md5 from 'md5'
+import Store from 'lib/Store'
 
 export const makeHeader = _ => {
   let headers = {
@@ -7,10 +8,19 @@ export const makeHeader = _ => {
     'Date-Time': moment.utc().format('YYYY-MM-DD hh:mm:ss'),
     'X-API-Language': 'en',
     'Uid': '',
-    'Token': ''
+    'Token': '',
+    'Vid': ''
   }
 
-  headers['Authorization'] = md5(md5(headers['Token'] + headers['Uid'] + headers['Date']))
+  const headerInfo = Store.getState().admin.data
+
+  if (headerInfo && headerInfo !== null) {
+    headers['Uid'] = headerInfo.uid
+    headers['Token'] = headerInfo.token
+    headers['Vid'] = headerInfo.vid
+  }
+
+  headers['Authorization'] = md5(md5(headers['Token'] + headers['Uid'] + headers['Date-Time']))
   return headers
 }
 

@@ -1,16 +1,42 @@
-import { database } from 'database/database'
+import {
+  FETCH_NOTIFICATION_SUCCESS,
+  NOTIFICATION_CHANGED
+} from '../lib/actions/notification'
+import { ADMIN_SIGNED_OUT } from 'ducks/admin'
 
-export const fetchNotifications = () => (dispatch) => {
-  const ref = database.ref(`/notifications`)
-  ref.once('value')
-    .then((snapshot) => {
-      const notificaiton = snapshot.val()
-      console.log(notificaiton)
-    })
-    .then(() => {
-      // attach listeners to data changes
-      console.log('213123')
-      ref.on('child_changed', (result) =>  console.log(result.val()))
-    })
-    .catch((error) => console.log(error))
+const initialState = {
+  data: {},
+  loading: false,
+  error: null
 }
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_NOTIFICATION_SUCCESS:
+      return {
+        ...state,
+        data: action.data,
+        loading: true,
+        error: null
+      }
+
+    case NOTIFICATION_CHANGED: {
+      const { id } = action.item
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [id]: action.item
+        }
+      }
+    }
+
+    case ADMIN_SIGNED_OUT:
+      return {...initialState}
+    default:
+      return state
+  }
+}
+
+export default reducer

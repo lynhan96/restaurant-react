@@ -6,7 +6,7 @@ import { reducer as formReducer } from 'redux-form'
 import { autoRehydrate, persistStore } from 'redux-persist'
 import Reactotron from 'reactotron-react-js'
 import { reactotronRedux } from 'reactotron-redux'
-import { fetchNotifications } from 'ducks/notification'
+import { fetchNotifications } from 'lib/actions/notification'
 
 const middleware = [ thunk ]
 var applyMiddlewareConfig

@@ -1,7 +1,6 @@
 import React from 'react'
 import R from 'ramda'
 import ReactQueryParams from 'react-query-params'
-
 import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { dispatchLogout } from 'ducks/admin'
 
 const Header = (props) => {
-  const { signedIn, dispatch } = props
+  const { signedIn, dispatch, notifications } = props
   const logout = dispatchLogout(dispatch)
 
   if (signedIn) {
@@ -29,21 +29,14 @@ const Header = (props) => {
                   <p className='hidden-lg hidden-md'>Notifications</p>
                 </a>
                 <ul className='dropdown-menu'>
-                  <li>
-                    <a href='#'>Mike John responded to your email</a>
-                  </li>
-                  <li>
-                    <a href='#'>You have 5 new tasks</a>
-                  </li>
-                  <li>
-                    <a href='#'>You're now friend with Andrew</a>
-                  </li>
-                  <li>
-                    <a href='#'>Another Notification</a>
-                  </li>
-                  <li>
-                    <a href='#'>Another One</a>
-                  </li>
+                  {Object.keys(notifications).map((key, index) => {
+                    console.log(notifications[key].message)
+                    return (
+                      <li key={index}>
+                        <a href='#'>{notifications[key].message}</a>
+                      </li>
+                    )
+                  })}
                 </ul>
               </li>
               <li>
@@ -70,6 +63,9 @@ const Header = (props) => {
   }
 }
 
-const mapStateToProps = (state) => state.admin
+const mapStateToProps = (state) => ({
+  signedIn: state.admin.signedIn,
+  notifications: state.notification.data
+})
 
 export default connect(mapStateToProps)(Header)

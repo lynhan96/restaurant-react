@@ -15,6 +15,7 @@ export const FETCH_EMPLOYEES_TOTAL_PAGE = 'FETCH_EMPLOYEES_TOTAL_PAGE'
 export const tableHeader = () => ([
   { 'fieldName': 'id', 'viewTitle': 'ID' },
   { 'fieldName': 'name', 'viewTitle': 'Tên' },
+  { 'fieldName': 'email', 'viewTitle': 'Email' },
   { 'fieldName': 'position', 'viewTitle': 'Vị trí' },
   { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
   { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' }
@@ -22,15 +23,19 @@ export const tableHeader = () => ([
 
 export const viewLabelHeader = () => ([
   { 'fieldName': 'name', 'viewTitle': 'Tên' },
+  { 'fieldName': 'email', 'viewTitle': 'Email' },
   { 'fieldName': 'position', 'viewTitle': 'Vị trí' },
   { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
   { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh' },
   { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' },
-  { 'fieldName': 'createdAt', 'viewTitle': 'Ngày tạo dữ liệu' }
+  { 'fieldName': 'createdAt', 'viewTitle': 'Ngày tạo dữ liệu' },
+  { 'fieldName': 'updatedAt', 'viewTitle': 'Ngày cập nhập dữ liệu' }
 ])
 
 export const editFieldInfo = () => ([
   { 'fieldName': 'name', 'viewTitle': 'Tên', isRequired: true, type: 'text' },
+  { 'fieldName': 'email', 'viewTitle': 'Email', isRequired: true, type: 'email' },
+  { 'fieldName': 'password', 'viewTitle': 'Password', isRequired: true, type: 'password' },
   { 'fieldName': 'position', 'viewTitle': 'Vị trí', isRequired: true, type: 'select' },
   { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại', isRequired: true, type: 'number' },
   { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh', isRequired: false, type: 'datetime' },
@@ -96,8 +101,12 @@ export const fetchEmployees = params => {
   return dispatch => {
     dispatch(fetchEmployeesBegin())
     request(makeRequestOptions(params, 'employees')).then(body => {
-      dispatch(fetchEmployeesSuccess(body.data.items))
-      dispatch(fetchEmployeesTotalPage(body.data.totalPage))
+      if (body.code === 401) {
+        showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
+      } else {
+        dispatch(fetchEmployeesSuccess(body.data.items))
+        dispatch(fetchEmployeesTotalPage(body.data.totalPage))
+      }
     })
     .catch(err => dispatch(fetchEmployeesError(err)))
   }
@@ -118,6 +127,8 @@ export const editEmployee =
         showNotification('topRight', 'success', 'Cập nhập dữ liệu thành công')
       } else if (body.code === 417) {
         showNotification('topRight', 'error', 'Dữ liệu không tồn tại')
+      } else if (body.code === 401 || body.code === 400) {
+        showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
         showNotification('topRight', 'error', 'Quá trình cập nhập dữ liệu xảy ra lỗi')
       }
@@ -141,6 +152,8 @@ export const createEmployee =
       if (body.code === 0) {
         showNotification('topRight', 'success', 'Tạo dữ liệu thành công')
         Navigator.push('employees')
+      } else if (body.code === 401 || body.code === 400) {
+        showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
         showNotification('topRight', 'error', 'Quá trình tạo dữ liệu xảy ra lỗi')
       }
@@ -171,6 +184,8 @@ export const deleteEmployee = (dispatch, employeeId, employees, itemIndex, curre
         }
 
         showNotification('topRight', 'info', 'Xóa dữ liệu thành công')
+      } else if (body.code === 401 || body.code === 400) {
+        showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
         showNotification('topRight', 'error', 'Quá trình xóa dữ liệu xảy ra lỗi')
       }

@@ -24,6 +24,8 @@ export const submitLogin =
         showNotification('topCenter', 'error', 'Mật khẩu không hợp lệ!')
       } else if (body.code === 414) {
         showNotification('topCenter', 'error', 'Tài khoản không tồn tại!')
+      } else {
+        showNotification('topCenter', 'error', 'Lỗi hệ thống')
       }
 
       return Promise.resolve()

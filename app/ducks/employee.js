@@ -17,7 +17,7 @@ const initialState = {
   sortType: 'AtoZ'
 }
 
-export default function productReducer(state = initialState, action) {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_EMPLOYEES_BEGIN:
       return {
@@ -60,3 +60,5 @@ export default function productReducer(state = initialState, action) {
       return state
   }
 }
+
+export default reducer

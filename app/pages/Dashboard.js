@@ -142,5 +142,5 @@ class Dashboard extends Component {
 }
 
 export default R.pipe(
-  isAdmin
+  isAdmin,
 )(Dashboard)
