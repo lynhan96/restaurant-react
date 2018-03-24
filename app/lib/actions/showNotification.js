@@ -4,14 +4,14 @@ import R from 'ramda'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
-export const showConfirmAlertDeleteItem = (deleteFunc, itemId, dispatch, items, itemIndex, currentAction) => () => {
+export const showConfirmAlertDeleteItem = (deleteFunc, itemId, dispatch, itemIndex, currentAction) => () => {
   confirmAlert({
     title: '',
     message: 'Bạn có muốn xóa dữ liệu này?',
     buttons: [
       {
         label: 'Có',
-        onClick: () => deleteFunc(dispatch, itemId, items, itemIndex, currentAction)
+        onClick: () => deleteFunc(dispatch, itemId, itemIndex, currentAction)
       },
       {
         label: 'Không',

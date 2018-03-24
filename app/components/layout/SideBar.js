@@ -29,6 +29,12 @@ const SideBar = (props) => {
                 <p>Nhân viên</p>
               </Link>
             </li>
+            <li className={activeLink === 'food-categories' ? 'active' : ''}>
+              <Link to='food-categories'>
+                <i className='material-icons'>content_paste</i>
+                <p>Danh mục thức ăn</p>
+              </Link>
+            </li>
             <li>
               <Link to='#' onClick={e => { e.preventDefault(); logout() }}>
                 <i className='material-icons'>subdirectory_arrow_right</i>

@@ -13,6 +13,11 @@ import EmployeeView from 'components/admin/employees/EmployeeView'
 import EmployeeEdit from 'components/admin/employees/EmployeeEdit'
 import EmployeeCreate from 'components/admin/employees/EmployeeCreate'
 
+import FoodCategoryList from 'components/admin/foodCategories/FoodCategoryList'
+import FoodCategoryView from 'components/admin/foodCategories/FoodCategoryView'
+import FoodCategoryEdit from 'components/admin/foodCategories/FoodCategoryEdit'
+import FoodCategoryCreate from 'components/admin/foodCategories/FoodCategoryCreate'
+
 ReactDOM.render((
   <Provider store={Store}>
     <Router history={Navigator}>
@@ -25,6 +30,11 @@ ReactDOM.render((
         <Route path='employee-view' component={EmployeeView} />
         <Route path='employee-edit' component={EmployeeEdit} />
         <Route path='employee-create' component={EmployeeCreate} />
+
+        <Route path='food-categories' component={FoodCategoryList} />
+        <Route path='food-category-view' component={FoodCategoryView} />
+        <Route path='food-category-edit' component={FoodCategoryEdit} />
+        <Route path='food-category-create' component={FoodCategoryCreate} />
       </Route>
     </Router>
   </Provider>

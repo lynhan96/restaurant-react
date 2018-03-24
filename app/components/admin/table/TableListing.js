@@ -24,9 +24,9 @@ class TableListing extends Component {
   }
 
   render() {
-    const { employeeState, sortByKey, searchFunc, deleteItem, tableHeader, arrLink, viewHeader, dispatch } = this.props
-    const { totalPage, sortType } = employeeState
-    const sortFieldName = employeeState.sortBy
+    const { itemState, sortByKey, searchFunc, deleteItem, tableHeader, arrLink, viewHeader, dispatch } = this.props
+    const { totalPage, sortType } = itemState
+    const sortFieldName = itemState.sortBy
 
     return (
       <div className='card'>
@@ -45,7 +45,7 @@ class TableListing extends Component {
               sortFieldName={sortFieldName}
               sortType={sortType}
               dispatch={dispatch}
-              datas={employeeState.items}
+              datas={itemState.items}
               sortBy={sortByKey}
             />
             <TableBody
@@ -53,7 +53,7 @@ class TableListing extends Component {
               deleteItem={deleteItem}
               tableHeader={tableHeader}
               dispatch={dispatch}
-              datas={employeeState.items}
+              datas={itemState.items}
             />
           </table>
           <div style={{ textAlign: 'center' }}>

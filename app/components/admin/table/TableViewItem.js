@@ -27,7 +27,7 @@ class TableViewItem extends Component {
                   <Link to={arrLink.edit + '?index=' + itemIndex} className='btn btn-primary btn-round' style={style.buttonMargin}>
                     Chỉnh sửa dữ liệu
                   </Link>
-                  <button onClick={showConfirmAlertDeleteItem(deleteItem, items[itemIndex].id, dispatch, items, itemIndex, 'view')} type='button' className='btn btn-danger btn-round' style={style.buttonMargin}>
+                  <button onClick={showConfirmAlertDeleteItem(deleteItem, items[itemIndex].id, dispatch, itemIndex, 'view')} type='button' className='btn btn-danger btn-round' style={style.buttonMargin}>
                     Xóa dữ liệu
                   </button>
                 </div>

@@ -17,6 +17,14 @@ class TableBody extends Component {
           return (
             <tr key={itemIndex}>
               {tableHeader.map(function(headerItem, headerIndex) {
+                if (headerItem.fieldName === 'isView' && item[headerItem.fieldName] === true) {
+                  return <td key={headerIndex}>Có</td>
+                }
+
+                if (headerItem.fieldName === 'isView' && item[headerItem.fieldName] === false) {
+                  return <td key={headerIndex}>Không</td>
+                }
+
                 return <td key={headerIndex}>{item[headerItem.fieldName]}</td>
               })}
               <td className='td-actions text-right'>

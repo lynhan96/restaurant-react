@@ -4,19 +4,19 @@ import ReactQueryParams from 'react-query-params'
 import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { tableHeader, fetchEmployees, deleteEmployee, sortByKey, searchByKeyword, changePagination } from '../../../lib/actions/employee'
+import { tableHeader, fetchFoodCategories, deleteFoodCategory, sortByKey, searchByKeyword, changePagination } from '../../../lib/actions/foodCategory'
 import TableListing from 'components/admin/table/TableListing'
 import { updateActiveLink } from 'ducks/admin'
 import ContentLoading from 'components/ContentLoading'
 
-class EmployeeList extends ReactQueryParams {
+class FoodCategoryList extends ReactQueryParams {
   componentDidMount() {
-    this.props.dispatch(fetchEmployees())
-    this.props.dispatch(updateActiveLink('employees'))
+    this.props.dispatch(fetchFoodCategories())
+    this.props.dispatch(updateActiveLink('food-categories'))
   }
 
   render() {
-    const { employeeState, error, dispatch } = this.props
+    const { foodCategoryState, error, dispatch } = this.props
 
     if (error) {
       return (
@@ -33,12 +33,12 @@ class EmployeeList extends ReactQueryParams {
           <div className='row'>
             <div className='col-md-12'>
               <TableListing
-                itemState={employeeState}
+                itemState={foodCategoryState}
                 tableHeader={tableHeader()}
-                actionLink='/employees'
-                viewHeader='Danh sách Nhân viên'
-                arrLink={{ create: 'employee-create', edit: 'employee-edit', view: 'employee-view', list: 'employees' }}
-                deleteItem={deleteEmployee}
+                actionLink='/FoodCategorys'
+                viewHeader='Danh sách Danh mục thức ăn'
+                arrLink={{ create: 'food-category-create', edit: 'food-category-edit', view: 'food-category-view', list: 'food-categories' }}
+                deleteItem={deleteFoodCategory}
                 dispatch={dispatch}
                 sortByKey={sortByKey}
                 searchFunc={searchByKeyword}
@@ -54,10 +54,10 @@ class EmployeeList extends ReactQueryParams {
 }
 
 const mapStateToProps = state => ({
-  employeeState: state.employee
+  foodCategoryState: state.foodCategory
 })
 
 export default R.pipe(
   connect(mapStateToProps),
   isAdmin
-)(EmployeeList)
+)(FoodCategoryList)

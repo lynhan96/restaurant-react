@@ -25,12 +25,11 @@ const Header = (props) => {
               <li className='dropdown'>
                 <a href='#' className='dropdown-toggle' data-toggle='dropdown' aria-expanded="false">
                   <i className='material-icons'>notifications</i>
-                  <span className='notification'>5</span>
+                  <span className='notification'>{Object.keys(notifications).length}</span>
                   <p className='hidden-lg hidden-md'>Notifications</p>
                 </a>
                 <ul className='dropdown-menu'>
                   {Object.keys(notifications).map((key, index) => {
-                    console.log(notifications[key].message)
                     return (
                       <li key={index}>
                         <a href='#'>{notifications[key].message}</a>

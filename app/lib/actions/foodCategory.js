@@ -6,123 +6,114 @@ import Navigator from 'lib/Navigator'
 import { showNotification } from './showNotification'
 import { makeRequestOptions } from '../requestHeader'
 
-export const FETCH_EMPLOYEES_BEGIN = 'FETCH_EMPLOYEES_BEGIN'
-export const FETCH_EMPLOYEES_SUCCESS = 'FETCH_EMPLOYEES_SUCCESS'
-export const FETCH_EMPLOYEES_ERROR = 'FETCH_EMPLOYEES_ERROR'
-export const FETCH_EMPLOYEES_SORT_VALUE = 'FETCH_EMPLOYEES_SORT_VALUE'
-export const FETCH_EMPLOYEES_TOTAL_PAGE = 'FETCH_EMPLOYEES_TOTAL_PAGE'
+export const FETCH_FOOD_CATEGORIES_BEGIN = 'FETCH_FOOD_CATEGORIES_BEGIN'
+export const FETCH_FOOD_CATEGORIES_SUCCESS = 'FETCH_FOOD_CATEGORIES_SUCCESS'
+export const FETCH_FOOD_CATEGORIES_ERROR = 'FETCH_FOOD_CATEGORIES_ERROR'
+export const FETCH_FOOD_CATEGORIES_SORT_VALUE = 'FETCH_FOOD_CATEGORIES_SORT_VALUE'
+export const FETCH_FOOD_CATEGORIES_TOTAL_PAGE = 'FETCH_FOOD_CATEGORIES_TOTAL_PAGE'
 
 export const tableHeader = () => ([
   { 'fieldName': 'id', 'viewTitle': 'ID' },
   { 'fieldName': 'name', 'viewTitle': 'Tên' },
-  { 'fieldName': 'email', 'viewTitle': 'Email' },
-  { 'fieldName': 'position', 'viewTitle': 'Vị trí' },
-  { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
-  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' }
+  { 'fieldName': 'imageUrl', 'viewTitle': 'Image' },
+  { 'fieldName': 'isView', 'viewTitle': 'Hiển thị trên Website' }
 ])
 
 export const viewLabelHeader = () => ([
   { 'fieldName': 'name', 'viewTitle': 'Tên' },
-  { 'fieldName': 'email', 'viewTitle': 'Email' },
-  { 'fieldName': 'position', 'viewTitle': 'Vị trí' },
-  { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
-  { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh' },
-  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' },
+  { 'fieldName': 'description', 'viewTitle': 'Mô tả' },
+  { 'fieldName': 'imageUrl', 'viewTitle': 'Hình ảnh' },
   { 'fieldName': 'createdAt', 'viewTitle': 'Ngày tạo dữ liệu' },
   { 'fieldName': 'updatedAt', 'viewTitle': 'Ngày cập nhập dữ liệu' }
 ])
 
 export const editFieldInfo = () => ([
   { 'fieldName': 'name', 'viewTitle': 'Tên', isRequired: true, type: 'text' },
-  { 'fieldName': 'email', 'viewTitle': 'Email', isRequired: true, type: 'email' },
-  { 'fieldName': 'password', 'viewTitle': 'Password', isRequired: true, type: 'password' },
-  { 'fieldName': 'position', 'viewTitle': 'Vị trí', isRequired: true, type: 'select' },
-  { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại', isRequired: true, type: 'number' },
-  { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh', isRequired: false, type: 'datetime' },
-  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh', isRequired: true, type: 'select' }
+  { 'fieldName': 'description', 'viewTitle': 'Mô tả', isRequired: true, type: 'textarea' },
+  { 'fieldName': 'imageUrl', 'viewTitle': 'Password', isRequired: true, type: 'password' },
+  { 'fieldName': 'isView', 'viewTitle': 'Hiển thị trên Website', isRequired: true, type: 'select' }
 ])
 
 export const selectFieldData = () => ({
-  'position': ['Nhân viên phục vụ', 'Quản trị viên', 'Nhân viên bếp', 'Nhân viên thu ngân'],
-  'gender': ['Nam', 'Nữ']
+  'gender': ['Có', 'Không']
 })
 
-export const fetchEmployeesBegin = () => ({
-  type: FETCH_EMPLOYEES_BEGIN
+export const fetchFoodCategoriesBegin = () => ({
+  type: FETCH_FOOD_CATEGORIES_BEGIN
 })
 
-export const fetchEmployeesSuccess = employees => ({
-  type: FETCH_EMPLOYEES_SUCCESS,
-  employees: employees
+export const fetchFoodCategoriesSuccess = foodCategories => ({
+  type: FETCH_FOOD_CATEGORIES_SUCCESS,
+  foodCategories: foodCategories
 })
 
-export const fetchEmployeesError = error => ({
-  type: FETCH_EMPLOYEES_ERROR,
+export const fetchFoodCategoriesError = error => ({
+  type: FETCH_FOOD_CATEGORIES_ERROR,
   error: error
 })
 
-export const fetchEmployeesSortValue = (fieldName, sortType) => ({
-  type: FETCH_EMPLOYEES_SORT_VALUE,
+export const fetchFoodCategoriesSortValue = (fieldName, sortType) => ({
+  type: FETCH_FOOD_CATEGORIES_SORT_VALUE,
   sortType: sortType,
   sortBy: fieldName
 })
 
-export const fetchEmployeesTotalPage = totalPage => ({
-  type: FETCH_EMPLOYEES_TOTAL_PAGE,
+export const fetchFoodCategoriesTotalPage = totalPage => ({
+  type: FETCH_FOOD_CATEGORIES_TOTAL_PAGE,
   totalPage: totalPage
 })
 
 export const searchByKeyword = (event, dispatch) => {
-  dispatch(fetchEmployees({keyword: event.target.value}))
-  dispatch(fetchEmployeesSortValue('id', 'AtoZ'))
+  dispatch(fetchFoodCategories({keyword: event.target.value}))
+  dispatch(fetchFoodCategoriesSortValue('id', 'AtoZ'))
 }
 
 export const changePagination = (offset, sortFieldName, sortType, dispatch) => {
   if (sortType === 'AtoZ') {
-    dispatch(fetchEmployees({sortBy: sortFieldName, sortDir: 'asc', offset: offset}))
+    dispatch(fetchFoodCategories({sortBy: sortFieldName, sortDir: 'asc', offset: offset}))
   } else {
-    dispatch(fetchEmployees({sortBy: sortFieldName, sortDir: 'desc', offset: offset}))
+    dispatch(fetchFoodCategories({sortBy: sortFieldName, sortDir: 'desc', offset: offset}))
   }
 }
 
 export const sortByKey = (datas, fieldName, currentFieldName, sortType, dispatch) => {
-  dispatch(fetchEmployeesBegin())
+  dispatch(fetchFoodCategoriesBegin())
 
   if (sortType === 'AtoZ' && fieldName === currentFieldName) {
-    dispatch(fetchEmployeesSortValue(fieldName, 'ZtoA'))
-    dispatch(fetchEmployees({sortBy: fieldName, sortDir: 'desc'}))
+    dispatch(fetchFoodCategoriesSortValue(fieldName, 'ZtoA'))
+    dispatch(fetchFoodCategories({sortBy: fieldName, sortDir: 'desc'}))
   } else {
-    dispatch(fetchEmployeesSortValue(fieldName, 'AtoZ'))
-    dispatch(fetchEmployees({sortBy: fieldName, sortDir: 'asc'}))
+    dispatch(fetchFoodCategoriesSortValue(fieldName, 'AtoZ'))
+    dispatch(fetchFoodCategories({sortBy: fieldName, sortDir: 'asc'}))
   }
 }
 
-export const fetchEmployees = params => {
+export const fetchFoodCategories = params => {
   return dispatch => {
-    dispatch(fetchEmployeesBegin())
-    request(makeRequestOptions(params, 'employees')).then(body => {
+    dispatch(fetchFoodCategoriesBegin())
+    request(makeRequestOptions(params, 'foodCategories')).then(body => {
       if (body.code === 401) {
         showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
-        dispatch(fetchEmployeesSuccess(body.data.items))
-        dispatch(fetchEmployeesTotalPage(body.data.totalPage))
+        dispatch(fetchFoodCategoriesSuccess(body.data.items))
+        dispatch(fetchFoodCategoriesTotalPage(body.data.totalPage))
       }
     })
-    .catch(err => dispatch(fetchEmployeesError(err)))
+    .catch(err => dispatch(fetchFoodCategoriesError(err)))
   }
 }
 
-export const editEmployee =
+export const editFoodCategory =
   (values, dispatch, props) => {
-    const url = 'updateEmployee'
+    const url = 'updateFoodCategory'
     const itemData = props.items[props.itemIndex]
 
-    const params = R.merge({ employeeId: itemData.id })(values)
+    const params = R.merge({ FoodCategoryId: itemData.id })(values)
 
     return request(makeRequestOptions(params, url)).then(body => {
       if (body.code === 0) {
         props.items[props.itemIndex] = R.merge(itemData)(values)
-        dispatch(fetchEmployeesSuccess(props.items))
+        dispatch(fetchFoodCategoriesSuccess(props.items))
 
         showNotification('topRight', 'success', 'Cập nhập dữ liệu thành công')
       } else if (body.code === 417) {
@@ -144,14 +135,14 @@ export const editEmployee =
     })
   }
 
-export const createEmployee =
+export const createFoodCategory =
   (values, dispatch, props) => {
-    const url = 'createEmployee'
+    const url = 'createFoodCategory'
 
     return request(makeRequestOptions(values, url)).then(body => {
       if (body.code === 0) {
         showNotification('topRight', 'success', 'Tạo dữ liệu thành công')
-        Navigator.push('employees')
+        Navigator.push('food-categories')
       } else if (body.code === 401 || body.code === 400) {
         showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
@@ -171,16 +162,16 @@ export const createEmployee =
     })
   }
 
-export const deleteEmployee = (dispatch, employeeId, itemIndex, currentAction) => {
-  const url = 'deleteEmployee'
+export const deleteFoodCategory = (dispatch, foodCategoryId, itemIndex, currentAction) => {
+  const url = 'deleteFoodCategory'
 
   return new Promise((resolve) => {
-    request(makeRequestOptions({employeeId: employeeId}, url)).then(body => {
+    request(makeRequestOptions({foodCategoryId: foodCategoryId}, url)).then(body => {
       if (body.code === 0) {
         if (currentAction === 'list') {
-          dispatch(fetchEmployees())
+          dispatch(fetchFoodCategories())
         } else {
-          Navigator.push('employees')
+          Navigator.push('food-categories')
         }
 
         showNotification('topRight', 'info', 'Xóa dữ liệu thành công')
