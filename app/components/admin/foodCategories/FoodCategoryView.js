@@ -36,7 +36,7 @@ class FoodCategoryList extends ReactQueryParams {
           {error && <ErrorMessage text={error} />}
           <TableViewItem
             viewLabelHeader={viewLabelHeader()}
-            viewHeader='Thông tin Nhân viên'
+            viewHeader='Thông tin Danh mục'
             arrLink={{ list: 'food-categories', edit: 'food-category-edit' }}
             data={foodCategories[params.index]}
             subHeader={foodCategories[params.index].name}

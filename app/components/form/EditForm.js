@@ -7,6 +7,7 @@ import SubmitButton from 'components/form/element/SubmitButton'
 import SelectField from 'components/form/element/SelectField'
 import InputTextArea from 'components/form/element/InputTextArea'
 import CkEditor from 'components/form/element/CkEditor'
+import InputImage from 'components/form/element/ImageUploader'
 
 // This form is pure so it is easy to test
 // Page/Login will decorate it with the necessary props
@@ -21,6 +22,8 @@ const checkFieldType = type => {
       return InputTextArea
     case 'ckeditor':
       return CkEditor
+    case 'image':
+      return InputImage
     default:
       return EditFormInputText
   }
@@ -34,7 +37,7 @@ const EditForm = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       {editFieldInfo.map((item, index) => {
-        if (item.type === 'textarea' || item.type === 'ckeditor') {
+        if (item.type === 'textarea' || item.type === 'ckeditor' || item.type === 'image') {
           return (
             <div className='col-md-12' key={index}>
               <Field
