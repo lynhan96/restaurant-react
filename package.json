@@ -52,6 +52,7 @@
     "react": "^15.4.2",
     "react-async-script": "^0.8.0",
     "react-bs-notifier": "^4.4.6",
+    "react-ckeditor-component": "^1.0.7",
     "react-confirm-alert": "^2.0.2",
     "react-dom": "^15.4.2",
     "react-google-recaptcha": "^0.8.1",

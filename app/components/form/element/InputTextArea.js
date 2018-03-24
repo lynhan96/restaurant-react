@@ -1,25 +1,17 @@
 import React from 'react'
-import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap/lib'
 
+// We receive props from ReduxForm's Field
+// and turn them into props for Bootstrap forms
 const InputTextArea = (props) => {
-  const { input, meta, label, height = 100 } = props
-  const { value, onChange, onBlur } = input
-  const { touched, error } = meta
-  const validationState = !touched ? null : error ? 'error' : 'success'
+  const { required, name, defaultValue, input, label, type = 'text' } = props
+
+  const { onChange } = input
 
   return (
-    <FormGroup validationState={validationState}>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl
-        componentClass='textarea'
-        style={{height: `${height}px`}}
-        onBlur={onBlur}
-        onChange={onChange}
-        value={value}
-      />
-      {touched && error && <HelpBlock>{error}</HelpBlock>}
-      <FormControl.Feedback />
-    </FormGroup>
+    <div className='form-group label-floating' style={{ marginTop: '0' }}>
+      <label>{label}</label>
+      <textarea type={type} className='form-control' name={name} required={required} defaultValue={defaultValue} onChange={onChange} rows='5'/>
+    </div>
   )
 }
 

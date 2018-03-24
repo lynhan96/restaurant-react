@@ -29,13 +29,13 @@ export const viewLabelHeader = () => ([
 
 export const editFieldInfo = () => ([
   { 'fieldName': 'name', 'viewTitle': 'Tên', isRequired: true, type: 'text' },
-  { 'fieldName': 'description', 'viewTitle': 'Mô tả', isRequired: true, type: 'textarea' },
   { 'fieldName': 'imageUrl', 'viewTitle': 'Password', isRequired: true, type: 'password' },
-  { 'fieldName': 'isView', 'viewTitle': 'Hiển thị trên Website', isRequired: true, type: 'select' }
+  { 'fieldName': 'isView', 'viewTitle': 'Hiển thị trên Website', isRequired: true, type: 'select' },
+  { 'fieldName': 'description', 'viewTitle': 'Mô tả', isRequired: true, type: 'ckeditor' }
 ])
 
 export const selectFieldData = () => ({
-  'gender': ['Có', 'Không']
+  'isView': ['Có', 'Không']
 })
 
 export const fetchFoodCategoriesBegin = () => ({

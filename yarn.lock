@@ -634,6 +634,12 @@ babel-plugin-transform-regenerator@^6.24.1:
   dependencies:
     regenerator-transform "0.9.11"
 
+babel-plugin-transform-runtime@^6.23.0:
+  version "6.23.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-runtime/-/babel-plugin-transform-runtime-6.23.0.tgz#88490d446502ea9b8e7efb0fe09ec4d99479b1ee"
+  dependencies:
+    babel-runtime "^6.22.0"
+
 babel-plugin-transform-strict-mode@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-strict-mode/-/babel-plugin-transform-strict-mode-6.24.1.tgz#d5faf7aa578a65bbe591cf5edae04a0c67020758"
@@ -690,7 +696,7 @@ babel-preset-jest@^19.0.0:
   dependencies:
     babel-plugin-jest-hoist "^19.0.0"
 
-babel-preset-react@^6.23.0:
+babel-preset-react@^6.16.0, babel-preset-react@^6.23.0:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-preset-react/-/babel-preset-react-6.24.1.tgz#ba69dfaea45fc3ec639b6a4ecea6e17702c91380"
   dependencies:
@@ -3353,6 +3359,10 @@ load-json-file@^1.0.0:
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
 
+load-script@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/load-script/-/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
+
 loader-runner@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
@@ -4437,6 +4447,15 @@ react-bs-notifier@^4.4.6:
     react-jss ">= 8 <9"
     react-transition-group "2.x"
     toetag "3.x"
+
+react-ckeditor-component@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-ckeditor-component/-/react-ckeditor-component-1.0.7.tgz#d5a546b8311844bf55993c27592304f1da79bcae"
+  dependencies:
+    babel-plugin-transform-runtime "^6.23.0"
+    babel-preset-react "^6.16.0"
+    babel-runtime "^6.11.6"
+    load-script "^1.0.0"
 
 react-confirm-alert@^2.0.2:
   version "2.0.2"
