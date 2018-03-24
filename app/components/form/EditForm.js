@@ -9,9 +9,6 @@ import InputTextArea from 'components/form/element/InputTextArea'
 import CkEditor from 'components/form/element/CkEditor'
 import InputImage from 'components/form/element/ImageUploader'
 
-// This form is pure so it is easy to test
-// Page/Login will decorate it with the necessary props
-
 const checkFieldType = type => {
   switch (type) {
     case 'datetime':
