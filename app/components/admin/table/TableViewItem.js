@@ -38,6 +38,18 @@ class TableViewItem extends Component {
                     } else if (item.fieldName === 'birthday') {
                       data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD')
                     }
+
+                    if (item.fieldName === 'description') {
+                      return (
+                        <div className='col-md-12' key={index}>
+                          <div className='form-group label-floating' style={{ marginTop: '0' }}>
+                            <label>{item.viewTitle}</label>
+                            <div className='form-control' dangerouslySetInnerHTML={{ __html: data[item.fieldName] }} style={{ height: 'auto' }}/>
+                          </div>
+                        </div>
+                      )
+                    }
+
                     return (
                       <div className='col-md-6' key={index}>
                         <div className='form-group label-floating' style={{ marginTop: '0' }}>

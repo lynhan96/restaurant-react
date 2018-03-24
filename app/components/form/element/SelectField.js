@@ -19,10 +19,6 @@ class SelectField extends React.Component {
     const { input, selectFieldData, fieldName, defaultValue, label } = this.props
     let value = defaultValue
 
-    // if (!defaultValue) {
-    //   value = selectFieldData[fieldName][0]
-    // }
-
     if (input.value) {
       value = input.value
     }

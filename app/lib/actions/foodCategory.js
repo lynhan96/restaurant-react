@@ -15,21 +15,21 @@ export const FETCH_FOOD_CATEGORIES_TOTAL_PAGE = 'FETCH_FOOD_CATEGORIES_TOTAL_PAG
 export const tableHeader = () => ([
   { 'fieldName': 'id', 'viewTitle': 'ID' },
   { 'fieldName': 'name', 'viewTitle': 'Tên' },
-  { 'fieldName': 'imageUrl', 'viewTitle': 'Image' },
+  { 'fieldName': 'imageUrl', 'viewTitle': 'Hình ảnh' },
   { 'fieldName': 'isView', 'viewTitle': 'Hiển thị trên Website' }
 ])
 
 export const viewLabelHeader = () => ([
   { 'fieldName': 'name', 'viewTitle': 'Tên' },
-  { 'fieldName': 'description', 'viewTitle': 'Mô tả' },
   { 'fieldName': 'imageUrl', 'viewTitle': 'Hình ảnh' },
   { 'fieldName': 'createdAt', 'viewTitle': 'Ngày tạo dữ liệu' },
-  { 'fieldName': 'updatedAt', 'viewTitle': 'Ngày cập nhập dữ liệu' }
+  { 'fieldName': 'updatedAt', 'viewTitle': 'Ngày cập nhập dữ liệu' },
+  { 'fieldName': 'description', 'viewTitle': 'Mô tả' }
 ])
 
 export const editFieldInfo = () => ([
   { 'fieldName': 'name', 'viewTitle': 'Tên', isRequired: true, type: 'text' },
-  { 'fieldName': 'imageUrl', 'viewTitle': 'Password', isRequired: true, type: 'password' },
+  { 'fieldName': 'imageUrl', 'viewTitle': 'Hình ảnh', isRequired: true, type: 'text' },
   { 'fieldName': 'isView', 'viewTitle': 'Hiển thị trên Website', isRequired: true, type: 'select' },
   { 'fieldName': 'description', 'viewTitle': 'Mô tả', isRequired: true, type: 'ckeditor' }
 ])
@@ -92,7 +92,7 @@ export const fetchFoodCategories = params => {
   return dispatch => {
     dispatch(fetchFoodCategoriesBegin())
     request(makeRequestOptions(params, 'foodCategories')).then(body => {
-      if (body.code === 401) {
+      if (body.code === 401 || body.code === 400) {
         showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
         dispatch(fetchFoodCategoriesSuccess(body.data.items))
@@ -108,7 +108,7 @@ export const editFoodCategory =
     const url = 'updateFoodCategory'
     const itemData = props.items[props.itemIndex]
 
-    const params = R.merge({ FoodCategoryId: itemData.id })(values)
+    const params = R.merge({ foodCategoryId: itemData.id })(values)
 
     return request(makeRequestOptions(params, url)).then(body => {
       if (body.code === 0) {
