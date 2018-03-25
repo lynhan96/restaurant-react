@@ -7,7 +7,7 @@ import SubmitButton from 'components/form/element/SubmitButton'
 import SelectField from 'components/form/element/SelectField'
 import InputTextArea from 'components/form/element/InputTextArea'
 import CkEditor from 'components/form/element/CkEditor'
-import InputImage from 'components/form/element/ImageUploader'
+import ImageUploader from 'components/form/element/ImageUploader'
 
 const checkFieldType = type => {
   switch (type) {
@@ -20,7 +20,7 @@ const checkFieldType = type => {
     case 'ckeditor':
       return CkEditor
     case 'image':
-      return InputImage
+      return ImageUploader
     default:
       return EditFormInputText
   }

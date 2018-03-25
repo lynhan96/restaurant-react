@@ -92,7 +92,8 @@ export const fetchFoodCategories = params => {
   return dispatch => {
     dispatch(fetchFoodCategoriesBegin())
     request(makeRequestOptions(params, 'foodCategories')).then(body => {
-      if (body.code === 401 || body.code === 400) {
+      console.log(body)
+      if (body.code === 401 || body.code === 400 || body.code === 414) {
         showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
         dispatch(fetchFoodCategoriesSuccess(body.data.items))
@@ -109,6 +110,15 @@ export const editFoodCategory =
     const itemData = props.items[props.itemIndex]
 
     const params = R.merge({ foodCategoryId: itemData.id })(values)
+
+    // var key = Object.keys(pictures)[0]
+
+    // var storageRef = firebase.storage().ref(key + '.png')
+
+    // var base64result = R.split(',', pictures[key])
+    // storageRef.putString(base64result[1], 'base64').then(function(snapshot) {
+    //   console.log(snapshot.downloadURL)
+    // })
 
     return request(makeRequestOptions(params, url)).then(body => {
       if (body.code === 0) {

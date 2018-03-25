@@ -1,14 +1,29 @@
 import React, { Component } from 'react'
 import { reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
 
 import LoginForm from 'components/form/Login'
 import { submitLogin } from 'lib/actions/submit'
-// import { adminHasSignedOut } from 'ducks/admin'
-// import { dispatchLogout } from 'ducks/admin'
-// import Store from 'lib/Store'
 
 class Login extends Component {
   render() {
+    const { signedIn } = this.props
+
+    if (signedIn) {
+      return (
+        <div>
+          <div className='col-md-3'/>
+          <div className='col-md-6'>
+            <div className='card' style={style.cardBackground}>
+              <div className='card-header' style={style.cardHeaderBackground}>
+                <h2 className='card-title' style={style.cardTitle}>Bạn đã đăng nhập. Nếu muốn thoát vui lòng bấm nút thoát!</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div className='login-form-wrapper'>
         <div className='col-md-4'/>
@@ -49,4 +64,8 @@ const style = {
   }
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+  signedIn: state.admin.signedIn
+})
+
+export default connect(mapStateToProps)(Login)

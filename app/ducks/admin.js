@@ -25,6 +25,10 @@ export const dispatchLogout = (dispatch) => () => {
 }
 
 // Creators
+export const adminHasSignedOutNoRedirect = () => (dispatch) => {
+  dispatch({ type: ADMIN_SIGNED_OUT })
+}
+
 export const adminHasSignedOut = () => (dispatch) => {
   dispatch({ type: ADMIN_SIGNED_OUT })
   Navigator.push('login')
