@@ -68,3 +68,41 @@
 .animate{
   animation-duration: 800ms;
 }
+
+.PreviewsContainer {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.PreviewContainer {
+  position: relative !important;
+  box-sizing: border-box !important;
+  flex: 1 0 200px !important;
+  max-height: 250px !important;
+  overflow: hidden !important;
+}
+
+.Image {
+  vertical-align: top !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.RemoveItem {
+  position: absolute !important;
+  bottom: 25px !important;
+  right: 25px !important;
+}
+
+.ActionsContainer {
+  display: flex !important;
+}
+
+#image img {
+  max-width: 20% !important;
+  width: auto !important;
+}
+
+#image img:parent {
+  display: inline-block !important;
+}

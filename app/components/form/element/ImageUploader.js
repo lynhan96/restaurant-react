@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import UploadPreview from 'material-ui-upload/UploadPreview'
 import * as firebase from 'firebase'
+import RaisedButton from 'material-ui/RaisedButton'
 import R from 'ramda'
 
 class InputImage extends Component {
@@ -17,8 +18,7 @@ class InputImage extends Component {
     var key = Object.keys(pictures)[0]
 
     var storageRef = firebase.storage().ref(key + '.png')
-    
-    console.log(pictures[key])
+
     var base64result = R.split(',', pictures[key])
     storageRef.putString(base64result[1], 'base64').then(function(snapshot) {
       console.log(snapshot.downloadURL)
@@ -31,13 +31,16 @@ class InputImage extends Component {
     const { label, name } = this.props
 
     return (
-      <UploadPreview
-        name={name}
-        title={label}
-        label='Thêm hình'
-        initialItems={this.state.pictures}
-        onChange={this.onChange}
+      <div id='image'>
+        <UploadPreview
+          name={name}
+          title={label}
+          label='Thêm hình'
+          buttonControl={RaisedButton}
+          initialItems={this.state.pictures}
+          onChange={this.onChange}
         />
+      </div>
     )
   }
 }
