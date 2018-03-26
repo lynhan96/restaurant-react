@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import ContentLoading from 'components/ContentLoading'
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { editFieldInfo, selectFieldData } from '../../../lib/actions/foodCategory'
+import { editFieldInfo, selectFieldData, customSelectFieldData } from '../../../lib/actions/foodCategory'
 import { createFoodCategory } from 'lib/actions/foodCategory'
 import TableCreateItem from 'components/admin/table/TableCreateItem'
 
@@ -26,6 +26,7 @@ class FoodCategoryCreate extends Component {
           <TableCreateItem
             editFieldInfo={editFieldInfo()}
             selectFieldData={selectFieldData()}
+            customSelectFieldData={customSelectFieldData()}
             editHeader='Thêm Danh Mục Thức Ăn'
             subHeader=''
             submitCreate={createFoodCategory}

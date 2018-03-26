@@ -8,7 +8,7 @@ import { isAdmin } from 'components/wrappers/isAdmin'
 
 class TableCreateItem extends Component {
   render() {
-    const { selectFieldData, submitCreate, editFieldInfo, editHeader, subHeader, arrLink } = this.props
+    const { customSelectFieldData, selectFieldData, submitCreate, editFieldInfo, editHeader, subHeader, arrLink } = this.props
 
     return (
       <div className='row'>
@@ -28,6 +28,7 @@ class TableCreateItem extends Component {
                 <DecoratedCreateForm
                   editFieldInfo={editFieldInfo}
                   selectFieldData={selectFieldData}
+                  customSelectFieldData={customSelectFieldData}
                   onSubmit={submitCreate}
                 />
               </div>
