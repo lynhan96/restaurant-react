@@ -39,6 +39,23 @@ class TableViewItem extends Component {
                       data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD')
                     }
 
+                    if (item.fieldName === 'imageUrl') {
+                      return (
+                        <div className='col-md-12' key={index}>
+                          <div className='form-group label-floating' style={{ marginTop: '0' }}>
+                            <label>{item.viewTitle}</label>
+                            <div>
+                              {Object.keys(data[item.fieldName]).map((key, index) => {
+                                return (
+                                  <img src={data[item.fieldName][key]} style={style.imageItem} key={index}/>
+                                )
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    }
+
                     if (item.fieldName === 'description') {
                       return (
                         <div className='col-md-12' key={index}>
@@ -75,5 +92,10 @@ export default R.pipe(
 const style = {
   buttonMargin: {
     margin: '5px 15px 10px 15px'
+  },
+  imageItem: {
+    width: '120px',
+    margin: '10px',
+    objectFit: 'contain'
   }
 }

@@ -17,7 +17,7 @@ class ListAction extends Component {
         <Link to={arrLink.view + '?index=' + itemIndex} className='btn btn-primary btn-round' style={style.buttonMargin}>
           Thông tin chi tiết
         </Link>
-        <button onClick={showConfirmAlertDeleteItem(deleteItem, items[itemIndex].id, dispatch, items, itemIndex, 'edit')} type='button' className='btn btn-danger btn-round' style={style.buttonMargin}>
+        <button onClick={showConfirmAlertDeleteItem(deleteItem, items[itemIndex].id, dispatch, itemIndex, 'edit')} type='button' className='btn btn-danger btn-round' style={style.buttonMargin}>
           Xóa dữ liệu
         </button>
       </div>

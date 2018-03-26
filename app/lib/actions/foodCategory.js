@@ -23,9 +23,9 @@ export const tableHeader = () => ([
 
 export const viewLabelHeader = () => ([
   { 'fieldName': 'name', 'viewTitle': 'Tên' },
-  { 'fieldName': 'imageUrl', 'viewTitle': 'Hình ảnh' },
   { 'fieldName': 'createdAt', 'viewTitle': 'Ngày tạo dữ liệu' },
   { 'fieldName': 'updatedAt', 'viewTitle': 'Ngày cập nhập dữ liệu' },
+  { 'fieldName': 'imageUrl', 'viewTitle': 'Hình ảnh' },
   { 'fieldName': 'description', 'viewTitle': 'Mô tả' }
 ])
 
@@ -140,8 +140,6 @@ export const editFoodCategory =
 
     let params = R.merge({ foodCategoryId: itemData.id })(values)
 
-    let imageUrl = {}
-
     if (params.imageUrl) {
       dispatch(fetchFoodCategoriesBegin())
       const keys = Object.keys(params.imageUrl)
@@ -150,30 +148,31 @@ export const editFoodCategory =
         const storageRef = firebase.storage().ref(key + '.png')
         const base64result = R.split(',', params.imageUrl[key])
 
+        if (base64result.length === 1) {
+          callback()
+          return
+        }
+
         storageRef.putString(base64result[1], 'base64').then(function(snapshot) {
-          imageUrl[key] = snapshot.downloadURL
+          params.imageUrl[key] = snapshot.downloadURL
           callback()
         })
       }, function(err) {
         if (err) {
           showNotification('topRight', 'error', 'Quá trình Upload hình xảy ra lỗi!')
         } else {
-          params.imageUrl = imageUrl
           updateFoodCategory(params, url, itemData, values, dispatch, props)
         }
       })
     } else {
       dispatch(fetchFoodCategoriesBegin())
-      params.imageUrl = imageUrl
       updateFoodCategory(params, url, itemData, values, dispatch, props)
     }
   }
 
-export const createFoodCategory =
-  (values, dispatch, props) => {
-    const url = 'createFoodCategory'
-
-    return request(makeRequestOptions(values, url)).then(body => {
+const createItem = (params, url, dispatch, props) => {
+  return new Promise((resolve) => {
+    request(makeRequestOptions(params, url)).then(body => {
       if (body.code === 0) {
         showNotification('topRight', 'success', 'Tạo dữ liệu thành công')
         Navigator.push('food-categories')
@@ -183,7 +182,7 @@ export const createFoodCategory =
         showNotification('topRight', 'error', 'Quá trình tạo dữ liệu xảy ra lỗi')
       }
 
-      return Promise.resolve()
+      return resolve
     })
     .catch(function (err) {
       if (err.message) {
@@ -194,6 +193,36 @@ export const createFoodCategory =
         throw new SubmissionError({ _error: JSON.stringify(err) })
       }
     })
+  })
+}
+
+export const createFoodCategory =
+  (values, dispatch, props) => {
+    const url = 'createFoodCategory'
+    let params = values
+    if (params.imageUrl) {
+      dispatch(fetchFoodCategoriesBegin())
+      const keys = Object.keys(params.imageUrl)
+
+      async.each(keys, function(key, callback) {
+        const storageRef = firebase.storage().ref(key + '.png')
+        const base64result = R.split(',', params.imageUrl[key])
+
+        storageRef.putString(base64result[1], 'base64').then(function(snapshot) {
+          params.imageUrl[key] = snapshot.downloadURL
+          callback()
+        })
+      }, function(err) {
+        if (err) {
+          showNotification('topRight', 'error', 'Quá trình Upload hình xảy ra lỗi!')
+        } else {
+          createItem(params, url, dispatch, props)
+        }
+      })
+    } else {
+      dispatch(fetchFoodCategoriesBegin())
+      createItem(params, url, dispatch, props)
+    }
   }
 
 export const deleteFoodCategory = (dispatch, foodCategoryId, itemIndex, currentAction) => {

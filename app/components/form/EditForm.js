@@ -66,6 +66,7 @@ const EditForm = (props) => {
           </div>
         )
       })}
+
       <div className='col-md-12' style={{ textAlign: 'center' }}>
         <SubmitButton
           text='Xác nhận'
