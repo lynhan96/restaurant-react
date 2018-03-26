@@ -35,7 +35,7 @@ export const viewLabelHeader = () => ([
 export const editFieldInfo = () => ([
   { 'fieldName': 'name', 'viewTitle': 'Tên', isRequired: true, type: 'text' },
   { 'fieldName': 'email', 'viewTitle': 'Email', isRequired: true, type: 'email' },
-  { 'fieldName': 'password', 'viewTitle': 'Password', isRequired: true, type: 'password' },
+  { 'fieldName': 'password', 'viewTitle': 'Password', isRequired: false, type: 'password' },
   { 'fieldName': 'position', 'viewTitle': 'Vị trí', isRequired: true, type: 'select' },
   { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại', isRequired: true, type: 'number' },
   { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh', isRequired: false, type: 'datetime' },

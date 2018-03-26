@@ -5,6 +5,7 @@ import EditFormInputText from 'components/form/element/EditFormInputText'
 import InputDateTime from 'components/form/element/InputDateTime'
 import SubmitButton from 'components/form/element/SubmitButton'
 import SelectField from 'components/form/element/SelectField'
+import CustomSelectField from 'components/form/element/CustomSelectField'
 import InputTextArea from 'components/form/element/InputTextArea'
 import CkEditor from 'components/form/element/CkEditor'
 import ImageUploader from 'components/form/element/ImageUploader'
@@ -15,6 +16,8 @@ const checkFieldType = type => {
       return InputDateTime
     case 'select':
       return SelectField
+    case 'customSelect':
+      return CustomSelectField
     case 'textarea':
       return InputTextArea
     case 'ckeditor':
@@ -27,7 +30,7 @@ const checkFieldType = type => {
 }
 
 const EditForm = (props) => {
-  const { selectFieldData, items, itemIndex, editFieldInfo, submitting, handleSubmit, onSubmit } = props
+  const { customSelectFieldData, selectFieldData, items, itemIndex, editFieldInfo, submitting, handleSubmit, onSubmit } = props
   handleSubmit.onSubmit = onSubmit
   const data = items[itemIndex]
 
@@ -40,7 +43,6 @@ const EditForm = (props) => {
               <Field
                 name={item.fieldName}
                 component={checkFieldType(item.type)}
-                selectFieldData={selectFieldData}
                 label={item.viewTitle}
                 required={item.isRequired}
                 defaultValue={data[item.fieldName]}
@@ -57,6 +59,7 @@ const EditForm = (props) => {
               name={item.fieldName}
               component={checkFieldType(item.type)}
               selectFieldData={selectFieldData}
+              customSelectFieldData={customSelectFieldData}
               label={item.viewTitle}
               required={item.isRequired}
               defaultValue={data[item.fieldName]}

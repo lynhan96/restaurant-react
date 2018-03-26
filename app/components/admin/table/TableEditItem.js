@@ -8,7 +8,7 @@ import { isAdmin } from 'components/wrappers/isAdmin'
 
 class TableEditItem extends Component {
   render() {
-    const { selectFieldData, dispatch, deleteItem, submitEdit, itemIndex, editFieldInfo, editHeader, items, subHeader, arrLink } = this.props
+    const { customSelectFieldData, selectFieldData, dispatch, deleteItem, submitEdit, itemIndex, editFieldInfo, editHeader, items, subHeader, arrLink } = this.props
 
     return (
       <div className='row'>
@@ -33,6 +33,7 @@ class TableEditItem extends Component {
                   editFieldInfo={editFieldInfo}
                   onSubmit={submitEdit}
                   selectFieldData={selectFieldData}
+                  customSelectFieldData={customSelectFieldData}
                 />
               </div>
             </div>

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import ContentLoading from 'components/ContentLoading'
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { editFieldInfo, deleteFoodCategory, selectFieldData } from '../../../lib/actions/foodCategory'
+import { editFieldInfo, deleteFoodCategory, selectFieldData, customSelectFieldData } from '../../../lib/actions/foodCategory'
 import TableEditItem from 'components/admin/table/TableEditItem'
 import { editFoodCategory } from 'lib/actions/foodCategory'
 
@@ -36,6 +36,7 @@ class FoodCategoryEdit extends ReactQueryParams {
           <TableEditItem
             editFieldInfo={editFieldInfo()}
             selectFieldData={selectFieldData()}
+            customSelectFieldData={customSelectFieldData()}
             editHeader='Chỉnh sửa thông tin Danh mục'
             arrLink={{ list: 'food-categories', view: 'food-category-view' }}
             itemIndex={params.index}

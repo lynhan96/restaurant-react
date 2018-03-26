@@ -1,7 +1,7 @@
 import React from 'react'
 // We receive props from ReduxForm's Field
 // and turn them into props for Bootstrap forms
-class SelectField extends React.Component {
+class CustomSelectField extends React.Component {
   constructor (props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
@@ -16,7 +16,7 @@ class SelectField extends React.Component {
   }
 
   render() {
-    const { input, selectFieldData, fieldName, defaultValue, label } = this.props
+    const { input, customSelectFieldData, fieldName, defaultValue, label } = this.props
     let value = defaultValue
 
     if (input.value) {
@@ -31,9 +31,9 @@ class SelectField extends React.Component {
           onChange={this.handleChange}
           value={value}
         >
-          {selectFieldData[fieldName].map((item, index) => {
+          {customSelectFieldData[fieldName].view.map((item, index) => {
             return (
-              <option value={item} key={index}>{item}</option>
+              <option value={customSelectFieldData[fieldName].value[index]} key={index}>{item}</option>
             )
           })}
         </select>
@@ -42,4 +42,4 @@ class SelectField extends React.Component {
   }
 }
 
-export default SelectField
+export default CustomSelectField
