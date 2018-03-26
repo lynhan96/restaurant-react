@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import UploadPreview from 'material-ui-upload/UploadPreview'
-import * as firebase from 'firebase'
 import RaisedButton from 'material-ui/RaisedButton'
-import R from 'ramda'
 
 class ImageUploader extends Component {
   constructor(props) {
@@ -17,7 +15,6 @@ class ImageUploader extends Component {
   render() {
     const { label, name, defaultValue } = this.props
     const pictures = Object.assign({}, defaultValue)
-    console.log(pictures)
 
     return (
       <div id='image'>

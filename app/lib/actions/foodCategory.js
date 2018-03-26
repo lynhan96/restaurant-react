@@ -5,6 +5,7 @@ import R from 'ramda'
 import Navigator from 'lib/Navigator'
 import { showNotification } from './showNotification'
 import { makeRequestOptions } from '../requestHeader'
+import { uploadImage } from 'lib/actions/uploadImage'
 
 export const FETCH_FOOD_CATEGORIES_BEGIN = 'FETCH_FOOD_CATEGORIES_BEGIN'
 export const FETCH_FOOD_CATEGORIES_SUCCESS = 'FETCH_FOOD_CATEGORIES_SUCCESS'
@@ -92,7 +93,6 @@ export const fetchFoodCategories = params => {
   return dispatch => {
     dispatch(fetchFoodCategoriesBegin())
     request(makeRequestOptions(params, 'foodCategories')).then(body => {
-      console.log(body)
       if (body.code === 401 || body.code === 400 || body.code === 414) {
         showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
@@ -109,39 +109,35 @@ export const editFoodCategory =
     const url = 'updateFoodCategory'
     const itemData = props.items[props.itemIndex]
 
-    const params = R.merge({ foodCategoryId: itemData.id })(values)
+    let params = R.merge({ foodCategoryId: itemData.id })(values)
+    console.log(params)
 
-    // var key = Object.keys(pictures)[0]
+    return new Promise((resolve) => {
+      params = R.merge(uploadImage(params.imageUrl))(params)
+      console.log('done params')
+      request(makeRequestOptions(params, url)).then(body => {
+        if (body.code === 0) {
+          props.items[props.itemIndex] = R.merge(itemData)(values)
+          dispatch(fetchFoodCategoriesSuccess(props.items))
 
-    // var storageRef = firebase.storage().ref(key + '.png')
-
-    // var base64result = R.split(',', pictures[key])
-    // storageRef.putString(base64result[1], 'base64').then(function(snapshot) {
-    //   console.log(snapshot.downloadURL)
-    // })
-
-    return request(makeRequestOptions(params, url)).then(body => {
-      if (body.code === 0) {
-        props.items[props.itemIndex] = R.merge(itemData)(values)
-        dispatch(fetchFoodCategoriesSuccess(props.items))
-
-        showNotification('topRight', 'success', 'Cập nhập dữ liệu thành công')
-      } else if (body.code === 417) {
-        showNotification('topRight', 'error', 'Dữ liệu không tồn tại')
-      } else if (body.code === 401 || body.code === 400) {
-        showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
-      } else {
-        showNotification('topRight', 'error', 'Quá trình cập nhập dữ liệu xảy ra lỗi')
-      }
-    })
-    .catch(function (err) {
-      if (err.message) {
-        showNotification('topRight', 'error', err.message)
-        throw new SubmissionError({ _error: err.message })
-      } else {
-        showNotification('topRight', 'error', JSON.stringify(err))
-        throw new SubmissionError({ _error: JSON.stringify(err) })
-      }
+          showNotification('topRight', 'success', 'Cập nhập dữ liệu thành công')
+        } else if (body.code === 417) {
+          showNotification('topRight', 'error', 'Dữ liệu không tồn tại')
+        } else if (body.code === 401 || body.code === 400) {
+          showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
+        } else {
+          showNotification('topRight', 'error', 'Quá trình cập nhập dữ liệu xảy ra lỗi')
+        }
+      })
+      .catch(function (err) {
+        if (err.message) {
+          showNotification('topRight', 'error', err.message)
+          throw new SubmissionError({ _error: err.message })
+        } else {
+          showNotification('topRight', 'error', JSON.stringify(err))
+          throw new SubmissionError({ _error: JSON.stringify(err) })
+        }
+      })
     })
   }
 

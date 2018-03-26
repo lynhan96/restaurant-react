@@ -21,6 +21,10 @@ class TableBody extends Component {
                   return <td key={headerIndex}>Có</td>
                 }
 
+                if (headerItem.fieldName === 'imageUrl') {
+                  return <td key={headerIndex}>Có</td>
+                }
+
                 if (headerItem.fieldName === 'isView' && item[headerItem.fieldName] === false) {
                   return <td key={headerIndex}>Không</td>
                 }
