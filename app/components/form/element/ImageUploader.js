@@ -14,7 +14,12 @@ class ImageUploader extends Component {
 
   render() {
     const { label, name, defaultValue } = this.props
-    const pictures = Object.assign({}, defaultValue)
+
+    let pictures = defaultValue
+
+    if (defaultValue === null) {
+      pictures = {}
+    }
 
     return (
       <div id='image'>

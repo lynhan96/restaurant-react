@@ -25,7 +25,7 @@ class EmployeeEdit extends ReactQueryParams {
     if (loading) {
       return (
         <ContentLoading
-          message='Đang tải dữ liệu ...'
+          message='Đang Cập nhập dữ liệu ...'
         />
       )
     }

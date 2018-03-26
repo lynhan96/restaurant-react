@@ -22,7 +22,17 @@ class TableBody extends Component {
                 }
 
                 if (headerItem.fieldName === 'imageUrl') {
-                  return <td key={headerIndex}>Có</td>
+                  if (item[headerItem.fieldName] !== null) {
+                    const key = Object.keys(item[headerItem.fieldName])
+
+                    return (
+                      <td key={headerIndex}>
+                        <img src={item[headerItem.fieldName][key[0]]} style={style.imageItem}/>
+                      </td>
+                    )
+                  } else {
+                    return <td key={headerIndex}></td>
+                  }
                 }
 
                 if (headerItem.fieldName === 'isView' && item[headerItem.fieldName] === false) {
@@ -53,3 +63,10 @@ class TableBody extends Component {
 export default R.pipe(
   isAdmin
 )(TableBody)
+
+const style = {
+  imageItem: {
+    width: '80px',
+    objectFit: 'contain'
+  }
+}

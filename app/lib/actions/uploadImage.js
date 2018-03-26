@@ -1,20 +1,15 @@
 import * as firebase from 'firebase'
 import R from 'ramda'
 
-export const uploadImage = pictures => {
-  const keys= Object.keys(pictures)
-  const imageUrlList = []
+export const uploadImage = (pictures, key, callback) => {
+  let imageUrl = ''
+  const storageRef = firebase.storage().ref(key + '.png')
 
-  keys.map((key, index) => {
-    console.log('1')
-    const storageRef = firebase.storage().ref(key + '.png')
+  const base64result = R.split(',', pictures[key])
 
-    const base64result = R.split(',', pictures[key])
-    storageRef.putString(base64result[1], 'base64').then(function(snapshot) {
-      console.log('2')
-      imageUrlList.push(snapshot.downloadURL)
-    })
+  storageRef.putString(base64result[1], 'base64').then(function(snapshot) {
+    imageUrl = snapshot.downloadURL
+    callback()
+    return imageUrl
   })
-  console.log('done')
-  return { imageUrl: imageUrlList }
 }
