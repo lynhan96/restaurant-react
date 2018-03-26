@@ -14,7 +14,7 @@ class Dashboard extends Component {
     return (
       <div className='content'>
         <div className='container-fluid'>
-          <div className='row'>
+          <div className='row animated fadeInUp'>
             <div className='col-lg-3 col-md-6 col-sm-6'>
               <div className='card card-stats'>
                 <div className='card-header' data-background-color='orange'>
@@ -83,7 +83,7 @@ class Dashboard extends Component {
               </div>
             </div>
           </div>
-          <div className='row'>
+          <div className='row animated fadeInUp'>
             <div className='col-md-4'>
               <div className='card'>
                 <div className='card-header card-chart' data-background-color='green'>

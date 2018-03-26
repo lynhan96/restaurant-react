@@ -4,6 +4,7 @@ import Header from 'components/layout/Header'
 import SideBar from 'components/layout/SideBar'
 import { ToastContainer } from 'react-toastify'
 import Transition from 'react-transition-group/Transition'
+import '../public/lib/cms/css/animate.css'
 import '../public/lib/cms/css/custom.css'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
