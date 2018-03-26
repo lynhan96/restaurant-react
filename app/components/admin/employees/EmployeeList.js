@@ -29,7 +29,7 @@ class EmployeeList extends ReactQueryParams {
 
     return (
       <div className='content'>
-        <div className='container-fluid'>
+        <div className='container-fluid animated fadeIn'>
           <div className='row'>
             <div className='col-md-12'>
               <TableListing

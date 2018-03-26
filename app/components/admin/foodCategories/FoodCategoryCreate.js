@@ -11,7 +11,7 @@ class FoodCategoryCreate extends ReactQueryParams {
   render() {
     return (
       <div className='content'>
-        <div className='container-fluid'>
+        <div className='container-fluid animated fadeIn'>
           <TableCreateItem
             editFieldInfo={editFieldInfo()}
             selectFieldData={selectFieldData()}

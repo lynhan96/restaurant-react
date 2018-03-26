@@ -32,7 +32,7 @@ class FoodCategoryEdit extends ReactQueryParams {
 
     return (
       <div className='content'>
-        <div className='container-fluid'>
+        <div className='container-fluid animated fadeIn'>
           <TableEditItem
             editFieldInfo={editFieldInfo()}
             selectFieldData={selectFieldData()}
