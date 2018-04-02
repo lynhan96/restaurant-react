@@ -6,12 +6,12 @@ import { connect } from 'react-redux'
 import ErrorMessage from 'components/ErrorMessage'
 import ContentLoading from 'components/ContentLoading'
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { viewLabelHeader, deleteFoodCategory } from '../../../lib/actions/foodCategory'
+import { viewLabelHeader, deleteFood } from 'lib/actions/food'
 import TableViewItem from 'components/admin/table/TableViewItem'
 
-class FoodCategoryView extends ReactQueryParams {
+class FoodView extends ReactQueryParams {
   render() {
-    const { error, loading, foodCategories, dispatch } = this.props
+    const { error, loading, foods, dispatch } = this.props
     const params = this.queryParams
 
     if (error) {
@@ -36,13 +36,13 @@ class FoodCategoryView extends ReactQueryParams {
           {error && <ErrorMessage text={error} />}
           <TableViewItem
             viewLabelHeader={viewLabelHeader()}
-            viewHeader='Thông tin Danh mục'
-            arrLink={{ list: 'food-categories', edit: 'food-category-edit' }}
-            data={foodCategories[params.index]}
-            subHeader={foodCategories[params.index].name}
-            deleteItem={deleteFoodCategory}
+            viewHeader='Thông tin Món ăn'
+            arrLink={{ list: 'foods', edit: 'food-edit' }}
+            data={foods[params.index]}
+            subHeader={foods[params.index].name}
+            deleteItem={deleteFood}
             itemIndex={params.index}
-            items={foodCategories}
+            items={foods}
             dispatch={dispatch}
           />
         </div>
@@ -52,12 +52,12 @@ class FoodCategoryView extends ReactQueryParams {
 }
 
 const mapStateToProps = state => ({
-  foodCategories: state.foodCategory.items,
-  loading: state.foodCategory.loading,
-  error: state.foodCategory.error
+  foods: state.food.items,
+  loading: state.food.loading,
+  error: state.food.error
 })
 
 export default R.pipe(
   connect(mapStateToProps),
   isAdmin
-)(FoodCategoryView)
+)(FoodView)

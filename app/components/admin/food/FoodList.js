@@ -4,19 +4,19 @@ import ReactQueryParams from 'react-query-params'
 import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { tableHeader, fetchFoodCategories, deleteFoodCategory, sortByKey, searchByKeyword, changePagination } from 'lib/actions/foodCategory'
+import { tableHeader, fetchFoods, deleteFood, sortByKey, searchByKeyword, changePagination } from 'lib/actions/food'
 import TableListing from 'components/admin/table/TableListing'
 import { updateActiveLink } from 'ducks/admin'
 import ContentLoading from 'components/ContentLoading'
 
-class FoodCategoryList extends ReactQueryParams {
+class FoodList extends ReactQueryParams {
   componentDidMount() {
-    this.props.dispatch(fetchFoodCategories())
-    this.props.dispatch(updateActiveLink('food-categories'))
+    this.props.dispatch(fetchFoods())
+    this.props.dispatch(updateActiveLink('foods'))
   }
 
   render() {
-    const { foodCategoryState, error, dispatch } = this.props
+    const { foodState, error, dispatch } = this.props
 
     if (error) {
       return (
@@ -33,12 +33,12 @@ class FoodCategoryList extends ReactQueryParams {
           <div className='row'>
             <div className='col-md-12'>
               <TableListing
-                itemState={foodCategoryState}
+                itemState={foodState}
                 tableHeader={tableHeader()}
-                actionLink='/FoodCategorys'
+                actionLink='/Foods'
                 viewHeader='Danh sách Danh mục thức ăn'
-                arrLink={{ create: 'food-category-create', edit: 'food-category-edit', view: 'food-category-view', list: 'food-categories' }}
-                deleteItem={deleteFoodCategory}
+                arrLink={{ create: 'food-create', edit: 'food-edit', view: 'food-view', list: 'foods' }}
+                deleteItem={deleteFood}
                 dispatch={dispatch}
                 sortByKey={sortByKey}
                 searchFunc={searchByKeyword}
@@ -54,10 +54,10 @@ class FoodCategoryList extends ReactQueryParams {
 }
 
 const mapStateToProps = state => ({
-  foodCategoryState: state.foodCategory
+  foodState: state.food
 })
 
 export default R.pipe(
   connect(mapStateToProps),
   isAdmin
-)(FoodCategoryList)
+)(FoodList)

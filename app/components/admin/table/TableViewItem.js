@@ -4,7 +4,8 @@ import { Link } from 'react-router'
 import moment from 'moment'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { showConfirmAlertDeleteItem } from '../../../lib/actions/showNotification'
+import { showConfirmAlertDeleteItem } from 'lib/actions/showNotification'
+import ImageView from 'components/admin/table/tableViewElement/ImageView'
 
 class TableViewItem extends Component {
   render() {
@@ -33,7 +34,7 @@ class TableViewItem extends Component {
                 </div>
                 <form>
                   {viewLabelHeader.map((item, index) => {
-                    if (item.fieldName === 'createdAt' || item.fieldName === 'updatedAt') {
+                    if (item.fieldName === 'createdAt' || item.fieldName === 'updatedAt' || item.fieldName === 'startDate' || item.fieldName === 'endDate') {
                       data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD hh:mm:ss')
                     } else if (item.fieldName === 'birthday') {
                       data[item.fieldName] = moment.utc(data[item.fieldName]).add(7, 'hours').format('YYYY-MM-DD')
@@ -41,18 +42,11 @@ class TableViewItem extends Component {
 
                     if (item.fieldName === 'imageUrl') {
                       return (
-                        <div className='col-md-12' key={index}>
-                          <div className='form-group label-floating' style={{ marginTop: '0' }}>
-                            <label>{item.viewTitle}</label>
-                            <div>
-                              {Object.keys(data[item.fieldName]).map((key, index) => {
-                                return (
-                                  <img src={data[item.fieldName][key]} style={style.imageItem} key={index}/>
-                                )
-                              })}
-                            </div>
-                          </div>
-                        </div>
+                        <ImageView
+                          key={index}
+                          data={data}
+                          item={item}
+                        />
                       )
                     }
 
