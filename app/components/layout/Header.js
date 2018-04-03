@@ -39,7 +39,7 @@ const Header = (props) => {
                 </ul>
               </li>
               <li>
-                <Link to='#'>
+                <Link to='profile'>
                   <i className='material-icons'>person</i>
                   <p className='hidden-lg hidden-md'>Trang cá nhân</p>
                 </Link>

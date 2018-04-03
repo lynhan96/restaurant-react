@@ -8,6 +8,8 @@ import Store from 'lib/Store'
 import App from 'App'
 import Login from 'pages/Login'
 import Dashboard from 'pages/Dashboard'
+import Profile from 'pages/Profile'
+
 import EmployeeList from 'components/admin/employees/EmployeeList'
 import EmployeeView from 'components/admin/employees/EmployeeView'
 import EmployeeEdit from 'components/admin/employees/EmployeeEdit'
@@ -35,6 +37,7 @@ ReactDOM.render((
         <IndexRoute component={Login} />
         <Route path='login' component={Login}/>
         <Route path='dashboard' component={Dashboard} />
+        <Route path='profile' component={Profile} />
 
         <Route path='employees' component={EmployeeList} />
         <Route path='employee-view' component={EmployeeView} />
