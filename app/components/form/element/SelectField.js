@@ -1,6 +1,5 @@
 import React from 'react'
-// We receive props from ReduxForm's Field
-// and turn them into props for Bootstrap forms
+
 class SelectField extends React.Component {
   constructor (props) {
     super(props)

@@ -5,13 +5,12 @@ import { connect } from 'react-redux'
 
 import ContentLoading from 'components/ContentLoading'
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { editFieldInfo, deleteEmployee, selectFieldData } from '../../../lib/actions/employee'
+import { editUser, editFieldInfo, deleteUser, selectFieldData, customSelectFieldData } from 'lib/actions/user'
 import TableEditItem from 'components/admin/table/TableEditItem'
-import { editEmployee } from 'lib/actions/employee'
 
-class EmployeeEdit extends ReactQueryParams {
+class UserEdit extends ReactQueryParams {
   render() {
-    const { error, employees, dispatch } = this.props
+    const { error, users, dispatch } = this.props
     const params = this.queryParams
 
     if (error) {
@@ -28,14 +27,15 @@ class EmployeeEdit extends ReactQueryParams {
           <TableEditItem
             editFieldInfo={editFieldInfo()}
             selectFieldData={selectFieldData()}
-            editHeader='Chỉnh sửa thông tin Nhân viên'
-            arrLink={{ list: 'employees', view: 'employee-view' }}
+            customSelectFieldData={customSelectFieldData()}
+            editHeader='Chỉnh sửa thông tin Khách hàng'
+            arrLink={{ list: 'users', view: 'user-view' }}
             itemIndex={params.index}
-            subHeader={employees[params.index].name}
-            submitEdit={editEmployee}
-            items={employees}
+            subHeader={users[params.index].name}
+            submitEdit={editUser}
+            items={users}
             dispatch={dispatch}
-            deleteItem={deleteEmployee}
+            deleteItem={deleteUser}
           />
         </div>
       </div>
@@ -44,12 +44,12 @@ class EmployeeEdit extends ReactQueryParams {
 }
 
 const mapStateToProps = state => ({
-  employees: state.employee.items,
-  loading: state.employee.loading,
-  error: state.employee.error
+  users: state.user.items,
+  loading: state.user.loading,
+  error: state.user.error
 })
 
 export default R.pipe(
   connect(mapStateToProps),
   isAdmin
-)(EmployeeEdit)
+)(UserEdit)

@@ -29,6 +29,12 @@ const SideBar = (props) => {
                 <p>Nhân viên</p>
               </Link>
             </li>
+            <li className={activeLink === 'users' ? 'active' : ''}>
+              <Link to='users'>
+                <i className='material-icons'>assignment_ind</i>
+                <p>Khách hàng</p>
+              </Link>
+            </li>
             <li className={activeLink === 'food-categories' ? 'active' : ''}>
               <Link to='food-categories'>
                 <i className='material-icons'>content_paste</i>
@@ -37,7 +43,7 @@ const SideBar = (props) => {
             </li>
             <li className={activeLink === 'foods' ? 'active' : ''}>
               <Link to='foods'>
-                <i className='material-icons'>content_paste</i>
+                <i className='material-icons'>view_module</i>
                 <p>Thực đơn</p>
               </Link>
             </li>

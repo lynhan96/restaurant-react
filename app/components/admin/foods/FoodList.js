@@ -35,7 +35,6 @@ class FoodList extends ReactQueryParams {
               <TableListing
                 itemState={foodState}
                 tableHeader={tableHeader()}
-                actionLink='/Foods'
                 viewHeader='Danh sách Danh mục thức ăn'
                 arrLink={{ create: 'food-create', edit: 'food-edit', view: 'food-view', list: 'foods' }}
                 deleteItem={deleteFood}

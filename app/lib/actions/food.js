@@ -123,7 +123,7 @@ export const fetchFoods = params => {
   }
 }
 
-const updateFoodCategory = (params, url, itemData, values, dispatch, props) => {
+const updateFood = (params, url, itemData, values, dispatch, props) => {
   return new Promise((resolve) => {
     request(makeRequestOptions(params, url)).then(body => {
       if (body.code === 0) {
@@ -179,12 +179,12 @@ export const editFood =
         if (err) {
           showNotification('topRight', 'error', 'Quá trình Upload hình xảy ra lỗi!')
         } else {
-          updateFoodCategory(params, url, itemData, values, dispatch, props)
+          updateFood(params, url, itemData, values, dispatch, props)
         }
       })
     } else {
       dispatch(fetchFoodsBegin())
-      updateFoodCategory(params, url, itemData, values, dispatch, props)
+      updateFood(params, url, itemData, values, dispatch, props)
     }
   }
 
@@ -243,11 +243,11 @@ export const createFood =
     }
   }
 
-export const deleteFood = (dispatch, foodCategoryId, itemIndex, currentAction) => {
+export const deleteFood = (dispatch, foodId, itemIndex, currentAction) => {
   const url = 'deleteFood'
 
   return new Promise((resolve) => {
-    request(makeRequestOptions({foodId: foodCategoryId}, url)).then(body => {
+    request(makeRequestOptions({foodId: foodId}, url)).then(body => {
       if (body.code === 0) {
         if (currentAction === 'list') {
           dispatch(fetchFoods())

@@ -18,10 +18,15 @@ import FoodCategoryView from 'components/admin/foodCategories/FoodCategoryView'
 import FoodCategoryEdit from 'components/admin/foodCategories/FoodCategoryEdit'
 import FoodCategoryCreate from 'components/admin/foodCategories/FoodCategoryCreate'
 
-import FoodList from 'components/admin/food/FoodList'
-import FoodView from 'components/admin/food/FoodView'
-import FoodEdit from 'components/admin/food/FoodEdit'
-import FoodCreate from 'components/admin/food/FoodCreate'
+import FoodList from 'components/admin/foods/FoodList'
+import FoodView from 'components/admin/foods/FoodView'
+import FoodEdit from 'components/admin/foods/FoodEdit'
+import FoodCreate from 'components/admin/foods/FoodCreate'
+
+import UserList from 'components/admin/users/UserList'
+import UserView from 'components/admin/users/UserView'
+import UserEdit from 'components/admin/users/UserEdit'
+import UserCreate from 'components/admin/users/UserCreate'
 
 ReactDOM.render((
   <Provider store={Store}>
@@ -45,6 +50,11 @@ ReactDOM.render((
         <Route path='food-view' component={FoodView} />
         <Route path='food-edit' component={FoodEdit} />
         <Route path='food-create' component={FoodCreate} />
+
+        <Route path='users' component={UserList} />
+        <Route path='user-view' component={UserView} />
+        <Route path='user-edit' component={UserEdit} />
+        <Route path='user-create' component={UserCreate} />
       </Route>
     </Router>
   </Provider>

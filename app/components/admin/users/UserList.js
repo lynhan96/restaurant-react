@@ -4,19 +4,19 @@ import ReactQueryParams from 'react-query-params'
 import { connect } from 'react-redux'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import { tableHeader, fetchFoodCategories, deleteFoodCategory, sortByKey, searchByKeyword, changePagination } from 'lib/actions/foodCategory'
+import { tableHeader, fetchUsers, deleteUser, sortByKey, searchByKeyword, changePagination } from 'lib/actions/user'
 import TableListing from 'components/admin/table/TableListing'
 import { updateActiveLink } from 'ducks/admin'
 import ContentLoading from 'components/ContentLoading'
 
-class FoodCategoryList extends ReactQueryParams {
+class UserList extends ReactQueryParams {
   componentDidMount() {
-    this.props.dispatch(fetchFoodCategories())
-    this.props.dispatch(updateActiveLink('food-categories'))
+    this.props.dispatch(fetchUsers())
+    this.props.dispatch(updateActiveLink('users'))
   }
 
   render() {
-    const { foodCategoryState, error, dispatch } = this.props
+    const { userState, error, dispatch } = this.props
 
     if (error) {
       return (
@@ -33,11 +33,11 @@ class FoodCategoryList extends ReactQueryParams {
           <div className='row'>
             <div className='col-md-12'>
               <TableListing
-                itemState={foodCategoryState}
+                itemState={userState}
                 tableHeader={tableHeader()}
-                viewHeader='Danh sách Danh mục thức ăn'
-                arrLink={{ create: 'food-category-create', edit: 'food-category-edit', view: 'food-category-view', list: 'food-categories' }}
-                deleteItem={deleteFoodCategory}
+                viewHeader='Danh sách Khách hàng'
+                arrLink={{ create: 'user-create', edit: 'user-edit', view: 'user-view', list: 'users' }}
+                deleteItem={deleteUser}
                 dispatch={dispatch}
                 sortByKey={sortByKey}
                 searchFunc={searchByKeyword}
@@ -53,10 +53,10 @@ class FoodCategoryList extends ReactQueryParams {
 }
 
 const mapStateToProps = state => ({
-  foodCategoryState: state.foodCategory
+  userState: state.user
 })
 
 export default R.pipe(
   connect(mapStateToProps),
   isAdmin
-)(FoodCategoryList)
+)(UserList)
