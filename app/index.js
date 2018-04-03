@@ -30,6 +30,8 @@ import UserView from 'components/admin/users/UserView'
 import UserEdit from 'components/admin/users/UserEdit'
 import UserCreate from 'components/admin/users/UserCreate'
 
+import MapTable from 'components/admin/maps/MapTable'
+
 ReactDOM.render((
   <Provider store={Store}>
     <Router history={Navigator}>
@@ -58,6 +60,8 @@ ReactDOM.render((
         <Route path='user-view' component={UserView} />
         <Route path='user-edit' component={UserEdit} />
         <Route path='user-create' component={UserCreate} />
+
+        <Route path='map-tables' component={MapTable} />
       </Route>
     </Router>
   </Provider>

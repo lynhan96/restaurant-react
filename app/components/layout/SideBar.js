@@ -23,6 +23,12 @@ const SideBar = (props) => {
                 <p>Trang chủ</p>
               </Link>
             </li>
+            <li className={activeLink === 'map-tables' ? 'active' : ''}>
+              <Link to='map-tables'>
+                <i className='material-icons'>map</i>
+                <p>Sơ đồ nhà hàng</p>
+              </Link>
+            </li>
             <li className={activeLink === 'employees' ? 'active' : ''}>
               <Link to='employees'>
                 <i className='material-icons'>account_circle</i>
