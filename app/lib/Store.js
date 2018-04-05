@@ -6,7 +6,6 @@ import { reducer as formReducer } from 'redux-form'
 import { autoRehydrate, persistStore } from 'redux-persist'
 import Reactotron from 'reactotron-react-js'
 import { reactotronRedux } from 'reactotron-redux'
-import { fetchNotifications } from 'lib/actions/notification'
 
 const middleware = [ thunk ]
 var applyMiddlewareConfig
@@ -37,9 +36,6 @@ const Store = create(rootReducers, initialState, applyMiddlewareConfig)
 
 // Initialise the state
 const { dispatch } = Store
-
-// initialise public state
-dispatch(fetchNotifications())
 
 // Persist redux store in local storage
 persistStore(

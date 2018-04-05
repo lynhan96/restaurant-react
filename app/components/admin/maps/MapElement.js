@@ -37,7 +37,7 @@ class MapElement extends Component {
         onDrag={this.handleDrag}
         onStop={this.handleStop}>
         <div className='table handle'>
-          <Link to='#' style={{ float: 'right', position: 'absolute', marginLeft: '45px' }}>
+          <Link to='#' style={{ float: 'right', position: 'absolute', marginLeft: '20px' }}>
             <img src='images/delete.png' style={{ marginTop: '45px', width: '25px', height: '25px' }} />
           </Link>
           <div style={avatarStyle} className='table-wrapper'>

@@ -5,6 +5,7 @@ import foodCategory from 'ducks/foodCategory'
 import notification from 'ducks/notification'
 import food from 'ducks/food'
 import user from 'ducks/user'
+import zone from 'ducks/zone'
 
 export default {
   hydration,
@@ -13,5 +14,6 @@ export default {
   foodCategory,
   food,
   user,
+  zone,
   notification
 }

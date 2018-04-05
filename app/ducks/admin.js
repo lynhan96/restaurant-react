@@ -2,6 +2,8 @@ import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import Navigator from 'lib/Navigator'
+import { fetchNotifications } from 'lib/actions/notification'
+import { fetchZones } from 'lib/actions/zone'
 
 const ADMIN_SIGNED_IN = 'admin/ADMIN_SIGNED_IN'
 const UPDATE_ACTIVE_LINK = 'admin/UPDATE_ACTIVE_LINK'
@@ -36,6 +38,8 @@ export const adminHasSignedOut = () => (dispatch) => {
 
 export const adminHasSignedIn = (admin) => (dispatch) => {
   dispatch({ type: ADMIN_SIGNED_IN, data: admin })
+  dispatch(fetchNotifications())
+  dispatch(fetchZones())
 }
 
 export const updateActiveLink = (link) => (dispatch) => {

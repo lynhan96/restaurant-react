@@ -64,6 +64,7 @@
     "react-draggable": "^3.0.5",
     "react-google-recaptcha": "^0.8.1",
     "react-interactjs": "^0.1.2",
+    "react-modal": "^3.3.2",
     "react-paginate": "^5.1.0",
     "react-query-params": "^1.0.7",
     "react-redux": "^5.0.3",
