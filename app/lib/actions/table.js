@@ -44,8 +44,8 @@ const createTable = (params, dispatch) => {
       zoneId: params.zoneId,
       imageUrl: params.imageUrl,
       status: params.status,
-      x: 10,
-      y: 10
+      x: 0,
+      y: 0
     })
     callback()
   }, function(err) {
@@ -96,7 +96,6 @@ export const submitCreateTable =
   }
 
 export const fetchTables = () => (dispatch) => {
-
   const ref = database.ref(getAdminData().vid + '/tables')
   ref.once('value')
     .then((snapshot) => {

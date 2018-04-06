@@ -37,7 +37,7 @@ class MapElement extends Component {
 
     return (
       <Draggable
-        allowAnyClick={false}
+        allowAnyClick={true}
         axis='both'
         handle='.handle'
         bounds='parent'
