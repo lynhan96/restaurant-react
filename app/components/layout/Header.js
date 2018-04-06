@@ -1,4 +1,5 @@
 import React from 'react'
+import R from 'ramda'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
@@ -7,6 +8,11 @@ import { dispatchLogout } from 'ducks/admin'
 const Header = (props) => {
   const { signedIn, dispatch, notifications } = props
   const logout = dispatchLogout(dispatch)
+  let notificationData = []
+
+  if (notifications != null) {
+    notificationData = R.values(notifications)
+  }
 
   if (signedIn) {
     return (
@@ -25,14 +31,14 @@ const Header = (props) => {
               <li className='dropdown'>
                 <a href='#' className='dropdown-toggle' data-toggle='dropdown' aria-expanded="false">
                   <i className='material-icons'>notifications</i>
-                  <span className='notification'>{Object.keys(notifications).length}</span>
+                  <span className='notification'>{notificationData.length}</span>
                   <p className='hidden-lg hidden-md'>Notifications</p>
                 </a>
                 <ul className='dropdown-menu'>
-                  {Object.keys(notifications).map((key, index) => {
+                  {notificationData.map((value, index) => {
                     return (
                       <li key={index}>
-                        <a href='#'>{notifications[key].message}</a>
+                        <a href='#'>{value.message}</a>
                       </li>
                     )
                   })}

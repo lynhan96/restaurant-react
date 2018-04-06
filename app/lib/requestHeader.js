@@ -1,6 +1,7 @@
 import moment from 'moment'
 import md5 from 'md5'
 import Store from 'lib/Store'
+import { apiDomainUrl } from 'lib/Constant'
 
 export const makeHeader = _ => {
   let headers = {
@@ -26,7 +27,7 @@ export const makeHeader = _ => {
 
 export const makeRequestOptions = (params, url) => ({
   method: 'POST',
-  uri: 'http://localhost:8000/v1/' + url,
+  uri: apiDomainUrl() + url,
   body: params,
   headers: makeHeader(),
   json: true

@@ -3,7 +3,7 @@ import R from 'ramda'
 import async from 'async'
 import * as firebase from 'firebase'
 import Navigator from 'lib/Navigator'
-
+import { getAdminData } from 'lib/Constant'
 import { showNotification } from './showNotification'
 
 export const FETCH_TABLE_SUCCESS = 'FETCH_TABLE_SUCCESS'
@@ -25,8 +25,13 @@ export const fetchTablesSuccess = items => ({
   items: items
 })
 
+export const deleteTable = (id) => (dispatch) => {
+  const ref = database.ref(getAdminData().vid + '/tables').child(id)
+  ref.remove()
+}
+
 export const updateCoordinates = (data, id) => (dispatch) => {
-  const ref = database.ref('tables/' + id)
+  const ref = database.ref(getAdminData().vid + '/tables').child(id)
   ref.set(data)
 }
 
@@ -34,7 +39,7 @@ const createTable = (params, dispatch) => {
   const keys = Array(parseInt(params.tableQuantity)).fill(0)
 
   async.each(keys, function(key, callback) {
-    firebase.database().ref('tables/').push({
+    firebase.database().ref(getAdminData().vid + '/tables/').push({
       name: 'Bàn ăn',
       zoneId: params.zoneId,
       imageUrl: params.imageUrl,
@@ -91,7 +96,8 @@ export const submitCreateTable =
   }
 
 export const fetchTables = () => (dispatch) => {
-  const ref = database.ref('/tables')
+
+  const ref = database.ref(getAdminData().vid + '/tables')
   ref.once('value')
     .then((snapshot) => {
       const tables = snapshot.val()

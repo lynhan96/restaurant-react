@@ -2,8 +2,9 @@ import { database } from 'database/database'
 import R from 'ramda'
 import async from 'async'
 import * as firebase from 'firebase'
-import Navigator from 'lib/Navigator'
 
+import Navigator from 'lib/Navigator'
+import { getAdminData } from 'lib/Constant'
 import { showNotification } from './showNotification'
 
 export const FETCH_ZONE_SUCCESS = 'FETCH_ZONE_SUCCESS'
@@ -21,7 +22,7 @@ export const fetchZoneSuccess = items => ({
 })
 
 const createZone = params => {
-  firebase.database().ref('zones/').push({
+  firebase.database().ref(getAdminData().vid + '/zones/').push({
     name: params.name,
     imageUrl: params.imageUrl
   })
@@ -66,7 +67,7 @@ export const submitAddZone =
   }
 
 export const fetchZones = () => (dispatch) => {
-  const ref = database.ref('/zones')
+  const ref = database.ref(getAdminData().vid + '/zones')
   ref.once('value')
     .then((snapshot) => {
       const zones = snapshot.val()

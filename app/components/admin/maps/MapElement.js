@@ -5,17 +5,22 @@ import 'styles/website.less'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
 import Draggable from 'react-draggable'
-import { updateCoordinates } from 'lib/actions/table'
+import { updateCoordinates, deleteTable } from 'lib/actions/table'
 
 class MapElement extends Component {
   constructor (props) {
     super(props)
     this.onClick = this.onClick.bind(this)
     this.handleStop = this.handleStop.bind(this)
+    this.deleteTable = this.deleteTable.bind(this)
   }
 
   onClick (event) {
     console.log(event.target.value)
+  }
+
+  deleteTable() {
+    this.props.dispatch(deleteTable(this.props.id))
   }
 
   handleStop (e, data) {
@@ -42,7 +47,7 @@ class MapElement extends Component {
         onDrag={this.handleDrag}
         onStop={this.handleStop}>
         <div className='table handle'>
-          <Link to='#' style={{ float: 'right', position: 'absolute', marginLeft: '20px' }}>
+          <Link to='#' onClick={e => { e.preventDefault(); this.deleteTable() }} style={{ float: 'right', position: 'absolute', marginLeft: '20px' }}>
             <img src='images/delete.png' style={{ marginTop: '45px', width: '25px', height: '25px' }} />
           </Link>
           <div style={{ backgroundImage: 'url("' + imageUrl + '")', backgroundSize: 'cover' }} className='table-wrapper'>
