@@ -10,6 +10,8 @@ import { isAdmin } from 'components/wrappers/isAdmin'
 import { updateActiveLink } from 'ducks/admin'
 import ContentLoading from 'components/ContentLoading'
 import MapElement from 'components/admin/maps/MapElement'
+import { fetchTables } from 'lib/actions/table'
+import { fetchZones } from 'lib/actions/zone'
 
 class MapTable extends Component {
   constructor (props) {
@@ -20,6 +22,8 @@ class MapTable extends Component {
   }
 
   componentDidMount() {
+    this.props.dispatch(fetchTables())
+    this.props.dispatch(fetchZones())
     this.props.dispatch(updateActiveLink('map-tables'))
   }
 
@@ -28,10 +32,11 @@ class MapTable extends Component {
   }
 
   addTableOpen() {
+    Navigator.push('create-table')
   }
 
   render() {
-    const { error, zones } = this.props
+    const { error, zones, table, dispatch } = this.props
 
     if (error) {
       return (
@@ -54,7 +59,10 @@ class MapTable extends Component {
                   style={{ margin: '10px' }}
                   onClick={this.addZoneOpen}
                 />
-                <RaisedButton label='Tạo bàn ăn' secondary={true} onClick={this.addZoneOpen}/>
+                <RaisedButton
+                  label='Tạo bàn ăn'
+                  secondary={true}
+                  onClick={this.addTableOpen}/>
               </div>
             </div>
           </div>
@@ -62,13 +70,32 @@ class MapTable extends Component {
             <Tabs>
               {R.values(zones).map((value, index) => {
                 const imageUrl = R.values(value.imageUrl)[0]
+                const zoneId = R.keys(zones)[index]
+                let tables = null
+                let tableKeys = null
+
+                if (table != null) {
+                  tables = R.filter(data => data.zoneId === zoneId)(R.values(table))
+                  tableKeys = R.keys(table)
+                }
 
                 return (
                   <Tab label={value.name} key={index}>
                     <div className='card'>
-                      <section style={{ padding: '5px', backgroundImage: 'url("' + imageUrl + '")' }}>
+                      <section style={{ padding: '5px', backgroundImage: 'url("' + imageUrl + '")', backgroundSize: 'cover' }}>
                         <div className='container-fluid table-container'>
-                          <MapElement/>
+                          {tables == null ? '' :
+                            tables.map((value, tableIndex) => {
+                              return (
+                                <MapElement
+                                  id = {tableKeys[tableIndex]}
+                                  item={value}
+                                  key={tableIndex}
+                                  dispatch={dispatch}
+                                />
+                              )
+                            })
+                          }
                         </div>
                       </section>
                     </div>
@@ -84,7 +111,8 @@ class MapTable extends Component {
 }
 
 const mapStateToProps = state => ({
-  zones: state.zone.items
+  zones: state.zone.items,
+  table: state.table.items
 })
 
 export default R.pipe(

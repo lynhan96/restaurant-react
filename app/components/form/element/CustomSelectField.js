@@ -8,7 +8,13 @@ class CustomSelectField extends React.Component {
   }
 
   componentWillMount () {
-    this.props.input.onChange(this.props.defaultValue)
+    const { customSelectFieldData, fieldName, defaultValue } = this.props
+
+    if (defaultValue) {
+      this.props.input.onChange(this.props.defaultValue)
+    } else {
+      this.props.input.onChange(customSelectFieldData[fieldName].value[0])
+    }
   }
 
   handleChange (event) {

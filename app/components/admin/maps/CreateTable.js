@@ -3,13 +3,13 @@ import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-import AddZoneForm from 'components/form/AddZoneForm'
-import { submitAddZone } from 'lib/actions/zone'
+import AddTableForm from 'components/form/AddTableForm'
+import { submitCreateTable } from 'lib/actions/table'
 import ContentLoading from 'components/ContentLoading'
 
-class CreateZone extends Component {
+class CreateTable extends Component {
   render() {
-    const { loading } = this.props
+    const { loading, zones } = this.props
 
     if (loading) {
       return (
@@ -35,7 +35,9 @@ class CreateZone extends Component {
                         Trở lại
                       </Link>
                     </div>
-                    <DecoratedCreateForm/>
+                    <DecoratedCreateForm
+                      zoneData={zones}
+                    />
                   </div>
                 </div>
             </div>
@@ -48,9 +50,9 @@ class CreateZone extends Component {
 
 // Decorate LoginForm so that form is pure
 const DecoratedCreateForm = reduxForm({
-  form: 'addZone',
-  onSubmit: submitAddZone
-})(AddZoneForm)
+  form: 'addTable',
+  onSubmit: submitCreateTable
+})(AddTableForm)
 
 const style = {
   cardBackground: {
@@ -68,7 +70,8 @@ const style = {
 }
 
 const mapStateToProps = (state) => ({
-  loading: state.zone.loading
+  loading: state.table.loading,
+  zones: state.zone.items
 })
 
-export default connect(mapStateToProps)(CreateZone)
+export default connect(mapStateToProps)(CreateTable)

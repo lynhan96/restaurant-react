@@ -6,6 +6,7 @@ import notification from 'ducks/notification'
 import food from 'ducks/food'
 import user from 'ducks/user'
 import zone from 'ducks/zone'
+import table from 'ducks/table'
 
 export default {
   hydration,
@@ -15,5 +16,6 @@ export default {
   food,
   user,
   zone,
+  table,
   notification
 }

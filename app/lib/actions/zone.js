@@ -2,6 +2,7 @@ import { database } from 'database/database'
 import R from 'ramda'
 import async from 'async'
 import * as firebase from 'firebase'
+import Navigator from 'lib/Navigator'
 
 import { showNotification } from './showNotification'
 
@@ -26,6 +27,8 @@ const createZone = params => {
   })
 
   showNotification('topRight', 'success', 'Thêm khu vực thành công!')
+
+  Navigator.push('map-tables')
 }
 
 export const submitAddZone =

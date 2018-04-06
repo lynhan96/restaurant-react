@@ -1,37 +1,42 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import R from 'ramda'
 import 'styles/website.less'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
-import ContentLoading from 'components/ContentLoading'
 import Draggable from 'react-draggable'
-
-const avatarStyle = {
-  backgroundImage: 'url("images/table-8-chairs.png")'
-}
+import { updateCoordinates } from 'lib/actions/table'
 
 class MapElement extends Component {
-  render() {
-    const { error } = this.props
+  constructor (props) {
+    super(props)
+    this.onClick = this.onClick.bind(this)
+    this.handleStop = this.handleStop.bind(this)
+  }
 
-    if (error) {
-      return (
-        <ContentLoading
-          error={error}
-          message='Quá trình tải dữ liệu xảy ra lỗi!'
-        />
-      )
-    }
+  onClick (event) {
+    console.log(event.target.value)
+  }
+
+  handleStop (e, data) {
+    let { item, id } = this.props
+    item.x = data.x
+    item.y = data.y
+
+    this.props.dispatch(updateCoordinates(item, id))
+  }
+
+  render() {
+    const { item } = this.props
+    const imageUrl = R.values(item.imageUrl)[0]
 
     return (
       <Draggable
-        allowAnyClick={true}
+        allowAnyClick={false}
         axis='both'
         handle='.handle'
         bounds='parent'
-        defaultPosition={{x: 300, y: 300}}
+        defaultPosition={{x: item.x, y: item.y}}
         grid={[5, 5]}
         onStart={this.handleStart}
         onDrag={this.handleDrag}
@@ -40,9 +45,9 @@ class MapElement extends Component {
           <Link to='#' style={{ float: 'right', position: 'absolute', marginLeft: '20px' }}>
             <img src='images/delete.png' style={{ marginTop: '45px', width: '25px', height: '25px' }} />
           </Link>
-          <div style={avatarStyle} className='table-wrapper'>
-            <input className='table-number' defaultValue={'test'} />
-            <input className='table-number' readOnly value={'test'} style={{ background: 'red', color: 'white' }} />
+          <div style={{ backgroundImage: 'url("' + imageUrl + '")', backgroundSize: 'cover' }} className='table-wrapper'>
+            <input className='table-number' defaultValue='test' type='text' onClick={this.onClick} />
+            <input className='table-number' readOnly value={item.status} style={{ background: 'red', color: 'white' }} />
           </div>
         </div>
       </Draggable>
@@ -50,10 +55,6 @@ class MapElement extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-})
-
 export default R.pipe(
-  connect(mapStateToProps),
   isAdmin
 )(MapElement)

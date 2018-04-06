@@ -1,10 +1,11 @@
 import R from 'ramda'
 import {
-  FETCH_ZONE_SUCCESS,
-  FETCH_ZONE_BEGIN,
-  ZONE_CHANGED,
-  ZONE_DELETED
-} from '../lib/actions/zone'
+  FETCH_TABLE_SUCCESS,
+  FETCH_TABLE_BEGIN,
+  FETCH_TABLE_END,
+  TABLE_CHANGED,
+  TABLE_DELETED
+} from '../lib/actions/table'
 import { ADMIN_SIGNED_OUT } from 'ducks/admin'
 
 const initialState = {
@@ -15,14 +16,21 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_ZONE_BEGIN:
+    case FETCH_TABLE_BEGIN:
       return {
         ...state,
         loading: true,
         error: null
       }
 
-    case FETCH_ZONE_SUCCESS:
+    case FETCH_TABLE_END:
+      return {
+        ...state,
+        loading: false,
+        error: null
+      }
+
+    case FETCH_TABLE_SUCCESS:
       return {
         ...state,
         items: action.items,
@@ -30,7 +38,7 @@ const reducer = (state = initialState, action) => {
         error: null
       }
 
-    case ZONE_CHANGED: {
+    case TABLE_CHANGED: {
       const { id } = action.item
 
       return {
@@ -42,7 +50,7 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-    case ZONE_DELETED: {
+    case TABLE_DELETED: {
       const { id } = action.item
 
       return {
