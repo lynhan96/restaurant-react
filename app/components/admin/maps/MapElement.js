@@ -50,12 +50,12 @@ class MapElement extends Component {
           <Link to='#' onClick={e => { e.preventDefault(); this.deleteTable() }} style={{ float: 'right', position: 'absolute', marginLeft: '20px' }}>
             <img src='images/delete.png' style={{ marginTop: '45px', width: '25px', height: '25px' }} />
           </Link>
-          <Link to={'/edit-table-information?id=' + id}>
-            <div style={{ backgroundImage: 'url("' + imageUrl + '")', backgroundSize: 'cover' }} className='table-wrapper'>
-              <input className='table-number' defaultValue={item.name} type='text' onClick={this.onClick} />
-              <input className='table-number' readOnly value={item.status} style={{ background: 'red', color: 'white' }} />
-            </div>
-          </Link>
+          <div style={{ backgroundImage: 'url("' + imageUrl + '")', backgroundSize: 'cover' }} className='table-wrapper'>
+            <Link to={'/edit-table-information?id=' + id}>
+              <div className='table-name'>{item.name}</div>
+              <div className='table-status'>{item.status}</div>
+            </Link>
+          </div>
         </div>
       </Draggable>
     )

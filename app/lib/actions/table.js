@@ -41,8 +41,6 @@ const updateTableInfo = (params, dispatch) => {
   item.imageUrl = params.imageUrl
   item.status = params.status
 
-  console.log(item)
-
   const ref = database.ref(getAdminData().vid + '/tables').child(params.id)
   ref.set(item)
   dispatch(fetchTablesEnd())
