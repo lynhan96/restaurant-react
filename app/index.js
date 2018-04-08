@@ -33,6 +33,7 @@ import UserCreate from 'components/admin/users/UserCreate'
 import MapTable from 'components/admin/maps/MapTable'
 import CreateZone from 'components/admin/maps/CreateZone'
 import CreateTable from 'components/admin/maps/CreateTable'
+import EditTableInformation from 'components/admin/maps/EditTableInformation'
 
 ReactDOM.render((
   <Provider store={Store}>
@@ -66,6 +67,7 @@ ReactDOM.render((
         <Route path='map-tables' component={MapTable} />
         <Route path='create-zone' component={CreateZone} />
         <Route path='create-table' component={CreateTable} />
+        <Route path='edit-table-information' component={EditTableInformation} />
       </Route>
     </Router>
   </Provider>

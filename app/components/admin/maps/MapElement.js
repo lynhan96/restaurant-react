@@ -32,7 +32,7 @@ class MapElement extends Component {
   }
 
   render() {
-    const { item } = this.props
+    const { item, id } = this.props
     const imageUrl = R.values(item.imageUrl)[0]
 
     return (
@@ -50,10 +50,12 @@ class MapElement extends Component {
           <Link to='#' onClick={e => { e.preventDefault(); this.deleteTable() }} style={{ float: 'right', position: 'absolute', marginLeft: '20px' }}>
             <img src='images/delete.png' style={{ marginTop: '45px', width: '25px', height: '25px' }} />
           </Link>
-          <div style={{ backgroundImage: 'url("' + imageUrl + '")', backgroundSize: 'cover' }} className='table-wrapper'>
-            <input className='table-number' defaultValue='test' type='text' onClick={this.onClick} />
-            <input className='table-number' readOnly value={item.status} style={{ background: 'red', color: 'white' }} />
-          </div>
+          <Link to={'/edit-table-information?id=' + id}>
+            <div style={{ backgroundImage: 'url("' + imageUrl + '")', backgroundSize: 'cover' }} className='table-wrapper'>
+              <input className='table-number' defaultValue={item.name} type='text' onClick={this.onClick} />
+              <input className='table-number' readOnly value={item.status} style={{ background: 'red', color: 'white' }} />
+            </div>
+          </Link>
         </div>
       </Draggable>
     )

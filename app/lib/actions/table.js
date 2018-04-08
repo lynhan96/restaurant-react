@@ -35,6 +35,57 @@ export const updateCoordinates = (data, id) => (dispatch) => {
   ref.set(data)
 }
 
+const updateTableInfo = (params, dispatch) => {
+  let item = params.item
+  item.name = params.tableName
+  item.imageUrl = params.imageUrl
+  item.status = params.status
+
+  console.log(item)
+
+  const ref = database.ref(getAdminData().vid + '/tables').child(params.id)
+  ref.set(item)
+  dispatch(fetchTablesEnd())
+
+  showNotification('topRight', 'success', 'Cập nhập thông tin thành công!')
+
+  Navigator.push('map-tables')
+}
+
+export const submitUpdateTable =
+  (values, dispatch, props) => {
+    let params = values
+
+    if (params.imageUrl) {
+      dispatch(fetchTablesBegin())
+      const keys = Object.keys(params.imageUrl)
+
+      async.each(keys, function(key, callback) {
+        const storageRef = firebase.storage().ref(key + '.png')
+        const base64result = R.split(',', params.imageUrl[key])
+
+        if (base64result.length === 1) {
+          callback()
+          return
+        }
+
+        storageRef.putString(base64result[1], 'base64').then(function(snapshot) {
+          params.imageUrl[key] = snapshot.downloadURL
+          callback()
+        })
+      }, function(err) {
+        if (err) {
+          showNotification('topRight', 'error', 'Quá trình Upload hình xảy ra lỗi!')
+        } else {
+          updateTableInfo(params, dispatch)
+        }
+      })
+    } else {
+      dispatch(fetchTablesBegin())
+      updateTableInfo(params, dispatch)
+    }
+  }
+
 const createTable = (params, dispatch) => {
   const keys = Array(parseInt(params.tableQuantity)).fill(0)
 
