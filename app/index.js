@@ -31,6 +31,7 @@ import UserEdit from 'components/admin/users/UserEdit'
 import UserCreate from 'components/admin/users/UserCreate'
 
 import OrderingList from 'components/admin/orderings/OrderingList'
+import OrderingView from 'components/admin/orderings/OrderingView'
 
 import MapTable from 'components/admin/maps/MapTable'
 import CreateZone from 'components/admin/maps/CreateZone'
@@ -67,6 +68,7 @@ ReactDOM.render((
         <Route path='user-create' component={UserCreate} />
 
         <Route path='orderings' component={OrderingList} />
+        <Route path='ordering-view' component={OrderingView} />
 
         <Route path='map-tables' component={MapTable} />
         <Route path='create-zone' component={CreateZone} />

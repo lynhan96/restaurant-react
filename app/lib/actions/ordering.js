@@ -25,29 +25,12 @@ export const tableHeader = () => ([
 ])
 
 export const viewLabelHeader = () => ([
-  { 'fieldName': 'name', 'viewTitle': 'Tên' },
-  { 'fieldName': 'email', 'viewTitle': 'Email' },
-  { 'fieldName': 'position', 'viewTitle': 'Vị trí' },
-  { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
-  { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh' },
-  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh' },
-  { 'fieldName': 'createdAt', 'viewTitle': 'Ngày tạo dữ liệu' },
-  { 'fieldName': 'updatedAt', 'viewTitle': 'Ngày cập nhập dữ liệu' }
 ])
 
 export const editFieldInfo = () => ([
-  { 'fieldName': 'name', 'viewTitle': 'Tên', isRequired: true, type: 'text' },
-  { 'fieldName': 'email', 'viewTitle': 'Email', isRequired: true, type: 'email' },
-  { 'fieldName': 'password', 'viewTitle': 'Password', isRequired: false, type: 'password' },
-  { 'fieldName': 'position', 'viewTitle': 'Vị trí', isRequired: true, type: 'select' },
-  { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại', isRequired: true, type: 'number' },
-  { 'fieldName': 'birthday', 'viewTitle': 'Ngày sinh', isRequired: false, type: 'datetime' },
-  { 'fieldName': 'gender', 'viewTitle': 'Giới tinh', isRequired: true, type: 'select' }
 ])
 
 export const selectFieldData = () => ({
-  'position': ['Nhân viên phục vụ', 'Quản trị viên', 'Nhân viên bếp', 'Nhân viên thu ngân'],
-  'gender': ['Nam', 'Nữ']
 })
 
 export const fetchOrderingsBegin = () => ({
@@ -198,5 +181,9 @@ export const deleteOrdering = (dispatch, orderingId, itemIndex, currentAction) =
   return new Promise((resolve) => {
     const ref = database.ref(getAdminData().vid + '/orders').child(orderingId)
     ref.remove()
+
+    Navigator.push('orderings')
+
+    showNotification('topRight', 'info', 'Xóa dữ liệu thành công')
   })
 }
