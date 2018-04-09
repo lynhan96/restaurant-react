@@ -24,7 +24,7 @@ class TableListing extends Component {
   }
 
   render() {
-    const { itemState, sortByKey, searchFunc, deleteItem, tableHeader, arrLink, viewHeader, dispatch } = this.props
+    const { visableCreateButton, itemState, sortByKey, searchFunc, deleteItem, tableHeader, arrLink, viewHeader, dispatch } = this.props
     const { totalPage, sortType } = itemState
     const sortFieldName = itemState.sortBy
 
@@ -38,6 +38,7 @@ class TableListing extends Component {
             dispatch={dispatch}
             searchFunc={searchFunc}
             arrLink={arrLink}
+            visableCreateButton={visableCreateButton}
           />
           <table className='table table-hover'>
             <TableHeader

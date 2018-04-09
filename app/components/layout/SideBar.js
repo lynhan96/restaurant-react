@@ -53,6 +53,12 @@ const SideBar = (props) => {
                 <p>Thực đơn</p>
               </Link>
             </li>
+            <li className={activeLink === 'orderings' ? 'active' : ''}>
+              <Link to='orderings'>
+                <i className='material-icons'>shopping_cart</i>
+                <p>Hóa đơn</p>
+              </Link>
+            </li>
             <li>
               <Link to='#' onClick={e => { e.preventDefault(); logout() }}>
                 <i className='material-icons'>subdirectory_arrow_right</i>
