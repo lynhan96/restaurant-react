@@ -194,35 +194,9 @@ export const createEmployee =
     })
   }
 
-export const deleteEmployee = (dispatch, employeeId, itemIndex, currentAction) => {
-  const url = 'deleteEmployee'
-
+export const deleteOrdering = (dispatch, orderingId, itemIndex, currentAction) => {
   return new Promise((resolve) => {
-    request(makeRequestOptions({employeeId: employeeId}, url)).then(body => {
-      if (body.code === 0) {
-        if (currentAction === 'list') {
-          dispatch(fetchOrderings())
-        } else {
-          Navigator.push('employees')
-        }
-
-        showNotification('topRight', 'info', 'Xóa dữ liệu thành công')
-      } else if (body.code === 401 || body.code === 400) {
-        showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
-      } else {
-        showNotification('topRight', 'error', 'Quá trình xóa dữ liệu xảy ra lỗi')
-      }
-
-      return resolve
-    })
-    .catch(function (err) {
-      if (err.message) {
-        showNotification('topRight', 'error', err.message)
-        throw new SubmissionError({ _error: err.message })
-      } else {
-        showNotification('topRight', 'error', JSON.stringify(err))
-        throw new SubmissionError({ _error: JSON.stringify(err) })
-      }
-    })
+    const ref = database.ref(getAdminData().vid + '/orders').child(orderingId)
+    ref.remove()
   })
 }
