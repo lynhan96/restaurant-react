@@ -40,3 +40,34 @@ export const submitLogin =
       }
     })
   }
+
+export const submitForgotPassword =
+  (values, dispatch, props) => {
+    const { email } = values
+
+    const url = 'forgotPassword'
+    const params = { email: email }
+
+    return request(makeRequestOptions(params, url)).then(body => {
+      console.log(body)
+      if (body.code === 0) {
+        showNotification('topCenter', 'success', 'Vui lòng kiểm tra email để nhận mật khẩu mới!')
+        Navigator.push('login')
+      } else if (body.code === 414) {
+        showNotification('topCenter', 'error', 'Tài khoản không tồn tại trong hệ thống!')
+      } else {
+        showNotification('topCenter', 'error', 'Lỗi hệ thống')
+      }
+
+      return Promise.resolve()
+    })
+    .catch(function (err) {
+      if (err.message) {
+        showNotification('topCenter', 'error', err.message)
+        throw new SubmissionError({ _error: err.message })
+      } else {
+        showNotification('topCenter', 'error', JSON.stringify(err))
+        throw new SubmissionError({ _error: JSON.stringify(err) })
+      }
+    })
+  }

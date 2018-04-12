@@ -7,10 +7,11 @@ import SubmitButton from 'components/form/element/SubmitButton'
 
 // This form is pure so it is easy to test
 // Page/Login will decorate it with the necessary props
-const LoginForm = (props) => {
+const ForgotPasswordForm = (props) => {
   const { submitting, handleSubmit } = props
   return (
     <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+      <label>Vui lòng nhập email của bạn. Hệ thống sẽ gửi một mật khẩu mới tới email này</label>
       <Field
         name='email'
         component={InputText}
@@ -18,18 +19,11 @@ const LoginForm = (props) => {
         type='email'
         required={true}
       />
-      <Field
-        name='password'
-        component={InputText}
-        label='Password'
-        type='password'
-        required={true}
-      />
       <div className='form-group label-floating' style={{textAlign: 'center'}}>
-        <Link to='forgot-password' style={{ margin: '10px 0' }}>Quên mật khẩu?</Link>
+        <Link to='login' style={{ margin: '10px 0' }}>Trở về trang đăng nhập?</Link>
       </div>
       <SubmitButton
-        text='Đăng nhập'
+        text='Xác nhận'
         submitting={submitting}
         className='btn btn-primary btn-block btn-flat'
       />
@@ -37,4 +31,4 @@ const LoginForm = (props) => {
   )
 }
 
-export default LoginForm
+export default ForgotPasswordForm

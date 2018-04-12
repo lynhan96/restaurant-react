@@ -7,6 +7,7 @@ import Navigator from 'lib/Navigator'
 import Store from 'lib/Store'
 import App from 'App'
 import Login from 'pages/Login'
+import ForgotPassword from 'pages/ForgotPassword'
 import Dashboard from 'pages/Dashboard'
 import Profile from 'pages/Profile'
 
@@ -44,6 +45,7 @@ ReactDOM.render((
       <Route path='/' component={App}>
         <IndexRoute component={Login} />
         <Route path='login' component={Login}/>
+        <Route path='forgot-password' component={ForgotPassword}/>
         <Route path='dashboard' component={Dashboard} />
         <Route path='profile' component={Profile} />
 
