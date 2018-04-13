@@ -21,6 +21,11 @@ import FoodCategoryView from 'components/admin/foodCategories/FoodCategoryView'
 import FoodCategoryEdit from 'components/admin/foodCategories/FoodCategoryEdit'
 import FoodCategoryCreate from 'components/admin/foodCategories/FoodCategoryCreate'
 
+import EventList from 'components/admin/events/EventList'
+import EventView from 'components/admin/events/EventView'
+import EventEdit from 'components/admin/events/EventEdit'
+import EventCreate from 'components/admin/events/EventCreate'
+
 import FoodList from 'components/admin/foods/FoodList'
 import FoodView from 'components/admin/foods/FoodView'
 import FoodEdit from 'components/admin/foods/FoodEdit'
@@ -58,6 +63,11 @@ ReactDOM.render((
         <Route path='food-category-view' component={FoodCategoryView} />
         <Route path='food-category-edit' component={FoodCategoryEdit} />
         <Route path='food-category-create' component={FoodCategoryCreate} />
+
+        <Route path='events' component={EventList} />
+        <Route path='event-view' component={EventView} />
+        <Route path='event-edit' component={EventEdit} />
+        <Route path='event-create' component={EventCreate} />
 
         <Route path='foods' component={FoodList} />
         <Route path='food-view' component={FoodView} />

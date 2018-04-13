@@ -8,6 +8,7 @@ import user from 'ducks/user'
 import zone from 'ducks/zone'
 import table from 'ducks/table'
 import ordering from 'ducks/ordering'
+import event from 'ducks/event'
 
 export default {
   hydration,
@@ -19,5 +20,6 @@ export default {
   zone,
   table,
   ordering,
-  notification
+  notification,
+  event
 }
