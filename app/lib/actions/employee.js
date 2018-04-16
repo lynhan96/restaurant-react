@@ -104,6 +104,8 @@ export const fetchEmployees = params => {
       if (body.code === 401) {
         showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
+        console.log(body.data);
+        
         dispatch(fetchEmployeesSuccess(body.data.items))
         dispatch(fetchEmployeesTotalPage(body.data.totalPage))
       }

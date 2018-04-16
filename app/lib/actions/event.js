@@ -8,11 +8,11 @@ import Navigator from 'lib/Navigator'
 import { showNotification } from './showNotification'
 import { makeRequestOptions } from '../requestHeader'
 
-export const FETCH_FOOD_CATEGORIES_BEGIN = 'FETCH_FOOD_CATEGORIES_BEGIN'
-export const FETCH_FOOD_CATEGORIES_SUCCESS = 'FETCH_FOOD_CATEGORIES_SUCCESS'
-export const FETCH_FOOD_CATEGORIES_ERROR = 'FETCH_FOOD_CATEGORIES_ERROR'
-export const FETCH_FOOD_CATEGORIES_SORT_VALUE = 'FETCH_FOOD_CATEGORIES_SORT_VALUE'
-export const FETCH_FOOD_CATEGORIES_TOTAL_PAGE = 'FETCH_FOOD_CATEGORIES_TOTAL_PAGE'
+export const FETCH_EVENT_BEGIN = 'FETCH_EVENT_BEGIN'
+export const FETCH_EVENT_SUCCESS = 'FETCH_EVENT_SUCCESS'
+export const FETCH_EVENT_ERROR = 'FETCH_EVENT_ERROR'
+export const FETCH_EVENT_SORT_VALUE = 'FETCH_EVENT_SORT_VALUE'
+export const FETCH_EVENT_TOTAL_PAGE = 'FETCH_EVENT_TOTAL_PAGE'
 
 export const tableHeader = () => ([
   { 'fieldName': 'id', 'viewTitle': 'ID' },
@@ -43,78 +43,78 @@ export const customSelectFieldData = () => ({
   'isView': { value: [true, false], view: ['Có', 'Không'] }
 })
 
-export const fetchFoodCategoriesBegin = () => ({
-  type: FETCH_FOOD_CATEGORIES_BEGIN
+export const fetchEventsBegin = () => ({
+  type: FETCH_EVENT_BEGIN
 })
 
-export const fetchFoodCategoriesSuccess = foodCategories => ({
-  type: FETCH_FOOD_CATEGORIES_SUCCESS,
-  foodCategories: foodCategories
+export const fetchEventsSuccess = events => ({
+  type: FETCH_EVENT_SUCCESS,
+  events: events
 })
 
-export const fetchFoodCategoriesError = error => ({
-  type: FETCH_FOOD_CATEGORIES_ERROR,
+export const fetchEventsError = error => ({
+  type: FETCH_EVENT_ERROR,
   error: error
 })
 
-export const fetchFoodCategoriesSortValue = (fieldName, sortType) => ({
-  type: FETCH_FOOD_CATEGORIES_SORT_VALUE,
+export const fetchEventsSortValue = (fieldName, sortType) => ({
+  type: FETCH_EVENT_SORT_VALUE,
   sortType: sortType,
   sortBy: fieldName
 })
 
-export const fetchFoodCategoriesTotalPage = totalPage => ({
-  type: FETCH_FOOD_CATEGORIES_TOTAL_PAGE,
+export const fetchEventsTotalPage = totalPage => ({
+  type: FETCH_EVENT_TOTAL_PAGE,
   totalPage: totalPage
 })
 
 export const searchByKeyword = (event, dispatch) => {
-  dispatch(fetchFoodCategories({keyword: event.target.value}))
-  dispatch(fetchFoodCategoriesSortValue('id', 'AtoZ'))
+  dispatch(fetchEvents({keyword: event.target.value}))
+  dispatch(fetchEventsSortValue('id', 'AtoZ'))
 }
 
 export const changePagination = (offset, sortFieldName, sortType, dispatch) => {
   if (sortType === 'AtoZ') {
-    dispatch(fetchFoodCategories({sortBy: sortFieldName, sortDir: 'asc', offset: offset}))
+    dispatch(fetchEvents({sortBy: sortFieldName, sortDir: 'asc', offset: offset}))
   } else {
-    dispatch(fetchFoodCategories({sortBy: sortFieldName, sortDir: 'desc', offset: offset}))
+    dispatch(fetchEvents({sortBy: sortFieldName, sortDir: 'desc', offset: offset}))
   }
 }
 
 export const sortByKey = (datas, fieldName, currentFieldName, sortType, dispatch) => {
-  dispatch(fetchFoodCategoriesBegin())
+  dispatch(fetchEventsBegin())
 
   if (sortType === 'AtoZ' && fieldName === currentFieldName) {
-    dispatch(fetchFoodCategoriesSortValue(fieldName, 'ZtoA'))
-    dispatch(fetchFoodCategories({sortBy: fieldName, sortDir: 'desc'}))
+    dispatch(fetchEventsSortValue(fieldName, 'ZtoA'))
+    dispatch(fetchEvents({sortBy: fieldName, sortDir: 'desc'}))
   } else {
-    dispatch(fetchFoodCategoriesSortValue(fieldName, 'AtoZ'))
-    dispatch(fetchFoodCategories({sortBy: fieldName, sortDir: 'asc'}))
+    dispatch(fetchEventsSortValue(fieldName, 'AtoZ'))
+    dispatch(fetchEvents({sortBy: fieldName, sortDir: 'asc'}))
   }
 }
 
-export const fetchFoodCategories = params => {
+export const fetchEvents = params => {
   return dispatch => {
-    dispatch(fetchFoodCategoriesBegin())
-    request(makeRequestOptions(params, 'foodCategories')).then(body => {
+    dispatch(fetchEventsBegin())
+    request(makeRequestOptions(params, 'events')).then(body => {
       if (body.code === 401 || body.code === 400 || body.code === 414) {
         showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
-        console.log(body.data);
-        dispatch(fetchFoodCategoriesSuccess(body.data.items))
-        dispatch(fetchFoodCategoriesTotalPage(body.data.totalPage))
+        console.log(body.data)
+        dispatch(fetchEventsSuccess(body.data.items))
+        dispatch(fetchEventsTotalPage(body.data.totalPage))
       }
     })
-    .catch(err => dispatch(fetchFoodCategoriesError(err)))
+    .catch(err => dispatch(fetchEventsError(err)))
   }
 }
 
-const updateFoodCategory = (params, url, itemData, values, dispatch, props) => {
+const updateEvent = (params, url, itemData, values, dispatch, props) => {
   return new Promise((resolve) => {
     request(makeRequestOptions(params, url)).then(body => {
       if (body.code === 0) {
         props.items[props.itemIndex] = R.merge(itemData)(values)
-        dispatch(fetchFoodCategoriesSuccess(props.items))
+        dispatch(fetchEventsSuccess(props.items))
 
         showNotification('topRight', 'success', 'Cập nhập dữ liệu thành công')
       } else if (body.code === 417) {
@@ -137,15 +137,15 @@ const updateFoodCategory = (params, url, itemData, values, dispatch, props) => {
   })
 }
 
-export const editFoodCategory =
+export const editEvent =
   (values, dispatch, props) => {
-    const url = 'updateFoodCategory'
+    const url = 'updateEvent'
     const itemData = props.items[props.itemIndex]
 
-    let params = R.merge({ foodCategoryId: itemData.id })(values)
+    let params = R.merge({ eventId: itemData.id })(values)
 
     if (params.imageUrl) {
-      dispatch(fetchFoodCategoriesBegin())
+      dispatch(fetchEventsBegin())
       const keys = Object.keys(params.imageUrl)
 
       async.each(keys, function(key, callback) {
@@ -165,12 +165,12 @@ export const editFoodCategory =
         if (err) {
           showNotification('topRight', 'error', 'Quá trình Upload hình xảy ra lỗi!')
         } else {
-          updateFoodCategory(params, url, itemData, values, dispatch, props)
+          updateEvent(params, url, itemData, values, dispatch, props)
         }
       })
     } else {
-      dispatch(fetchFoodCategoriesBegin())
-      updateFoodCategory(params, url, itemData, values, dispatch, props)
+      dispatch(fetchEventsBegin())
+      updateEvent(params, url, itemData, values, dispatch, props)
     }
   }
 
@@ -179,7 +179,7 @@ const createItem = (params, url, dispatch, props) => {
     request(makeRequestOptions(params, url)).then(body => {
       if (body.code === 0) {
         showNotification('topRight', 'success', 'Tạo dữ liệu thành công')
-        Navigator.push('food-categories')
+        Navigator.push('events')
       } else if (body.code === 401 || body.code === 400) {
         showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
@@ -200,12 +200,12 @@ const createItem = (params, url, dispatch, props) => {
   })
 }
 
-export const createFoodCategory =
+export const createEvent =
   (values, dispatch, props) => {
-    const url = 'createFoodCategory'
+    const url = 'createEvent'
     let params = values
     if (params.imageUrl) {
-      dispatch(fetchFoodCategoriesBegin())
+      dispatch(fetchEventsBegin())
       const keys = Object.keys(params.imageUrl)
 
       async.each(keys, function(key, callback) {
@@ -224,21 +224,21 @@ export const createFoodCategory =
         }
       })
     } else {
-      dispatch(fetchFoodCategoriesBegin())
+      dispatch(fetchEventsBegin())
       createItem(params, url, dispatch, props)
     }
   }
 
-export const deleteFoodCategory = (dispatch, foodCategoryId, itemIndex, currentAction) => {
-  const url = 'deleteFoodCategory'
+export const deleteEvent = (dispatch, eventId, itemIndex, currentAction) => {
+  const url = 'deleteEvent'
 
   return new Promise((resolve) => {
-    request(makeRequestOptions({foodCategoryId: foodCategoryId}, url)).then(body => {
+    request(makeRequestOptions({eventId: eventId}, url)).then(body => {
       if (body.code === 0) {
         if (currentAction === 'list') {
-          dispatch(fetchFoodCategories())
+          dispatch(fetchEvents())
         } else {
-          Navigator.push('food-categories')
+          Navigator.push('events')
         }
 
         showNotification('topRight', 'info', 'Xóa dữ liệu thành công')

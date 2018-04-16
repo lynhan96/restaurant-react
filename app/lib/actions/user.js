@@ -108,6 +108,7 @@ export const fetchUsers = params => {
       if (body.code === 401 || body.code === 400 || body.code === 414) {
         showNotification('topRight', 'error', 'Quá trình xác thực xảy ra lỗi!')
       } else {
+        console.log(body.data);
         dispatch(fetchUsersSuccess(body.data.items))
         dispatch(fetchUsersTotalPage(body.data.totalPage))
       }
