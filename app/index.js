@@ -44,6 +44,8 @@ import CreateZone from 'components/admin/maps/CreateZone'
 import CreateTable from 'components/admin/maps/CreateTable'
 import EditTableInformation from 'components/admin/maps/EditTableInformation'
 
+import Contacts from 'components/admin/contacts/ContactList'
+
 ReactDOM.render((
   <Provider store={Store}>
     <Router history={Navigator}>
@@ -86,6 +88,9 @@ ReactDOM.render((
         <Route path='create-zone' component={CreateZone} />
         <Route path='create-table' component={CreateTable} />
         <Route path='edit-table-information' component={EditTableInformation} />
+
+        <Route path='contacts' component= {Contacts}/>
+
       </Route>
     </Router>
   </Provider>

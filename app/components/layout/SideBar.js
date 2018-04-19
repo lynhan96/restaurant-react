@@ -65,6 +65,12 @@ const SideBar = (props) => {
                 <p>Sự kiện</p>
               </Link>
             </li>
+            <li className={activeLink === 'contacts' ? 'active' : ''}>
+              <Link to='contacts'>
+                <i className="material-icons">contact_mail</i>
+                <p>Liên hệ</p>
+              </Link>
+            </li>
             <li>
               <Link to='#' onClick={e => { e.preventDefault(); logout() }}>
                 <i className='material-icons'>subdirectory_arrow_right</i>

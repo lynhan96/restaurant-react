@@ -24,7 +24,7 @@ class TableListing extends Component {
   }
 
   render() {
-    const { visableCreateButton, itemState, sortByKey, searchFunc, deleteItem, tableHeader, arrLink, viewHeader, dispatch } = this.props
+    const { visableCreateButton, itemState, sortByKey, searchFunc, deleteItem, tableHeader, arrLink, viewHeader, dispatch, seenItem } = this.props
     const { totalPage, sortType } = itemState
     const sortFieldName = itemState.sortBy
 
@@ -52,6 +52,7 @@ class TableListing extends Component {
             <TableBody
               arrLink={arrLink}
               deleteItem={deleteItem}
+              seenItem={seenItem}
               tableHeader={tableHeader}
               dispatch={dispatch}
               datas={itemState.items}

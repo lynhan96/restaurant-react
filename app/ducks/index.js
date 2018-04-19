@@ -9,6 +9,7 @@ import zone from 'ducks/zone'
 import table from 'ducks/table'
 import ordering from 'ducks/ordering'
 import event from 'ducks/event'
+import contact from 'ducks/contact'
 
 export default {
   hydration,
@@ -21,5 +22,6 @@ export default {
   table,
   ordering,
   notification,
-  event
+  event,
+  contact
 }
