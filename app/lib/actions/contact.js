@@ -18,6 +18,7 @@ export const tableHeader = () => ([
     { 'fieldName': 'email', 'viewTitle': 'Email' },
     { 'fieldName': 'phoneNumber', 'viewTitle': 'Số điện thoại' },
     { 'fieldName': 'address', 'viewTitle': 'Địa chỉ' },
+	{ 'fieldName': 'message', 'viewTitle': 'Nội dung tin nhắn' },
     { 'fieldName': 'viewed', 'viewTitle': 'Đã xem' }
 ])
 
