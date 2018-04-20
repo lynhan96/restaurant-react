@@ -36,7 +36,7 @@ class ContactList extends ReactQueryParams {
                 visableCreateButton={true}
                 itemState={contactState}
                 tableHeader={tableHeader()}
-                viewHeader='Danh sách Nhân viên'
+                viewHeader='Thông tin Liên hệ'
                 arrLink={{ list: 'contacts' }}
                 deleteItem={deleteContact}
                 seenItem={seenContact}
