@@ -8,10 +8,26 @@ import { updateActiveLink } from 'ducks/admin'
 import { fetchDashboard } from 'lib/actions/dashboard'
 import { getOrderingByMonth } from 'lib/objects'
 
+const checkLength = data => data && data.length ? data.length : 0
+
 class Dashboard extends Component {
+  constructor(props, context) {
+    super(props, context)
+
+    this.filterByDate = this.filterByDate.bind(this)
+
+    this.state = {
+      year: 2018
+    }
+  }
+
   componentDidMount() {
     this.props.dispatch(updateActiveLink('dashboard'))
     this.props.dispatch(fetchDashboard())
+  }
+
+  filterByDate(event) {
+    this.setState({ year: parseInt(event.target.value) })
   }
 
   render() {
@@ -25,7 +41,7 @@ class Dashboard extends Component {
         'Nhân viên thu ngân'
       ],
       datasets: [{
-        data: [dashboardInfo[0].length, dashboardInfo[1].length, dashboardInfo[2].length, dashboardInfo[3].length],
+        data: [checkLength(dashboardInfo[0]), checkLength(dashboardInfo[1]), checkLength(dashboardInfo[2]), checkLength(dashboardInfo[3])],
         backgroundColor: [
           '#FF6384',
           '#36A2EB',
@@ -47,7 +63,7 @@ class Dashboard extends Component {
         'Hết món'
       ],
       datasets: [{
-        data: [dashboardInfo[4].length, dashboardInfo[5].length],
+        data: [checkLength(dashboardInfo[4]), checkLength(dashboardInfo[5])],
         backgroundColor: [
           '#36A2EB',
           '#FF6384'
@@ -82,18 +98,18 @@ class Dashboard extends Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: [
-            getOrderingByMonth(orderings, 1, 2018),
-            getOrderingByMonth(orderings, 2, 2018),
-            getOrderingByMonth(orderings, 3, 2018),
-            getOrderingByMonth(orderings, 4, 2018),
-            getOrderingByMonth(orderings, 5, 2018),
-            getOrderingByMonth(orderings, 6, 2018),
-            getOrderingByMonth(orderings, 7, 2018),
-            getOrderingByMonth(orderings, 8, 2018),
-            getOrderingByMonth(orderings, 9, 2018),
-            getOrderingByMonth(orderings, 10, 2018),
-            getOrderingByMonth(orderings, 11, 2018),
-            getOrderingByMonth(orderings, 12, 2018)
+            getOrderingByMonth(orderings, 1, this.state.year),
+            getOrderingByMonth(orderings, 2, this.state.year),
+            getOrderingByMonth(orderings, 3, this.state.year),
+            getOrderingByMonth(orderings, 4, this.state.year),
+            getOrderingByMonth(orderings, 5, this.state.year),
+            getOrderingByMonth(orderings, 6, this.state.year),
+            getOrderingByMonth(orderings, 7, this.state.year),
+            getOrderingByMonth(orderings, 8, this.state.year),
+            getOrderingByMonth(orderings, 9, this.state.year),
+            getOrderingByMonth(orderings, 10, this.state.year),
+            getOrderingByMonth(orderings, 11, this.state.year),
+            getOrderingByMonth(orderings, 12, this.state.year)
           ]
         }
       ]
@@ -110,7 +126,7 @@ class Dashboard extends Component {
                 </div>
                 <div className='card-content'>
                   <p className='category' style={style.header}>Nhân viên</p>
-                  <h3 className='title'>{dashboardInfo[0].length + dashboardInfo[1].length + dashboardInfo[2].length + dashboardInfo[3].length}</h3>
+                  <h3 className='title'>{checkLength(dashboardInfo[0]) + checkLength(dashboardInfo[1]) + checkLength(dashboardInfo[2]) + checkLength(dashboardInfo[3])}</h3>
                 </div>
               </div>
             </div>
@@ -121,7 +137,7 @@ class Dashboard extends Component {
                 </div>
                 <div className='card-content'>
                   <p className='category' style={style.header}>Số món ăn</p>
-                  <h3 className='title'>{dashboardInfo[4].length + dashboardInfo[5].length}</h3>
+                  <h3 className='title'>{checkLength(dashboardInfo[4]) + checkLength(dashboardInfo[5])}</h3>
                 </div>
               </div>
             </div>
@@ -132,7 +148,7 @@ class Dashboard extends Component {
                 </div>
                 <div className='card-content'>
                   <p className='category' style={style.header}>Khách hàng</p>
-                  <h3 className='title'>{dashboardInfo[6].length}</h3>
+                  <h3 className='title'>{checkLength(dashboardInfo[6])}</h3>
                 </div>
               </div>
             </div>
@@ -169,6 +185,20 @@ class Dashboard extends Component {
               <div className='card'>
                 <div className='card-content'>
                   <h2 className='title' style={{ textAlign: 'center' }}>Biểu đồ hòa đơn theo từng tháng</h2>
+                  <div style={{ textAlign: 'center' }}>
+                    <select
+                      style={{width: '20%', display: 'inline-block'}}
+                      className='form-control'
+                      onChange={this.filterByDate}
+                      value={this.state.year}
+                    >
+                      {[2010, 2011, 20012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023].map((key, index) => {
+                        return (
+                          <option value={key} key={index}>{key}</option>
+                        )
+                      })}
+                    </select>
+                  </div>
                   <Line data={orderingData} />
                 </div>
               </div>
@@ -190,7 +220,7 @@ export default R.pipe(
   isAdmin,
 )(Dashboard)
 
-const style ={
+const style = {
   'header': {
     fontSize: '20px'
   }
