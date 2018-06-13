@@ -1,0 +1,108 @@
+0000000000000000000000000000000000000000 9ac22ad78022ffb20560fcd1e5ac9ea6c4ab03c6 Iker <tdtrinh.web@gmail.com> 1520859016 +0700	branch: Created from HEAD
+9ac22ad78022ffb20560fcd1e5ac9ea6c4ab03c6 b20773b7958da673b06063ea9fff216847964402 Ly nhan <lynhan15041997@gmail.com> 1520859555 +0700	commit: renew structure
+b20773b7958da673b06063ea9fff216847964402 7ea76c262e906dd1f29e48b7abad4c7a20e87410 Ly nhan <lynhan15041997@gmail.com> 1520866419 +0700	commit: add page login
+7ea76c262e906dd1f29e48b7abad4c7a20e87410 86dadc2b34011668a5d6487a894a3fe202aa06fc Ly nhan <lynhan15041997@gmail.com> 1521007168 +0700	commit: connect state and add header for layout
+86dadc2b34011668a5d6487a894a3fe202aa06fc bd77ea7713b3fdd569c80a992e5d4551a9b06c7a Ly nhan <lynhan15041997@gmail.com> 1521010200 +0700	commit: UI sidebar and header
+bd77ea7713b3fdd569c80a992e5d4551a9b06c7a c812c0abe1ce724b03ef7884d137f049e4e3017d Ly nhan <lynhan15041997@gmail.com> 1521010544 +0700	commit: add logout
+c812c0abe1ce724b03ef7884d137f049e4e3017d 41f9ab02c201f2b609241ffede22c8c978ca74b5 Ly nhan <lynhan15041997@gmail.com> 1521010788 +0700	commit: refactor funcion logout
+41f9ab02c201f2b609241ffede22c8c978ca74b5 038aec427759279aed03934ba13419e193292fab Ly nhan <lynhan15041997@gmail.com> 1521018794 +0700	commit: WIP
+038aec427759279aed03934ba13419e193292fab d3f304178e254a5aa20986a86b2d913b338d4ba7 Ly nhan <lynhan15041997@gmail.com> 1521020063 +0700	commit: add list view table
+d3f304178e254a5aa20986a86b2d913b338d4ba7 c18b325a4834a4d3e9581dc5b19fde03bf9dbc4d Ly nhan <lynhan15041997@gmail.com> 1521022140 +0700	commit: WIP
+c18b325a4834a4d3e9581dc5b19fde03bf9dbc4d f9fca47a7079546d2a67876f93a2b84efb11c9e9 Ly nhan <lynhan15041997@gmail.com> 1521037988 +0700	commit: update new UI
+f9fca47a7079546d2a67876f93a2b84efb11c9e9 2b2905f774707a24c8e9d9dffe4f35b057540c8f Ly nhan <lynhan15041997@gmail.com> 1521042804 +0700	commit: update UI page login dashboard
+2b2905f774707a24c8e9d9dffe4f35b057540c8f 005487e4515a652eee5b04b7e38ff14fad4129b2 Ly nhan <lynhan15041997@gmail.com> 1521044012 +0700	commit: update UI page employees
+005487e4515a652eee5b04b7e38ff14fad4129b2 224a7f1a8fa9aebbb848d4f064a97fb6e90dd6af Ly nhan <lynhan15041997@gmail.com> 1521048452 +0700	commit: update sidebar active link
+224a7f1a8fa9aebbb848d4f064a97fb6e90dd6af 344898037a9f58a8930717c17de2dae9c07e23f7 Ly nhan <lynhan15041997@gmail.com> 1521049014 +0700	commit: update reload state when logout
+344898037a9f58a8930717c17de2dae9c07e23f7 1cce34e173e411f85eb404a788cf668335011c75 Ly nhan <lynhan15041997@gmail.com> 1521050890 +0700	commit: fix bug log in
+1cce34e173e411f85eb404a788cf668335011c75 edabf4868c1315fefc450a919d5184d25a732669 Ly nhan <lynhan15041997@gmail.com> 1521080739 +0700	commit: update side bar
+edabf4868c1315fefc450a919d5184d25a732669 f1969014b6cb94575de0255db9c7f3d01b32c15a Ly nhan <lynhan15041997@gmail.com> 1521085272 +0700	commit: fix bug logout
+f1969014b6cb94575de0255db9c7f3d01b32c15a 988341e8d2ff35efc23ab0af35d0f181ff7d324c Ly nhan <lynhan15041997@gmail.com> 1521105921 +0700	commit: WIP
+988341e8d2ff35efc23ab0af35d0f181ff7d324c 66acd53aa3772a65d8dd62a4db997f5283e949fd Ly nhan <lynhan15041997@gmail.com> 1521123409 +0700	commit: add page view
+66acd53aa3772a65d8dd62a4db997f5283e949fd 2388897840dfbae6466d403ac50b6fc01df0da65 Ly nhan <lynhan15041997@gmail.com> 1521127198 +0700	commit: update page view
+2388897840dfbae6466d403ac50b6fc01df0da65 32badf8c7fe11f37bba9bc696bf346fdc867ccd0 Ly nhan <lynhan15041997@gmail.com> 1521131609 +0700	commit: add page edit
+32badf8c7fe11f37bba9bc696bf346fdc867ccd0 91090db3e2aa00a9dbf81da6c6df493377014796 Ly nhan <lynhan15041997@gmail.com> 1521132008 +0700	commit: update UI alert
+91090db3e2aa00a9dbf81da6c6df493377014796 d5bd2bfa6b1cc8ae309bd63731c095b227d47a60 Ly nhan <lynhan15041997@gmail.com> 1521214190 +0700	commit: refactor code page edit
+d5bd2bfa6b1cc8ae309bd63731c095b227d47a60 7ae746ae2850b8c5b3ab6e41ebc9d7f9825a3082 Ly nhan <lynhan15041997@gmail.com> 1521219133 +0700	commit: update edit form
+7ae746ae2850b8c5b3ab6e41ebc9d7f9825a3082 5dc9dd78d4104afd213268a3f25c7efb0a3b959e Ly nhan <lynhan15041997@gmail.com> 1521264056 +0700	commit: add function show message
+5dc9dd78d4104afd213268a3f25c7efb0a3b959e e415344b9ab8a6ef8052942201d8e9f4782bda0d Ly nhan <lynhan15041997@gmail.com> 1521267098 +0700	commit: done function edit
+e415344b9ab8a6ef8052942201d8e9f4782bda0d a67598373b7b60b2b917835fd575b6bee9c8a8a8 Ly nhan <lynhan15041997@gmail.com> 1521270258 +0700	commit: add form create
+a67598373b7b60b2b917835fd575b6bee9c8a8a8 31e70b588ccf891e30837f693c29f2c4c31bbed9 Ly nhan <lynhan15041997@gmail.com> 1521295042 +0700	commit: add required for form element
+31e70b588ccf891e30837f693c29f2c4c31bbed9 d776e1a8bcad1c0578c0dfb07c5aa6023655c0d6 Ly nhan <lynhan15041997@gmail.com> 1521304275 +0700	commit: fix bug logout
+d776e1a8bcad1c0578c0dfb07c5aa6023655c0d6 3029e5a34b946d676b3d512b26eb506549d4a65d Ly nhan <lynhan15041997@gmail.com> 1521309306 +0700	commit: add function delete for list and edit form
+3029e5a34b946d676b3d512b26eb506549d4a65d f41e42c45bb8ab0aa544a12f8bf46c0c36372e93 Ly nhan <lynhan15041997@gmail.com> 1521309822 +0700	commit: update page login
+f41e42c45bb8ab0aa544a12f8bf46c0c36372e93 ff6f93850a58e2e47e7ec6498e83187e77b2cd30 Ly nhan <lynhan15041997@gmail.com> 1521345289 +0700	commit: add datetime picker
+ff6f93850a58e2e47e7ec6498e83187e77b2cd30 87073f1d7fb9873acf51b91f607c0d44f26e64f3 Ly nhan <lynhan15041997@gmail.com> 1521350336 +0700	commit: add select input
+87073f1d7fb9873acf51b91f607c0d44f26e64f3 72617fa9f0b3f8aa2ab18dcbcae2640e1f8c4bbf Ly nhan <lynhan15041997@gmail.com> 1521352644 +0700	commit: update form edit
+72617fa9f0b3f8aa2ab18dcbcae2640e1f8c4bbf 8b098197134c278817f5155890235b67fce172b0 Ly nhan <lynhan15041997@gmail.com> 1521353151 +0700	commit: update name of funtion
+8b098197134c278817f5155890235b67fce172b0 2dfd6fad8c9bc950385e0a09b389f7ad48072930 Ly nhan <lynhan15041997@gmail.com> 1521353754 +0700	commit: update create form
+2dfd6fad8c9bc950385e0a09b389f7ad48072930 aecd85634738a800987a03250b6c303843b98f66 Ly nhan <lynhan15041997@gmail.com> 1521354071 +0700	commit: update input date tim
+aecd85634738a800987a03250b6c303843b98f66 65ac6b879426b5ba37525112bda51c9bb18dc016 Ly nhan <lynhan15041997@gmail.com> 1521354794 +0700	commit: add function sort by for table
+65ac6b879426b5ba37525112bda51c9bb18dc016 f3bb18446c8774a4b58fc5db238f50a52a7989af Ly nhan <lynhan15041997@gmail.com> 1521355533 +0700	commit: WIP
+f3bb18446c8774a4b58fc5db238f50a52a7989af a91382f3324a5a56490bb390399c6897741d296b Ly nhan <lynhan15041997@gmail.com> 1521372217 +0700	commit: update sortBy
+a91382f3324a5a56490bb390399c6897741d296b 3bee003c9fba252fa729c13b34ea108c271afee3 Ly nhan <lynhan15041997@gmail.com> 1521379363 +0700	commit: update sort by
+3bee003c9fba252fa729c13b34ea108c271afee3 a05564a675a4e5b18010d2fb0de872d9db5e512d Ly nhan <lynhan15041997@gmail.com> 1521385046 +0700	commit: refactor table list
+a05564a675a4e5b18010d2fb0de872d9db5e512d ca6a89c9d1ea949cce9845fa65198ce6e84ef6ee Ly nhan <lynhan15041997@gmail.com> 1521386275 +0700	commit: refactor table list
+ca6a89c9d1ea949cce9845fa65198ce6e84ef6ee 9ce46bebfbaf072f5eeb56621887fa8ce60b96c2 Ly nhan <lynhan15041997@gmail.com> 1521388160 +0700	commit: update function search
+9ce46bebfbaf072f5eeb56621887fa8ce60b96c2 736899cdba724cf486c3b17241956967d593f1eb Ly nhan <lynhan15041997@gmail.com> 1521392046 +0700	commit: add pagination
+736899cdba724cf486c3b17241956967d593f1eb d731c5b58e81cb6be198fb7c42786b8a87cc6512 Ly nhan <lynhan15041997@gmail.com> 1521393627 +0700	commit: update pagegination
+d731c5b58e81cb6be198fb7c42786b8a87cc6512 84a3e931c9b1cd42a8e68d695bbd0eed58dd183d Ly nhan <lynhan15041997@gmail.com> 1521393819 +0700	commit: update delete item
+84a3e931c9b1cd42a8e68d695bbd0eed58dd183d 41e5576c2637da50e0354cb44234e6a615d68025 Ly nhan <lynhan15041997@gmail.com> 1521394124 +0700	commit: update view form
+41e5576c2637da50e0354cb44234e6a615d68025 dd5380cf91c120dc2439e05036fdb4c3f210b44a Ly nhan <lynhan15041997@gmail.com> 1521433162 +0700	commit: add connect fire base
+dd5380cf91c120dc2439e05036fdb4c3f210b44a 028730024c6d8c16f9ff0bb25ea6141b3211a81a Ly nhan <lynhan15041997@gmail.com> 1521740387 +0700	commit: add function get message from fire base
+028730024c6d8c16f9ff0bb25ea6141b3211a81a 3ba37f11335f6ceeeab04c5dd93c7c0f6e67a065 Ly nhan <lynhan15041997@gmail.com> 1521890173 +0700	commit: add table food category
+3ba37f11335f6ceeeab04c5dd93c7c0f6e67a065 b01711ea5d2c08d6e0c489ad4159ccd8feee21f9 Ly nhan <lynhan15041997@gmail.com> 1521891857 +0700	commit: add CK editor
+b01711ea5d2c08d6e0c489ad4159ccd8feee21f9 2d3656195ef810a66fc9edb57b32c59eb0729bc1 Ly nhan <lynhan15041997@gmail.com> 1521893686 +0700	commit: update table food category
+2d3656195ef810a66fc9edb57b32c59eb0729bc1 5dc70ee5481851b1c139e4e1ee1bd6b8d0ffc6e3 Ly nhan <lynhan15041997@gmail.com> 1521902256 +0700	commit: add upload image
+5dc70ee5481851b1c139e4e1ee1bd6b8d0ffc6e3 24b94857fb11dd5de244650e16261badf3ac2910 Ly nhan <lynhan15041997@gmail.com> 1521906448 +0700	commit: WIP
+24b94857fb11dd5de244650e16261badf3ac2910 267811562d3d861bd6a38e14a72622e2b8608aea Ly nhan <lynhan15041997@gmail.com> 1521975143 +0700	commit: WIP
+267811562d3d861bd6a38e14a72622e2b8608aea e6ce7f3fed08875762028708e7e185c30c302cce Ly nhan <lynhan15041997@gmail.com> 1521990410 +0700	commit: update page login
+e6ce7f3fed08875762028708e7e185c30c302cce cfad6bf35b4b6c0153ddc3cb51b49bcdbe7658a1 Ly nhan <lynhan15041997@gmail.com> 1522052216 +0700	commit: WIP
+cfad6bf35b4b6c0153ddc3cb51b49bcdbe7658a1 27af3e30c009af6606388d5dbdec58dc0456b952 Ly nhan <lynhan15041997@gmail.com> 1522057155 +0700	commit: update funciton upload image to server
+27af3e30c009af6606388d5dbdec58dc0456b952 25d7331940227a8b0e51518a20f1a909d1b86263 Ly nhan <lynhan15041997@gmail.com> 1522057202 +0700	pull origin staging: Merge made by the 'recursive' strategy.
+25d7331940227a8b0e51518a20f1a909d1b86263 78f21195ab9fb3ac3e4e5ebc3ae33bbc05e1f7a8 Ly nhan <lynhan15041997@gmail.com> 1522057660 +0700	commit: update gitignore
+78f21195ab9fb3ac3e4e5ebc3ae33bbc05e1f7a8 7088d4553650cefd7e83a1c8873df6389c54a6d8 Ly nhan <lynhan15041997@gmail.com> 1522061179 +0700	commit: update view for page food category
+7088d4553650cefd7e83a1c8873df6389c54a6d8 fef31efeed0d155e617bae2c8c9677110061b7e6 Ly nhan <lynhan15041997@gmail.com> 1522084046 +0700	commit: update edit page
+fef31efeed0d155e617bae2c8c9677110061b7e6 ff8ee4d7dee2dfa26c1665ca4f29cef3031cdba3 Ly nhan <lynhan15041997@gmail.com> 1522085408 +0700	commit: update crewate
+ff8ee4d7dee2dfa26c1665ca4f29cef3031cdba3 5bccf782e4922c0ffab80137d862ec7c8d6a7807 Ly nhan <lynhan15041997@gmail.com> 1522685278 +0700	commit: add table food
+5bccf782e4922c0ffab80137d862ec7c8d6a7807 489db6749c9aa456ae7daff3d297e3c7865b5e87 Ly nhan <lynhan15041997@gmail.com> 1522768105 +0700	commit: add table user
+489db6749c9aa456ae7daff3d297e3c7865b5e87 bd3ecd1fc272228ab081133bd2d21c3198c81058 Ly nhan <lynhan15041997@gmail.com> 1522769790 +0700	commit: add page profile
+bd3ecd1fc272228ab081133bd2d21c3198c81058 7b753d371ac9798861515451afd25093f0739542 Ly nhan <lynhan15041997@gmail.com> 1522774369 +0700	commit: add map
+7b753d371ac9798861515451afd25093f0739542 78c6e8345e8bdfe6d130e51875e6767ae894fc0d Ly nhan <lynhan15041997@gmail.com> 1522859252 +0700	commit: update UI page table map
+78c6e8345e8bdfe6d130e51875e6767ae894fc0d 47d0e09dd43ec3d7511e3f0ff92d7a6a07fcce40 Ly nhan <lynhan15041997@gmail.com> 1522949737 +0700	commit: update page table map
+47d0e09dd43ec3d7511e3f0ff92d7a6a07fcce40 b60542a48e1e170023861e931bc4ff1da2b32b86 Ly nhan <lynhan15041997@gmail.com> 1523029419 +0700	commit: update map
+b60542a48e1e170023861e931bc4ff1da2b32b86 f5b911d409e3dbbdf58c2cd14d937ba392096b6d Ly nhan <lynhan15041997@gmail.com> 1523033447 +0700	commit: fix bug
+f5b911d409e3dbbdf58c2cd14d937ba392096b6d 66c0b70a940e7a32e72463fbaa29f34b0e732538 Ly nhan <lynhan15041997@gmail.com> 1523035119 +0700	commit: update cod
+66c0b70a940e7a32e72463fbaa29f34b0e732538 f80eacc4e0f23a7bcc5db2e34c29d84bb88f73fa Ly nhan <lynhan15041997@gmail.com> 1523195213 +0700	commit: add function update table
+f80eacc4e0f23a7bcc5db2e34c29d84bb88f73fa a1240e7f3ab9e99bf59af2cbe03ea2124624a693 Ly nhan <lynhan15041997@gmail.com> 1523201768 +0700	commit: update UI
+a1240e7f3ab9e99bf59af2cbe03ea2124624a693 cd9f6159651e80c1eb79b2b0a5eb87d590178893 Ly nhan <lynhan15041997@gmail.com> 1523254131 +0700	commit: update page ordering
+cd9f6159651e80c1eb79b2b0a5eb87d590178893 a3ea115736cf423f40d5497c5d2a54c8c7d18be7 Ly nhan <lynhan15041997@gmail.com> 1523254539 +0700	commit: add page ordering
+a3ea115736cf423f40d5497c5d2a54c8c7d18be7 b83c6778e69b31ec121fa19c5674684e391868ae Ly nhan <lynhan15041997@gmail.com> 1523254549 +0700	commit (amend): update page ordering
+b83c6778e69b31ec121fa19c5674684e391868ae a7e25b1b59c22a292726bf5e0f9236c114823333 Ly nhan <lynhan15041997@gmail.com> 1523277486 +0700	commit: update ordering view
+a7e25b1b59c22a292726bf5e0f9236c114823333 da36b3362a44ebef81ccb88aa75f8fa7155b1728 Ly nhan <lynhan15041997@gmail.com> 1523499011 +0700	commit: add function forgotPasswor
+da36b3362a44ebef81ccb88aa75f8fa7155b1728 b51e3b2f207841009c0461e1647f588fdaa6166b Ly nhan <lynhan15041997@gmail.com> 1523499015 +0700	commit (amend): add function forgotPassword
+b51e3b2f207841009c0461e1647f588fdaa6166b 80a47b33d45331f767f3fb23ca0cfc3545cd62cd Ly nhan <lynhan15041997@gmail.com> 1524140580 +0700	commit: update ordering
+80a47b33d45331f767f3fb23ca0cfc3545cd62cd f964c6ed7be92061b225fc04055cda3b34c753f3 Ly nhan <lynhan15041997@gmail.com> 1524140587 +0700	pull origin staging: Merge made by the 'recursive' strategy.
+f964c6ed7be92061b225fc04055cda3b34c753f3 679ca9abe78ab0912879a1435eb00d1aff871a7a Ly nhan <lynhan15041997@gmail.com> 1524145051 +0700	commit: fix bug page event
+679ca9abe78ab0912879a1435eb00d1aff871a7a c36ce05b5bb4cd29de81d61f1cd56bc66916f558 Ly nhan <lynhan15041997@gmail.com> 1524233085 +0700	commit: fix bug
+c36ce05b5bb4cd29de81d61f1cd56bc66916f558 f58e42d9f1da64fe2ad583a9d6f3b92fffcbbb25 Ly nhan <lynhan15041997@gmail.com> 1524233407 +0700	pull origin staging: Merge made by the 'recursive' strategy.
+f58e42d9f1da64fe2ad583a9d6f3b92fffcbbb25 4d4c9c72d74c70459e6c0a88dda14689912a5647 Ly nhan <lynhan15041997@gmail.com> 1524410699 +0700	commit (amend): update
+4d4c9c72d74c70459e6c0a88dda14689912a5647 36a4e1bbe1e1165d4e1ae21e2134d10542319af2 Ly nhan <lynhan15041997@gmail.com> 1524921263 +0700	commit: fix bug
+36a4e1bbe1e1165d4e1ae21e2134d10542319af2 bcfd1cfe2121457aa35c83d1ec430966e17e53ff Ly nhan <lynhan15041997@gmail.com> 1524921276 +0700	pull origin staging: Merge made by the 'recursive' strategy.
+bcfd1cfe2121457aa35c83d1ec430966e17e53ff b232edf79389ffac7d9030c978c2128c09387e87 Ly nhan <lynhan15041997@gmail.com> 1524999886 +0700	pull origin staging: Fast-forward
+b232edf79389ffac7d9030c978c2128c09387e87 c5b8cdd616c71bde35d8329b048b2a5051476302 Ly nhan <lynhan15041997@gmail.com> 1524999933 +0700	commit: update message in login
+c5b8cdd616c71bde35d8329b048b2a5051476302 896d55014e43acb5a80ccb577adf486c63ec67ef Ly nhan <lynhan15041997@gmail.com> 1525000024 +0700	commit: update header
+896d55014e43acb5a80ccb577adf486c63ec67ef f6743c3c777f23031d6ebcde77db19972eb067cd Ly nhan <lynhan15041997@gmail.com> 1525015917 +0700	pull origin staging: Fast-forward
+f6743c3c777f23031d6ebcde77db19972eb067cd 400fa5b58376aef41d2faab08bddb47b4d076504 Ly nhan <lynhan15041997@gmail.com> 1525266425 +0700	commit: fix bug ordering
+400fa5b58376aef41d2faab08bddb47b4d076504 5b894fbc85734b0f1fd3faeb74c3510ec2ff1d3a Ly nhan <lynhan15041997@gmail.com> 1525277247 +0700	commit: update table booking
+5b894fbc85734b0f1fd3faeb74c3510ec2ff1d3a 3d5e0cd4cfae0b98ec30b7599f80831637fead1a Ly nhan <lynhan15041997@gmail.com> 1525278580 +0700	commit: fix bug
+3d5e0cd4cfae0b98ec30b7599f80831637fead1a 73ca7bb1af096c3c5a69a6c85332b4aa43354d52 Ly nhan <lynhan15041997@gmail.com> 1525344821 +0700	commit: update notification
+73ca7bb1af096c3c5a69a6c85332b4aa43354d52 930c6cf720b49694b727085a273edd1b09de0245 Ly nhan <lynhan15041997@gmail.com> 1525345154 +0700	commit: remove console.log
+930c6cf720b49694b727085a273edd1b09de0245 984d273aced2c2f51069c379013c97ac9941c9d8 Ly nhan <lynhan15041997@gmail.com> 1525449233 +0700	commit: fix bug notification
+984d273aced2c2f51069c379013c97ac9941c9d8 c4966cc69c30bcdfb81482339765a44796308a17 Ly nhan <lynhan15041997@gmail.com> 1525451995 +0700	commit: update table booking
+c4966cc69c30bcdfb81482339765a44796308a17 acdf0ce381cb4b053e098dc8d5144c556298a41f Ly nhan <lynhan15041997@gmail.com> 1526830449 +0700	commit: add page abou us
+acdf0ce381cb4b053e098dc8d5144c556298a41f d6ec39eecb46d6eac55abbe7c25503ebe3673a52 Ly nhan <lynhan15041997@gmail.com> 1526830728 +0700	commit (merge): fix conflix
+d6ec39eecb46d6eac55abbe7c25503ebe3673a52 f9154ee95bea7371b0d5a0ac1cf0ea40497add0c Ly nhan <lynhan15041997@gmail.com> 1526923039 +0700	commit: fix bug
+f9154ee95bea7371b0d5a0ac1cf0ea40497add0c 102f2be7c20ed39defd46aedfcfee6ffe8844bdd Ly nhan <lynhan15041997@gmail.com> 1528861170 +0700	commit: update table food and table event
+102f2be7c20ed39defd46aedfcfee6ffe8844bdd f379c0ede704437aea409554928c6c1830891fce Ly nhan <lynhan15041997@gmail.com> 1528877821 +0700	commit: update domain
+f379c0ede704437aea409554928c6c1830891fce cbf66ee9601d3581dbfc719be4f549e46bf0f5fa Ly nhan <lynhan15041997@gmail.com> 1528879713 +0700	commit: update
+                                                                                                                                                  
