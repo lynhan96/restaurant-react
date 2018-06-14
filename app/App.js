@@ -12,6 +12,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import WebBrowserNotification from 'components/WebBrowserNotification'
 import { fetchNotifications } from 'lib/actions/notification'
 import { fetchAboutUs } from 'lib/actions/aboutUs'
+import { fetchOrderings } from 'lib/actions/ordering'
 import { getAdminData } from 'lib/Constant'
 
 const ZoomInAndOut = ({ children, position, ...props }) => (
@@ -37,6 +38,7 @@ class App extends Component {
 
       this.props.dispatch(fetchNotifications())
       this.props.dispatch(fetchAboutUs())
+      this.props.dispatch(fetchOrderings())
     }
   }
 

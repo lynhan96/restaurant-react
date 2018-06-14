@@ -99,7 +99,6 @@ export const fetchOrderings = params => {
     const orderingState = getOrderingState()
 
     const ref = database.ref(getAdminData().vid + '/orders')
-
     ref.once('value')
       .then((snapshot) => {
         dispatch(fetchOrderingsTotalPage(R.values(snapshot.val()).length / 50))

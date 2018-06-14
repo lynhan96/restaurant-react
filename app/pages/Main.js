@@ -6,8 +6,6 @@ import { defaultDomainUrl } from 'lib/Constant'
 class Main extends Component {
   render() {
     const { signedIn } = this.props
-    console.log('-------------')
-    console.log(defaultDomainUrl())
     if (signedIn) {
       return (
         <div>
@@ -57,7 +55,7 @@ class Main extends Component {
                     <h2 style={{ textAlign: 'center', fontFamily: 'Playfair Display, serif' }}>Trang nhà bếp</h2>
                   </div>
                   <div className='ct-chart' id='dailySalesChart' style={{ textAlign: 'center', fontFamily: 'Playfair Display, serif', fontSize: '20px' }}>
-                    <a href={defaultDomainUrl() + '4000/login'}>Truy cập</a>
+                    <a href={defaultDomainUrl() + '4000'}>Truy cập</a>
                   </div>
                 </div>
               </div>
@@ -69,7 +67,7 @@ class Main extends Component {
                     <h2 style={{ textAlign: 'center', fontFamily: 'Playfair Display, serif' }}>Trang thu ngân</h2>
                   </div>
                   <div className='ct-chart' id='dailySalesChart' style={{ textAlign: 'center', fontFamily: 'Playfair Display, serif', fontSize: '20px' }}>
-                    <Link to={defaultDomainUrl() + '5000/login'}>Truy cập</Link>
+                    <Link to={defaultDomainUrl() + '5000'}>Truy cập</Link>
                   </div>
                 </div>
               </div>
@@ -82,7 +80,7 @@ class Main extends Component {
                     <h2 style={{ textAlign: 'center', fontFamily: 'Playfair Display, serif' }}>Trang nhân viên phục vụ</h2>
                   </div>
                   <div className='ct-chart' id='dailySalesChart' style={{ textAlign: 'center', fontFamily: 'Playfair Display, serif', fontSize: '20px' }}>
-                    <Link to={defaultDomainUrl() + ':3030/login'}>Truy cập</Link>
+                    <Link to={defaultDomainUrl() + ':3030'}>Truy cập</Link>
                   </div>
                 </div>
               </div>

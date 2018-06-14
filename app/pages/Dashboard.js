@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import R from 'ramda'
 import { connect } from 'react-redux'
 import { Pie, Line } from 'react-chartjs-2'
+import moment from 'moment'
 
 import { isAdmin } from 'components/wrappers/isAdmin'
 import { updateActiveLink } from 'ducks/admin'
@@ -17,7 +18,7 @@ class Dashboard extends Component {
     this.filterByDate = this.filterByDate.bind(this)
 
     this.state = {
-      year: 2018
+      year: parseInt(moment().format('YYYY'))
     }
   }
 
@@ -80,13 +81,13 @@ class Dashboard extends Component {
       datasets: [
         {
           label: 'Số lượng hóa đơn',
-          fill: true,
-          lineTension: 1,
+          fill: false,
+          lineTension: 0.1,
           backgroundColor: 'rgba(75,192,192,0.4)',
           borderColor: 'rgba(75,192,192,1)',
           borderCapStyle: 'butt',
           borderDash: [],
-          borderDashOffset: 0,
+          borderDashOffset: 0.0,
           borderJoinStyle: 'miter',
           pointBorderColor: 'rgba(75,192,192,1)',
           pointBackgroundColor: '#fff',
@@ -192,7 +193,7 @@ class Dashboard extends Component {
                       onChange={this.filterByDate}
                       value={this.state.year}
                     >
-                      {[2010, 2011, 20012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023].map((key, index) => {
+                      {[2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023].map((key, index) => {
                         return (
                           <option value={key} key={index}>{key}</option>
                         )
