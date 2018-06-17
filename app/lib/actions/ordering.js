@@ -94,6 +94,10 @@ const makeOrderingData = (datas, state, params) => {
 }
 
 export const fetchOrderings = params => {
+  if (getAdminData() == null) {
+    return
+  }
+
   return dispatch => {
     dispatch(fetchOrderingsBegin())
     const orderingState = getOrderingState()

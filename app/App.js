@@ -31,15 +31,9 @@ const ZoomInAndOut = ({ children, position, ...props }) => (
 
 class App extends Component {
   componentWillUpdate() {
-    if (this.props.signedIn) {
-      if (getAdminData() == null) {
-        return
-      }
-
-      this.props.dispatch(fetchNotifications())
-      this.props.dispatch(fetchAboutUs())
-      this.props.dispatch(fetchOrderings())
-    }
+    this.props.dispatch(fetchNotifications())
+    this.props.dispatch(fetchAboutUs())
+    this.props.dispatch(fetchOrderings())
   }
 
   render() {

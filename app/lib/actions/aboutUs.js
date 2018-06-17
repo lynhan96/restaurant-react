@@ -3,6 +3,7 @@ import async from 'async'
 import { SubmissionError } from 'redux-form'
 import * as firebase from 'firebase'
 import R from 'ramda'
+import { getAdminData } from 'lib/Constant'
 
 import { showNotification } from './showNotification'
 import { makeRequestOptions } from '../requestHeader'
@@ -37,6 +38,10 @@ export const fetchAboutUsError = error => ({
 })
 
 export const fetchAboutUs = params => {
+  if (getAdminData() == null) {
+    return
+  }
+
   return dispatch => {
     dispatch(fetchAboutUsBegin())
     request(makeRequestOptions(params, 'aboutUs')).then(body => {
