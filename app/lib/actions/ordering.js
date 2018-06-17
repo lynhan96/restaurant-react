@@ -94,14 +94,13 @@ const makeOrderingData = (datas, state, params) => {
 }
 
 export const fetchOrderings = params => {
-  if (getAdminData() == null) {
-    return
-  }
-
   return dispatch => {
+    if (getAdminData() == null) {
+      return
+    }
+
     dispatch(fetchOrderingsBegin())
     const orderingState = getOrderingState()
-
     const ref = database.ref(getAdminData().vid + '/orders')
     ref.once('value')
       .then((snapshot) => {

@@ -38,11 +38,11 @@ export const fetchAboutUsError = error => ({
 })
 
 export const fetchAboutUs = params => {
-  if (getAdminData() == null) {
-    return
-  }
-
   return dispatch => {
+    if (getAdminData() == null) {
+      return
+    }
+
     dispatch(fetchAboutUsBegin())
     request(makeRequestOptions(params, 'aboutUs')).then(body => {
       if (body.code === 401 || body.code === 400 || body.code === 414) {
