@@ -11,8 +11,8 @@ const SideBar = (props) => {
     return (
       <div className='sidebar slde-bar-bg-image' data-color='purple'>
         <div className='logo'>
-          <Link to='dashboard' className='simple-text'>
-            BK Food
+          <Link to='dashboard' className='simple-text' style={{ textTransform: 'none', textAlign: 'center', fontFamily: 'Playfair Display, serif' }}>
+            BK Cookery
           </Link>
         </div>
         <div className='sidebar-wrapper'>
