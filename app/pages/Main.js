@@ -67,7 +67,7 @@ class Main extends Component {
                     <h2 style={{ textAlign: 'center', fontFamily: 'Playfair Display, serif' }}>Trang thu ngân</h2>
                   </div>
                   <div className='ct-chart' id='dailySalesChart' style={{ textAlign: 'center', fontFamily: 'Playfair Display, serif', fontSize: '20px' }}>
-                    <Link to={defaultDomainUrl() + '5000'}>Truy cập</Link>
+                    <a href={defaultDomainUrl() + '5000'}>Truy cập</a>
                   </div>
                 </div>
               </div>
@@ -80,7 +80,7 @@ class Main extends Component {
                     <h2 style={{ textAlign: 'center', fontFamily: 'Playfair Display, serif' }}>Trang nhân viên phục vụ</h2>
                   </div>
                   <div className='ct-chart' id='dailySalesChart' style={{ textAlign: 'center', fontFamily: 'Playfair Display, serif', fontSize: '20px' }}>
-                    <Link to={defaultDomainUrl() + ':3030'}>Truy cập</Link>
+                    <a href={defaultDomainUrl() + '3030'}>Truy cập</a>
                   </div>
                 </div>
               </div>
