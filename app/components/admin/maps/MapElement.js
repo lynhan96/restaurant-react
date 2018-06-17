@@ -40,6 +40,7 @@ class MapElement extends Component {
         axis='both'
         handle='.handle'
         bounds='parent'
+        position= {{x: item.x, y: item.y}}
         defaultPosition={{x: item.x, y: item.y}}
         grid={[5, 5]}
         onStart={this.handleStart}
