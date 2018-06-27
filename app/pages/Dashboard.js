@@ -185,7 +185,7 @@ class Dashboard extends Component {
             <div className='col-md-12'>
               <div className='card'>
                 <div className='card-content'>
-                  <h2 className='title' style={{ textAlign: 'center' }}>Biểu đồ hòa đơn theo từng tháng</h2>
+                  <h2 className='title' style={{ textAlign: 'center' }}>Biểu đồ hóa đơn</h2>
                   <div style={{ textAlign: 'center' }}>
                     <select
                       style={{width: '20%', display: 'inline-block'}}
